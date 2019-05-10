@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -30,4 +32,64 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* CAROUSEL */
+.carousel {
+  position: center;
+  height: 400px;
+  width: 750px;
+}
+
+.slides {
+  height: 100%;
+  width: 100%;
+  position: center;
+}
+
+.slide {
+  /*position: ;*/
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  font-size: 3em;
+  color: white;
+  line-height: 400px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1000ms;
+}
+
+.slide:nth-child(1) {
+    background-color: red;
+    opacity: 1;
+}
+
+.slide:nth-child(2) {
+    background-color: green;
+}
+
+.slide:nth-child(3) {
+    background-color: blue;
+}
+
+.slide[data-state=active] {
+  display: block;
+}
+
+.indicators {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.indicator {
+    cursor: pointer;
+}
+
+.featurenotify {
+  max-width: 50%;
+  object-fit: cover;
+  border: 6px solid #920f00;
 }
