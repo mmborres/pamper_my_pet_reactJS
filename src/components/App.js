@@ -1,12 +1,10 @@
 import React from 'react';
-import Products from './Products';
-import Item from './Item';
+import Home from './Home.js'
 
 function App() {
   return (
     <div className="App">
-      <Products />
-      <Item />
+      <Home />
     </div>
   );
 }
