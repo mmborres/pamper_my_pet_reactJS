@@ -1,14 +1,36 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 class Item extends Component {
+  constructor(){
+    super();
+    this.state = {
+      item: []
+    }
+
+    //this.fetchImages = this.fetchImages.bind(this);
+
+
+    const fetchImages = () => {
+      axios.get("https://pamper-my-pet.herokuapp.com/products.json").then((results) => {
+        //console.log(results.data[0]);
+        this.setState({item: results.data});
+      })
+    };
+    fetchImages();
+  }
+
+
+
   render () {
     return (
       <div>
       <p>
         <Link to="/">Home</Link>
       </p>
-        <Details />
+
+        <Details item={this.state.item} />
       </div>
     );
   }
@@ -34,10 +56,20 @@ class Details extends Component {
 
      return(
        <div>
-       <h2>Name: of the Item will go here</h2>
-       <img src="#"/>
-       <h4>Prize: of the item </h4>
-       <p>Descrption</p>
+
+        <div>
+         {this.props.item.map( (i) =>
+           <div>
+          <img src={i.image}/>
+          <p><strong>Name:</strong>{i.name}</p>
+          <p><strong>Price: </strong>{i.price}</p>
+          <p><strong>Description: </strong>{i.description}</p>
+          <p><strong>Size: </strong>{i.size}</p>
+          <p><strong>Color: </strong>{i.color}</p>
+          </div>
+        )}
+        </div>
+
        <button onClick={this._handleClick}>Add to Cart</button>
        <button onClick={this._handleClick}>Buy Now</button>
        </div>

@@ -93,7 +93,7 @@ class AllProduct extends Component {
           <button type="submit">Shop Now!</button>
 
 
-            
+
         </form>
       </div>
     );
