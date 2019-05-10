@@ -5,8 +5,8 @@ import Home from './components/Home';
 import Products from './components/Products';
 import Item from './components/Item';
 import Checkout from './components/Checkout.js';
-import Login from './components/login.js';
-import Logout from './components/logout.js';
+import Login from './components/Login.js';
+import Logout from './components/Logout.js';
 
 const Routes = (
   <Router>
