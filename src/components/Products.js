@@ -77,7 +77,19 @@ class AllProduct extends Component {
                 <option value="Cat">Cat</option>
                 <option value="Fish">Fish</option>
               </select>
+
+            <label>Prize:</label>
+              <select onChange={this._handleChangePrize}>
+                <option></option>
+                <option>0-25</option>
+                <option>26-35</option>
+                <option>36-50</option>
+                <option>51-100</option>
+              </select>
           <button type="submit">Shop Now!</button>
+
+
+            
         </form>
       </div>
     );
