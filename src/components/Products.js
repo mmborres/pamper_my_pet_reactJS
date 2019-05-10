@@ -1,15 +1,64 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 class Products extends Component {
   constructor(){
     super();
-    // this.state ={
-    //   category: '',
-    //   pettype:''
-    // }
+    this.state ={
+      products:[]
+    }
+    //this.fetchProducts = this.fetchProducts.bind(this);
     this.handleProduct = this.handleProduct.bind(this);
+    const fetchProducts = (c,p) => {
+      const category = c;
+      const pet_type = p;
+      console.log(c);
+      axios.get("https://pamper-my-pet.herokuapp.com/products.json").then((results) => {
+        //console.log(results.data);
+
+        const p_data = results.data;
+        const listProducts = [];
+        //console.log(p_data);
+
+        for (let i = 0; i < p_data.length; i++){
+          const productData = p_data[i];
+            //console.log(productData)
+          if (category === "" && pet_type === ""){
+            listProducts.push(productData);//All product items
+          } else if (category!== "" && pet_type === ""){
+            if (productData.classification!==null && productData.classification === category ){
+              listProducts.push(productData)//all pet_type and selected category
+            }
+
+          } else if (category==="" && pet_type!==null){
+            if (productData.pet_type!==null && productData.pet_type === pet_type ){
+              listProducts.push(productData)//all category and selected pet type
+            }
+          } else {
+            //console.log('hi');
+            // console.log(productData.classification);
+            // console.log(category);
+            // console.log(productData.pet_type);
+            // console.log(pet_type);
+            if((productData.classification === category) && (productData.pet_type === pet_type)){
+              listProducts.push(productData);//selected category and pet_type
+            }
+          }
+        }
+
+        this.setState({products: listProducts})
+        console.log("listProducts =" + listProducts);
+      })
+
+    };
+    fetchProducts(this._handleChangeCategory,this._handleChangePetType);
   }
+
+
+
+
+
 
   handleProduct(category, pettype){
     console.log(category, pettype);
@@ -22,7 +71,7 @@ class Products extends Component {
           <Link to="/">Home</Link>
         </p>
         <h2>Products are coming soon</h2>
-        <AllProduct onSubmit={ this.handleProduct} />
+        <AllProduct onSubmit={ this._handleSubmit} />
       </div>
     );
   }
@@ -56,7 +105,7 @@ class AllProduct extends Component {
     event.preventDefault();
     console.log("hi");
     console.log(this.state.category);
-    //this.props.onSubmit(this.state.category, this.state.pettype);
+    this.props.onSubmit(this.state.category, this.state.pettype);
     this.props.onSubmit("TEST", "this.state.pettype");
 
   }
