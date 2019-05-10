@@ -1,11 +1,11 @@
 import React from 'react';
-import Product from './Product';
+import Products from './Products';
 import Item from './Item';
 
 function App() {
   return (
     <div className="App">
-      <Product />
+      <Products />
       <Item />
     </div>
   );
