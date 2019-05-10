@@ -17,6 +17,7 @@ const Routes = (
       <Route exact path="/checkout" component={Checkout} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/logout" component={Logout} />
+      <Route exact path="/home" component={Home} />
     </div>
   </Router>
 );
