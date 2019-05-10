@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Products extends Component {
   constructor(){
@@ -17,6 +18,9 @@ class Products extends Component {
   render () {
     return(
       <div>
+        <p>
+          <Link to="/">Home</Link>
+        </p>
         <h2>Products are coming soon</h2>
         <AllProduct onSubmit={ this.handleProduct} />
       </div>
