@@ -99,7 +99,7 @@ export default class SignUp extends Component {
 console.log(this.state.email, this.state.password, this.state.password_confirmation);
 
 
-axios.post("http://localhost:3000/users", { email: this.state.email, password: this.state.password, password_confirmation: this.state.password_confirmation }).then((result) =>{
+axios.post("https://pamper-my-pet.herokuapp.com/users", { email: this.state.email, password: this.state.password, password_confirmation: this.state.password_confirmation }).then((result) =>{
     //post actions
     console.log(result);
     console.log(result.statusText);
