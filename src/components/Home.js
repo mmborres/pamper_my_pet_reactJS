@@ -71,7 +71,6 @@ class Home extends Component {
           <Link to="/orders">View Orders</Link>
         </p>
 
-        <Footer />
       </div>
     );
   }
