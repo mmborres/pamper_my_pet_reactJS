@@ -8,6 +8,8 @@ import Checkout from './components/Checkout.js';
 import Login from './components/Login.js';
 import Logout from './components/Logout.js';
 import SignUp from './components/SignUp';
+import Order from './components/Order.js';
+
 
 const Routes = (
   <Router>
@@ -19,6 +21,7 @@ const Routes = (
       <Route exact path="/checkout" component={Checkout} />  
       <Route exact path="/logout" component={Logout} />
       <Route exact path="/home" component={Home} />
+      <Route exact path="/orders" component={Order} />
     </div>
   </Router>
 );
