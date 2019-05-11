@@ -7,15 +7,16 @@ import Item from './components/Item';
 import Checkout from './components/Checkout.js';
 import Login from './components/Login.js';
 import Logout from './components/Logout.js';
+import SignUp from './components/SignUp';
 
 const Routes = (
   <Router>
     <div>
-      <Route exact path="/" component={Home} />
+      <Route exact path="/" component={Login} />
+      <Route exact path="/signup" component={SignUp} />
       <Route exact path="/products" component={Products} />
-      <Route exact path="/item" component={Item} />
-      <Route exact path="/checkout" component={Checkout} />
-      <Route exact path="/login" component={Login} />
+      <Route exact path="/product/:id" component={Item} />
+      <Route exact path="/checkout" component={Checkout} />  
       <Route exact path="/logout" component={Logout} />
       <Route exact path="/home" component={Home} />
     </div>
