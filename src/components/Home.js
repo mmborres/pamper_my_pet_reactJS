@@ -76,21 +76,6 @@ class Home extends Component {
   }
 }
 
-//<Link to={ urlItem }><img src={props.image} alt="From Flickr" /></Link>
-//<a href={urlItem} ><img src={props.image} alt="From Flickr" /></a>
-const ImageLink = (props) => {
-  let urlstr = window.location.href;
-  if (urlstr.includes("#")) {
-    urlstr = urlstr.split("#")[0] + "#/product/" + props.id;
-  }
-
-  console.log(urlstr);
-
-  return (
-      <a href={urlstr} ><img src={props.image} alt="From Flickr" /></a>
-  );
-};
-
 
 class DisplayFeatured extends Component {
     constructor(props) {
@@ -104,12 +89,7 @@ class DisplayFeatured extends Component {
         const products = this.props.featured;
         console.log("setupProducts props=" + products);
 
-        let urlstr = window.location.href;
-        if (urlstr.includes("#")) {
-          urlstr = urlstr.split("#")[0] + "#/product/";
-        }
-
-        const newp = products.map( (urpl) => <a href={urlstr + urpl.id} ><img src={urpl.image} alt={urpl.name} class="featurenotify"/></a> );
+        const newp = products.map( (urpl) => <Link to={ "/product/" + urpl.id }><img src={urpl.image} alt={urpl.name} class="featurenotify"/></Link> );
         console.log("formatted = " + newp);
 
         this.setState({galleryItems: newp});
