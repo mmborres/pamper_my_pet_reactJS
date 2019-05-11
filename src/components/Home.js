@@ -106,7 +106,7 @@ class DisplayFeatured extends Component {
         urlstr = urlstr.split("#")[0] + "#/product/";
       }
 
-      const newp = products.map( (urpl) => <a href={urlstr + urpl.id} ><img src={urpl.image} alt="From Flickr" class="featurenotify"/></a> );
+      const newp = products.map( (urpl) => <a href={urlstr + urpl.id} ><img src={urpl.image} alt={urpl.name} class="featurenotify"/></a> );
       console.log(newp);
 
     return(
