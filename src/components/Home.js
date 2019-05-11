@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import './../App.css';
 import axios from 'axios';
 
+import AliceCarousel from 'react-alice-carousel'
+import "react-alice-carousel/lib/alice-carousel.css"
+import Footer from './Footer.js'
+
 const FEATURECT = 3;
 
 class Home extends Component {
@@ -15,7 +19,7 @@ class Home extends Component {
     //pick random products
     const fetchFeatured = () => {
       axios.get("https://pamper-my-pet.herokuapp.com/products.json").then((results) => {
-        console.log(results.data);
+        console.log("axios call=" + results.data);
         const allproducts = results.data;
         const randIndexArray = [];
         const featured = [];
@@ -52,24 +56,22 @@ class Home extends Component {
       <div className="App">
         <h1>Pamper My Pet</h1>
 
-        <DisplayFeatured featured={this.state.featuredproducts} />
-        <PlaySlides />
+
+        <div style={{backgroundColor: 'aquamarine'}}><DisplayFeatured featured={this.state.featuredproducts} /></div>
 
         <p>
           <Link to="/products">Products</Link>
         </p>
+
         <p>
-          <Link to="/item">Item</Link>
+          <Link to="/checkout">View Cart</Link>
         </p>
+
         <p>
-          <Link to="/login">Login</Link>
+          <Link to="/orders">View Orders</Link>
         </p>
-        <p>
-          <Link to="/logout">Logout</Link>
-        </p>
-        <p>
-          <Link to="/checkout">Checkout</Link>
-        </p>
+
+        <Footer />
       </div>
     );
   }
@@ -92,134 +94,71 @@ const ImageLink = (props) => {
 
 
 class DisplayFeatured extends Component {
-    constructor() {
-      super();
+    constructor(props) {
+      super(props);
 
+      this. state = {
+        galleryItems: [] //[1, 2, 3].map((i) => (<h2 key={i}>{i}</h2>)),
+      }
+
+      const setupProducts = () => {
+        const products = this.props.featured;
+        console.log("setupProducts props=" + products);
+
+        let urlstr = window.location.href;
+        if (urlstr.includes("#")) {
+          urlstr = urlstr.split("#")[0] + "#/product/";
+        }
+
+        const newp = products.map( (urpl) => <a href={urlstr + urpl.id} ><img src={urpl.image} alt={urpl.name} class="featurenotify"/></a> );
+        console.log("formatted = " + newp);
+
+        this.setState({galleryItems: newp});
+
+        console.log("state= " + this.state.galleryItems);
+
+        setTimeout(setupProducts, 5000);
+      }
+
+      console.log("props=" + this.props);
+      setupProducts();
+    } //constructor
+
+    responsive = {
+      0: { items: 1 },
+      1024: { items: 2 },
+    }
+   
+    onSlideChange(e) {
+      console.debug('Item`s position during a change: ', e.item)
+      console.debug('Slide`s position during a change: ', e.slide)
+    }
+  
+    onSlideChanged(e) {
+      console.debug('Item`s position after changes: ', e.item)
+      console.debug('Slide`s position after changes: ', e.slide)
     }
     
     render() {
-      const products = this.props.featured;
-      //console.log(products);
-
-      let urlstr = window.location.href;
-      if (urlstr.includes("#")) {
-        urlstr = urlstr.split("#")[0] + "#/product/";
-      }
-
-      const newp = products.map( (urpl) => <a href={urlstr + urpl.id} ><img src={urpl.image} alt={urpl.name} class="featurenotify"/></a> );
-      console.log(newp);
-
+      console.log("render props=" + this.props);
     return(
-        <div className="App">
-
-        <div id="carousel" class="carousel">
-          <div class="slides">
-            <div class="slide" data-state="active">{ newp[0] }</div>
-            <div class="slide">{ newp[1] }</div>
-            <div class="slide">{ newp[2] }</div>
-          </div>
-          
-        </div>
-
-
-
-
-        </div>
+      <AliceCarousel
+      items={this.state.galleryItems}
+      responsive={this.responsive}
+      autoPlayInterval={2000}
+      autoPlayDirection="rtl"
+      autoPlay={true}
+      fadeOutAnimation={true}
+      mouseDragEnabled={true}
+      playButtonEnabled={true}
+      disableAutoPlayOnAction={true}
+      onSlideChange={this.onSlideChange}
+      onSlideChanged={this.onSlideChanged}
+    />
       )
     }
 }
-/*
-<div class="indicators">
-            <input class="indicator" name="indicator" data-slide="1" data-state="active" checked type="radio" />
-            <input class="indicator" name="indicator" data-slide="2" type="radio" />
-            <input class="indicator" name="indicator" data-slide="3" type="radio" />
-          </div>
-          */
-class PlaySlides extends Component {
-  constructor() {
-    super();
 
 
-function playSlides() {
-    var carousel = document.getElementById('carousel');
-    var slides = 3;
-    var speed = 2000; // 5 seconds
-
-function carouselHide(num) {
-    indicators[num].setAttribute('data-state', '');
-    slides[num].setAttribute('data-state', '');
-
-    slides[num].style.opacity=0;
-}
-
-function carouselShow(num) {
-    indicators[num].checked = true;
-    indicators[num].setAttribute('data-state', 'active');
-    slides[num].setAttribute('data-state', 'active');
-
-    slides[num].style.opacity=1;
-}
-
-function setSlide(slide) {
-    return function() {
-        // Reset all slides
-        for (var i = 0; i < indicators.length; i++) {
-            indicators[i].setAttribute('data-state', '');
-            slides[i].setAttribute('data-state', '');
-            
-            carouselHide(i);
-        }
-
-        // Set defined slide as active
-        indicators[slide].setAttribute('data-state', 'active');
-        slides[slide].setAttribute('data-state', 'active');
-        carouselShow(slide);
-
-        // Stop the auto-switcher
-        clearInterval(switcher);
-    };
-}
-
-function switchSlide() {
-    var nextSlide = 0;
-
-    // Reset all slides
-    for (var i = 0; i < indicators.length; i++) {
-        // If current slide is active & NOT equal to last slide then increment nextSlide
-        if ((indicators[i].getAttribute('data-state') == 'active') && (i !== (indicators.length-1))) {
-            nextSlide = i + 1;
-        }
-
-        // Remove all active states & hide
-        carouselHide(i);
-    }
-
-    // Set next slide as active & show the next slide
-    carouselShow(nextSlide);
-}
-
-if (carousel) {
-    var slides = carousel.querySelectorAll('.slide');
-    var indicators = carousel.querySelectorAll('.indicator');
-
-    var switcher = setInterval(function() {
-        switchSlide();
-    }, speed);
-
-    for (var i = 0; i < indicators.length; i++) {
-        indicators[i].addEventListener("click", setSlide(i));
-    }
-}
-
-  }
-
-  playSlides();
-} // constructor
-  
-  render() {
-    return '';
-  }
-  
-};
 
 export default Home;
