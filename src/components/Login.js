@@ -93,8 +93,11 @@ export default class Login extends Component {
   "password": "anewpassword"
 }
 */
+//const baseURL = "http://localhost:3000";
+const baseURL = "https://pamper-my-pet.herokuapp.com";
 
-axios.post("http://localhost:3000/users/login", { email: this.state.email, password: this.state.password }).then((result) =>{
+console.log(baseURL);
+axios.post(baseURL + "/users/login", { email: this.state.email, password: this.state.password }).then((result) =>{
     //post actions
     console.log(result);
     console.log(result.statusText);
