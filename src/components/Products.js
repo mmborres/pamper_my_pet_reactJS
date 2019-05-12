@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-
+//please make this similar to Airplane.js. Implement POST for new Products.
+// 10. UserProfile - Rash Purvi - Please work on this in Product.JS and Item.JS, this is added in pages that need admin filtering. Admin can add Product and edit Product.
 class Products extends Component {
   constructor(){
     super();
@@ -9,7 +10,7 @@ class Products extends Component {
       products:[]
     }
     //this.fetchProducts = this.fetchProducts.bind(this);
-    this.handleProduct = this.handleProduct.bind(this);
+    //this.handleProduct = this.handleProduct.bind(this);
     const fetchProducts = (c,p) => {
       const category = c;
       const pet_type = p;
@@ -56,13 +57,9 @@ class Products extends Component {
   }
 
 
-
-
-
-
-  handleProduct(category, pettype){
-    console.log(category, pettype);
-  }
+  // handleProduct(category, pettype){
+  //   console.log(category, pettype);
+  // }
 
   render () {
     return(
@@ -70,14 +67,27 @@ class Products extends Component {
         <p>
           <Link to="/">Home</Link>
         </p>
+        //Seacrh.js form flight
         <h2>Products are coming soon</h2>
-        <AllProduct onSubmit={ this._handleSubmit} />
+        <SearchForm onSubmit={ this.fetchProducts}/>
+        <AllProduct products={ this.state.products }   />
+
       </div>
     );
   }
 };
 
-class AllProduct extends Component {
+const AllProduct = (props) => {
+  console.log("inside Flights = " + props.products.length)
+  if (props.products.length === 0) {
+    return '';
+  } else {
+    //console.log({props.products[]});
+  }
+
+}
+
+class SearchForm extends Component {
   constructor(){
     super();
     this.state ={
@@ -106,7 +116,7 @@ class AllProduct extends Component {
     console.log("hi");
     console.log(this.state.category);
     this.props.onSubmit(this.state.category, this.state.pettype);
-    this.props.onSubmit("TEST", "this.state.pettype");
+    //this.props.onSubmit("TEST", "this.state.pettype");
 
   }
   render () {
@@ -131,14 +141,14 @@ class AllProduct extends Component {
                 <option value="Fish">Fish</option>
               </select>
 
-            <label>Prize:</label>
-              <select onChange={this._handleChangePrize}>
-                <option></option>
-                <option>0-25</option>
-                <option>26-35</option>
-                <option>36-50</option>
-                <option>51-100</option>
-              </select>
+            // <label>Prize:</label>
+            //   <select onChange={this._handleChangePrize}>
+            //     <option></option>
+            //     <option>0-25</option>
+            //     <option>26-35</option>
+            //     <option>36-50</option>
+            //     <option>51-100</option>
+            //   </select>
           <button type="submit">Shop Now!</button>
 
 
