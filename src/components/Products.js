@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Nav from './Nav.js';
-<<<<<<< HEAD
 import Footer from './Footer.js'
-=======
-import Footer from './Footer.js';
->>>>>>> 004a36ed5e0f0ce08fdbd8d3a3b4fd4036dd00b1
 import UserProfile from './UserProfile';
 
 //please make this similar to Airplane.js. Implement POST for new Products.
@@ -82,17 +78,13 @@ class Products extends Component {
 
   render () {
     const isAdmin = UserProfile.getAdmin();
-<<<<<<< HEAD
     return(
       <div>
       <Nav />
-=======
-
     return(
       <div>
         <Nav />
         //Seacrh.js form flight
->>>>>>> 004a36ed5e0f0ce08fdbd8d3a3b4fd4036dd00b1
         <h2>Products</h2>
         <SearchForm onSubmit={ this.fetchProducts}/>
         {
@@ -101,11 +93,11 @@ class Products extends Component {
           : ''
         }
         <Allproducts products={this.state.products}/>
-<<<<<<< HEAD
+
         <Footer/>
-=======
+
         <Footer />
->>>>>>> 004a36ed5e0f0ce08fdbd8d3a3b4fd4036dd00b1
+
       </div>
     );
   }
