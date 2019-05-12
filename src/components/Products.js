@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Nav from './Nav.js';
+import Footer from './Footer.js'
+
 //please make this similar to Airplane.js. Implement POST for new Products.
 // 10. UserProfile - Rash Purvi - Please work on this in Product.JS and Item.JS, this is added in pages that need admin filtering. Admin can add Product and edit Product.
 class Products extends Component {
@@ -15,7 +18,7 @@ class Products extends Component {
     const showProducts = () => {
       axios.get("https://pamper-my-pet.herokuapp.com/products.json").then((results) => {
         this.setState({products: results.data});
-        
+
       })
     };
     showProducts();
@@ -92,7 +95,7 @@ const Allproducts = (props) => {
   console.log("products" + props.products.length);
   if (props.products.length === 0){
 
-    return 'You have 0 search rresult';
+    return 'You have 0 search result';
   } else {
     return(
       <div>
@@ -164,14 +167,7 @@ class SearchForm extends Component {
                 <option value="Fish">Fish</option>
               </select>
 
-            // <label>Price:</label>
-            //   <select onChange={this._handleChangePrize}>
-            //     <option></option>
-            //     <option>0-25</option>
-            //     <option>26-35</option>
-            //     <option>36-50</option>
-            //     <option>51-100</option>
-            //   </select>
+
           <button type="submit">Shop Now!</button>
 
 

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import UserProfile from './UserProfile';
+import Nav from './Nav.js';
+import Footer from './Footer.js'
 
 class NewProducts extends Component {
   constructor(){
@@ -16,6 +18,8 @@ class NewProducts extends Component {
       axios.post("https://pamper-my-pet.herokuapp.com/products.json", {name: name, image:image, description:description, size:size, color:color, price:price, stock:stock, classification:category, pet_type:pettype}).then((result) => {
         this.setState({newProd: [...this.state.newProd, result.data]})
         console.log(result.data);
+
+        this.props.history.push("/products");
       });
 
     }
@@ -25,13 +29,10 @@ class NewProducts extends Component {
     if (true) {
       return(
         <div>
+        <Nav/>
         <h1>Create Product</h1>
         <CreateForm onSubmit={this.saveProduct}/>
-
-
-        <p>
-         <Link to="/home">Back to Home</Link>
-         </p>
+        <Footer/>
         </div>
       )
     }
@@ -168,14 +169,14 @@ class CreateForm extends Component {
           <br />
 
           <label>Price</label>
-          <input type="text" onInput={this._handleInputPrice}/>
+          <input type="number" onInput={this._handleInputPrice} min="0"/>
           <br />
 
           <label>Stock</label>
-          <input type="text" onInput={this._handleInputStock}/>
+          <input type="number" onInput={this._handleInputStock} min="0"/>
           <br />
 
-          
+
             <form onSubmit={this._handleSubmit} >
               <label>Category:</label>
                 <select onChange={this._handleChangeCategory}>
