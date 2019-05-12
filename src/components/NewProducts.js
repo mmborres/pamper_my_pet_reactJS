@@ -194,7 +194,7 @@ class CreateForm extends Component {
                 </select>
                 <br/>
 
-          <button type="submit">Create Item!</button>
+          <button type="submit" onClick={"http://localhost:3000/#/products"} >Create Item!</button>
 
 
 
