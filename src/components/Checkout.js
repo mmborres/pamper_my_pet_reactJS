@@ -6,7 +6,7 @@ class Checkout extends Component {
     return (
       <div>
       <p>
-        <Link to="/">Home</Link>
+        <Link to="/home">Home</Link>
       </p>
         <h1>Your Order</h1>
       </div>
