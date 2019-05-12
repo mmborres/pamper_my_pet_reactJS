@@ -11,6 +11,7 @@ import SignUp from './components/SignUp';
 import Order from './components/Order.js';
 import NewProducts from './components/NewProducts.js';
 
+
 const Routes = (
   <Router>
     <div>
@@ -23,6 +24,7 @@ const Routes = (
       <Route exact path="/home" component={Home} />
       <Route exact path="/orders" component={Order} />
       <Route exact path="/newproducts" component={NewProducts}/>
+
     </div>
   </Router>
 );

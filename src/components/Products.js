@@ -12,7 +12,16 @@ class Products extends Component {
 
     this.fetchProducts = this.fetchProducts.bind(this);
     //this.handleProduct = this.handleProduct.bind(this);
+    const showProducts = () => {
+      axios.get("https://pamper-my-pet.herokuapp.com/products.json").then((results) => {
+        this.setState({products: results.data});
+        
+      })
+    };
+    showProducts();
   }
+
+
      fetchProducts = (c,p) => {
       const category = c;
       const pet_type = p;
@@ -82,6 +91,7 @@ class Products extends Component {
 const Allproducts = (props) => {
   console.log("products" + props.products.length);
   if (props.products.length === 0){
+
     return 'You have 0 search rresult';
   } else {
     return(
