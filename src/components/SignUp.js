@@ -13,13 +13,14 @@ import axios from 'axios';
 // alert('Logged in');
 // this.props.userHasAuthenticated(true);
 
-export default class Login extends Component {
+export default class SignUp extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      password_confirmation: ""
     };
   }
 
@@ -85,25 +86,24 @@ export default class Login extends Component {
 
 //handle sending to json
 
-//users/login
-
+//post to http://localhost:3000/users:
 /*
 {
-  "email": "test@example.com",
-  "password": "anewpassword"
-}
-*/
-//const baseURL = "http://localhost:3000";
-const baseURL = "https://pamper-my-pet.herokuapp.com";
+    user: {
+      email: 'test@example.com',
+      password: 'anewpassword',
+      password_confirmation: 'anewpassword'
+    }
+}*/
 
-console.log(baseURL);
-axios.post(baseURL + "/users/login", { email: this.state.email, password: this.state.password }).then((result) =>{
+console.log(this.state.email, this.state.password, this.state.password_confirmation);
+
+
+axios.post("https://pamper-my-pet.herokuapp.com/users", { email: this.state.email, password: this.state.password, password_confirmation: this.state.password_confirmation }).then((result) =>{
     //post actions
     console.log(result);
     console.log(result.statusText);
     });
-
-  
 
   }
 
@@ -111,7 +111,7 @@ axios.post(baseURL + "/users/login", { email: this.state.email, password: this.s
     return (
       <div className="App Login">
       <header className="App-header">
-      <h1>Login</h1>
+      <h1>Sign Up</h1>
 
         <form onSubmit={this.handleSubmit} action="/home">
           <FormGroup controlId="email" bsSize="large">
@@ -127,6 +127,14 @@ axios.post(baseURL + "/users/login", { email: this.state.email, password: this.s
           <span style={{color: 'black'}}>Password</span>
             <FormControl
               value={this.state.password}
+              onChange={this.handleChange}
+              type="password"
+            />
+          </FormGroup>
+          <FormGroup controlId="password_confirmation" bsSize="large">
+          <span style={{color: 'black'}}>Confirm Password</span>
+            <FormControl
+              value={this.state.password_confirmation}
               onChange={this.handleChange}
               type="password"
             />

@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -9,7 +11,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: hotpink;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -30,4 +32,11 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.featurenotify {
+  max-width: 50%;
+  object-fit: cover;
+  border: 6px solid #920f00;
 }
