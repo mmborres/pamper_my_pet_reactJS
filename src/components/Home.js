@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './../App.css';
 import axios from 'axios';
+import Nav from './Nav.js';
 
 
 import AliceCarousel from 'react-alice-carousel'
@@ -55,23 +56,11 @@ class Home extends Component {
   render() {
     return (
       <div className="App">
+        <Nav />
         <h1>Pamper My Pet</h1>
 
-
         <div style={{backgroundColor: 'aquamarine'}}><DisplayFeatured featured={this.state.featuredproducts} /></div>
-
-        <p>
-          <Link to="/products">Products</Link>
-        </p>
-
-        <p>
-          <Link to="/checkout">View Cart</Link>
-        </p>
-
-        <p>
-          <Link to="/orders">View Orders</Link>
-        </p>
-
+        <Footer />
       </div>
     );
   }
