@@ -92,7 +92,6 @@ class Products extends Component {
 const Allproducts = (props) => {
   console.log("products" + props.products.length);
   if (props.products.length === 0){
-
     return 'You have 0 search result';
   } else {
     return(
