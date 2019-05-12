@@ -30,10 +30,16 @@ class Item extends Component {
   }
 
   render () {
+    const isAdmin = UserProfile.getAdmin();
     return (
       <div>
       <Nav />
       <Details item={this.state.item} />
+      {
+        isAdmin
+        ?  <p><Link to="/editproduct">Edit Product</Link></p>
+        : ''
+      }
       <Footer />
       </div>
     );

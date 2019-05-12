@@ -96,7 +96,7 @@ class Products extends Component {
 
         <Footer/>
 
-        <Footer />
+
 
       </div>
     );
