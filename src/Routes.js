@@ -9,7 +9,7 @@ import Login from './components/Login.js';
 import Logout from './components/Logout.js';
 import SignUp from './components/SignUp';
 import Order from './components/Order.js';
-
+import NewProducts from './components/NewProducts.js';
 
 const Routes = (
   <Router>
@@ -18,10 +18,11 @@ const Routes = (
       <Route exact path="/signup" component={SignUp} />
       <Route exact path="/products" component={Products} />
       <Route exact path="/product/:id" component={Item} />
-      <Route exact path="/checkout" component={Checkout} />  
+      <Route exact path="/checkout" component={Checkout} />
       <Route exact path="/logout" component={Logout} />
       <Route exact path="/home" component={Home} />
       <Route exact path="/orders" component={Order} />
+      <Route exact path="/newproducts" component={NewProducts}/>
     </div>
   </Router>
 );

@@ -6,21 +6,24 @@ import axios from 'axios';
 class Products extends Component {
   constructor(){
     super();
-    this.state ={
+    this.state = {
       products:[]
     }
-    //this.fetchProducts = this.fetchProducts.bind(this);
+
+    this.fetchProducts = this.fetchProducts.bind(this);
     //this.handleProduct = this.handleProduct.bind(this);
-    const fetchProducts = (c,p) => {
+  }
+     fetchProducts = (c,p) => {
       const category = c;
       const pet_type = p;
-      console.log(c);
+      console.log(category + "category");
+      console.log(pet_type + "pet_type");
       axios.get("https://pamper-my-pet.herokuapp.com/products.json").then((results) => {
         //console.log(results.data);
 
         const p_data = results.data;
         const listProducts = [];
-        //console.log(p_data);
+        //console.log(p_data.length + " p_data.lenth");
 
         for (let i = 0; i < p_data.length; i++){
           const productData = p_data[i];
@@ -47,14 +50,14 @@ class Products extends Component {
             }
           }
         }
+        console.log("listProducts =" + listProducts.length);
+        this.setState({products: listProducts});
 
-        this.setState({products: listProducts})
-        console.log("listProducts =" + listProducts);
       })
 
     };
-    fetchProducts(this._handleChangeCategory,this._handleChangePetType);
-  }
+    //fetchProducts(this._handleChangeCategory,this._handleChangePetType);
+
 
 
   // handleProduct(category, pettype){
@@ -68,29 +71,39 @@ class Products extends Component {
           <Link to="/">Home</Link>
         </p>
         //Seacrh.js form flight
-        <h2>Products are coming soon</h2>
+        <h2>Products</h2>
         <SearchForm onSubmit={ this.fetchProducts}/>
-        <AllProduct products={ this.state.products }   />
-
+        <Allproducts products={this.state.products}/>
       </div>
     );
   }
 };
 
-const AllProduct = (props) => {
-  console.log("inside Flights = " + props.products.length)
-  if (props.products.length === 0) {
-    return '';
+const Allproducts = (props) => {
+  console.log("products" + props.products.length);
+  if (props.products.length === 0){
+    return 'You have 0 search rresult';
   } else {
-    //console.log({props.products[]});
-  }
+    return(
+      <div>
+    {props.products.map( (p) =>
+      <div>
+     <img src={p.image}/>
+     <p><strong>Name:</strong><Link to={ "/product/" + p.id }>{p.name}</Link></p>
+     </div>
+   )}
+   </div>
+ )
 
+
+  }
 }
+
 
 class SearchForm extends Component {
   constructor(){
     super();
-    this.state ={
+    this.state = {
       category: '',
       pettype: ''
     }
@@ -113,8 +126,9 @@ class SearchForm extends Component {
   };
   _handleSubmit(event){
     event.preventDefault();
-    console.log("hi");
-    console.log(this.state.category);
+    // console.log("hi");
+     console.log(this.state.category + "HI");
+     console.log(this.state.pettype + "Hello");
     this.props.onSubmit(this.state.category, this.state.pettype);
     //this.props.onSubmit("TEST", "this.state.pettype");
 
@@ -128,9 +142,9 @@ class SearchForm extends Component {
             <label>Category:</label>
               <select onChange={this._handleChangeCategory}>
                 <option></option>
-                <option value="clothing">Clothing</option>
-                <option value="accessories">Accessories</option>
-                <option value="toys">Toys</option>
+                <option value="Clothing">Clothing</option>
+                <option value="Accessories">Accessories</option>
+                <option value="Toys">Toys</option>
               </select>
 
             <label>Pet Type:</label>
