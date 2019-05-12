@@ -24,7 +24,6 @@ class Products extends Component {
     showProducts();
   }
 
-
      fetchProducts = (c,p) => {
       const category = c;
       const pet_type = p;
@@ -93,10 +92,7 @@ class Products extends Component {
 const Allproducts = (props) => {
   console.log("products" + props.products.length);
   if (props.products.length === 0){
-<<<<<<< HEAD
-=======
 
->>>>>>> 49291671e9f004ba728000326ffd9135f4a1562f
     return 'You have 0 search result';
   } else {
     return(
