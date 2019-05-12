@@ -49,16 +49,20 @@ class Details extends Component {
     }
     this._handleChange = this._handleChange.bind(this);
     this._handleCart = this._handleCart.bind(this);
+    this._handleBuy = this._handleBuy.bind(this);
   }
 
   _handleChange(event){
     event.preventDefault();
     this.setState({quantity: event.target.value})
-
-    AddToCart.setCart(this.props.item.id, 1);
   }
 
   _handleCart(event){
+    event.preventDefault();
+    AddToCart.setCart(this.props.item.id, this.state.quantity);
+  }
+
+  _handleBuy(event){
     event.preventDefault();
     AddToCart.setCart(this.props.item.id, this.state.quantity);
   }
@@ -77,6 +81,7 @@ class Details extends Component {
   render(){
 
     const isOutOfStock = this.props.item.stock === 0;
+    const userPresent = UserProfile.getEmail() === "";
 
     return(
       <div>
@@ -95,8 +100,17 @@ class Details extends Component {
       </select>
       </p>
       </div>
-      <button onClick={this._handleCart} disabled={isOutOfStock}>Add to Cart</button>
-      <button onClick={this._handleBuy} disabled={isOutOfStock}>Buy Now</button>
+      {userPresent ?
+        <p>
+        <button><Link to="/">Add to Cart</Link></button>
+        <button><Link to="/">Buy Now</Link>></button>
+        </p>
+        :
+        <p>
+        <button onClick={this._handleCart} disabled={isOutOfStock}>Add to Cart</button>
+        <button onClick={this._handleBuy} disabled={isOutOfStock}><Link to="/checkout">Buy Now</Link></button>
+        </p>
+      }
       </div>
     );
   }
