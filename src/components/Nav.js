@@ -17,6 +17,7 @@ class Nav extends Component {
         </div>
       );
     }
+    const hello = UserProfile.getName();
     return (
       <div>
       <nav>
@@ -24,6 +25,7 @@ class Nav extends Component {
       <span><Link to="/products">All Products</Link></span>
       <span><Link to="/logout">Logout</Link></span>
       <span><Link to="/checkout">Checkout</Link></span>
+      <span>Welcome {hello}</span>
       </nav>
       </div>
     );

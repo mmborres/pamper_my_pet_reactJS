@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Footer from './Footer.js'
+import Nav from './Nav.js';
 //please make this similar to Airplane.js. Implement POST for new Products.
 // 10. UserProfile - Rash Purvi - Please work on this in Product.JS and Item.JS, this is added in pages that need admin filtering. Admin can add Product and edit Product.
 class Products extends Component {
@@ -67,13 +69,12 @@ class Products extends Component {
   render () {
     return(
       <div>
-        <p>
-          <Link to="/home">Home</Link>
-        </p>
+        <Nav />
         //Seacrh.js form flight
         <h2>Products</h2>
         <SearchForm onSubmit={ this.fetchProducts}/>
         <Allproducts products={this.state.products}/>
+        <Footer />
       </div>
     );
   }
