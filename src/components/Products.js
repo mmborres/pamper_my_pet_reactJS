@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Nav from './Nav.js';
+<<<<<<< HEAD
 import Footer from './Footer.js'
+=======
+import Footer from './Footer.js';
+>>>>>>> 004a36ed5e0f0ce08fdbd8d3a3b4fd4036dd00b1
 import UserProfile from './UserProfile';
 
 //please make this similar to Airplane.js. Implement POST for new Products.
@@ -25,7 +29,6 @@ class Products extends Component {
     showProducts();
   }
 
-
      fetchProducts = (c,p) => {
       const category = c;
       const pet_type = p;
@@ -38,7 +41,7 @@ class Products extends Component {
         const listProducts = [];
         //console.log(p_data.length + " p_data.lenth");
 
-        for (let i = 0; i < p_data.length; i++){
+        for (let i = 0; i < p_data.length; i++) {
           const productData = p_data[i];
             //console.log(productData)
           if (category === "" && pet_type === ""){
@@ -79,9 +82,17 @@ class Products extends Component {
 
   render () {
     const isAdmin = UserProfile.getAdmin();
+<<<<<<< HEAD
     return(
       <div>
       <Nav />
+=======
+
+    return(
+      <div>
+        <Nav />
+        //Seacrh.js form flight
+>>>>>>> 004a36ed5e0f0ce08fdbd8d3a3b4fd4036dd00b1
         <h2>Products</h2>
         <SearchForm onSubmit={ this.fetchProducts}/>
         {
@@ -90,7 +101,11 @@ class Products extends Component {
           : ''
         }
         <Allproducts products={this.state.products}/>
+<<<<<<< HEAD
         <Footer/>
+=======
+        <Footer />
+>>>>>>> 004a36ed5e0f0ce08fdbd8d3a3b4fd4036dd00b1
       </div>
     );
   }
@@ -99,7 +114,6 @@ class Products extends Component {
 const Allproducts = (props) => {
   console.log("products" + props.products.length);
   if (props.products.length === 0){
-
     return 'You have 0 search result';
   } else {
     return(
