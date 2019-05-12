@@ -5,9 +5,7 @@ class Footer extends Component {
   render() {
     return (
       <div>
-      <p>
-        <Link to="/home"> Back to Home </Link>
-      </p>
+      <p>Footer coming soon</p>
       </div>
     );
   }

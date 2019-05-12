@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Nav from './Nav.js';
+import Footer from './Footer.js'
 
 class Item extends Component {
   constructor(){
@@ -31,11 +33,9 @@ class Item extends Component {
   render () {
     return (
       <div>
-      <p>
-        <Link to="/">Home</Link>
-      </p>
-
+        <Nav />
         <Details item={this.state.item} />
+        <Footer />
       </div>
     );
   }

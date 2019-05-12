@@ -68,7 +68,7 @@ class Products extends Component {
     return(
       <div>
         <p>
-          <Link to="/">Home</Link>
+          <Link to="/home">Home</Link>
         </p>
         //Seacrh.js form flight
         <h2>Products</h2>

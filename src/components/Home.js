@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './../App.css';
 import axios from 'axios';
 
+
 import AliceCarousel from 'react-alice-carousel'
 import "react-alice-carousel/lib/alice-carousel.css"
 import Footer from './Footer.js'
@@ -107,17 +108,17 @@ class DisplayFeatured extends Component {
       0: { items: 1 },
       1024: { items: 2 },
     }
-   
+
     onSlideChange(e) {
       console.debug('Item`s position during a change: ', e.item)
       console.debug('Slide`s position during a change: ', e.slide)
     }
-  
+
     onSlideChanged(e) {
       console.debug('Item`s position after changes: ', e.item)
       console.debug('Slide`s position after changes: ', e.slide)
     }
-    
+
     render() {
       console.log("render props=" + this.props);
     return(

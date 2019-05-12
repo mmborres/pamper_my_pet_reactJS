@@ -101,9 +101,19 @@ axios.post(baseURL + "/users/login", { email: this.state.email, password: this.s
     //post actions
     console.log(result);
     console.log(result.statusText);
+    if (result.data.user_id > 0) {
+      UserProfile.setName(result.data.name);
+      UserProfile.setUserId(result.data.user_id);
+      UserProfile.setAdmin(result.data.admin);
+      UserProfile.setEmail(result.data.email);
+
+      let urlstr = window.location.href;
+      if (urlstr.includes('#')) {
+        urlstr = urlstr.split('#')[0] + '#/home'
+      }
+      window.location.replace(urlstr);
+    }
     });
-
-
 
   }
 

@@ -4,7 +4,7 @@ import { Button, FormGroup, FormControl } from "react-bootstrap";
 import './../App.css';
 //import "./Login.css";
 import axios from 'axios';
-//import UserProfile from './UserProfile';
+import UserProfile from './UserProfile';
 //import { Redirect } from 'react-router-dom';
 //import Home from './Home';
 
@@ -18,9 +18,11 @@ export default class SignUp extends Component {
     super(props);
 
     this.state = {
+      name: "",
       email: "",
       password: "",
-      password_confirmation: ""
+      password_confirmation: "",
+      error_message: ""
     };
   }
 
@@ -63,13 +65,13 @@ export default class SignUp extends Component {
             UserProfile.setUserId(user_id);
             UserProfile.setAdmin(userDetail.admin);
             UserProfile.setEmail(userDetail.email);
-            
+
             //http://localhost:3000/#/home
             let urlstr = window.location.href;
             if (urlstr.includes("#")) {
                 urlstr = urlstr.split("#")[0] + "#/home"
             }
-            
+
             window.location.replace(urlstr);
             //return (<Home />)
         }
@@ -98,11 +100,32 @@ export default class SignUp extends Component {
 
 console.log(this.state.email, this.state.password, this.state.password_confirmation);
 
+if (this.state.password !== this.state.password_confirmation) {
+  this.setState({error_message: 'Passwords do not match.'});
+  return;
+}
+console.log('passwords ok');
 
-axios.post("https://pamper-my-pet.herokuapp.com/users", { email: this.state.email, password: this.state.password, password_confirmation: this.state.password_confirmation }).then((result) =>{
+axios.post("https://pamper-my-pet.herokuapp.com/users", { name: this.state.name, email: this.state.email, password: this.state.password}).then((result) =>{
     //post actions
     console.log(result);
     console.log(result.statusText);
+    if (result.data.user_id > 0) {
+      UserProfile.setName(result.data.name);
+      UserProfile.setUserId(result.data.user_id);
+      UserProfile.setAdmin(result.data.admin);
+      UserProfile.setEmail(result.data.email);
+
+      let urlstr = window.location.href;
+      if (urlstr.includes('#')) {
+        urlstr = urlstr.split('#')[0] + '#/home'
+      }
+      window.location.replace(urlstr);
+    }
+    })
+    .catch((error) => {
+      console.log('error', error.response.data.errors[0]);
+      this.setState({ error_message: error.response.data.errors[0]})
     });
 
   }
@@ -114,6 +137,15 @@ axios.post("https://pamper-my-pet.herokuapp.com/users", { email: this.state.emai
       <h1>Sign Up</h1>
 
         <form onSubmit={this.handleSubmit} action="/home">
+          <FormGroup controlId="name" bsSize="large">
+            <span style={{color: 'black'}}>Name</span>
+            <FormControl
+              autoFocus
+              type="name"
+              value={this.state.name}
+              onChange={this.handleChange}
+            />
+          </FormGroup>
           <FormGroup controlId="email" bsSize="large">
             <span style={{color: 'black'}}>Email</span>
             <FormControl
@@ -148,6 +180,7 @@ axios.post("https://pamper-my-pet.herokuapp.com/users", { email: this.state.emai
             Login
           </Button>
         </form>
+        <p>{this.state.error_message}</p>
         </header>
       </div>
     );
