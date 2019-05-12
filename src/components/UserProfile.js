@@ -1,4 +1,4 @@
-const UserProfile = (function {
+const UserProfile = (function() {
   let name = "";
   let email = "";
   let user_id = -1;
