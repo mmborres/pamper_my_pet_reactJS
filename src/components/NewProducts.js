@@ -175,7 +175,7 @@ class CreateForm extends Component {
           <input type="text" onInput={this._handleInputStock}/>
           <br />
 
-          <h3>Category/Classification</h3>
+          
             <form onSubmit={this._handleSubmit} >
               <label>Category:</label>
                 <select onChange={this._handleChangeCategory}>
