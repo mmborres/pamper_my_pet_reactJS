@@ -175,7 +175,7 @@ class CreateForm extends Component {
           <input type="text" onInput={this._handleInputStock}/>
           <br />
 
-          <h3>Category/Classification</h3>
+          
             <form onSubmit={this._handleSubmit} >
               <label>Category:</label>
                 <select onChange={this._handleChangeCategory}>
@@ -194,7 +194,7 @@ class CreateForm extends Component {
                 </select>
                 <br/>
 
-          <button type="submit">Create Item!</button>
+          <button type="submit" onClick={"http://localhost:3000/#/products"} >Create Item!</button>
 
 
 

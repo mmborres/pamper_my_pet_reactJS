@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Footer from './Footer.js'
-import Nav from './Nav.js';
 //please make this similar to Airplane.js. Implement POST for new Products.
 // 10. UserProfile - Rash Purvi - Please work on this in Product.JS and Item.JS, this is added in pages that need admin filtering. Admin can add Product and edit Product.
 class Products extends Component {
@@ -69,12 +67,13 @@ class Products extends Component {
   render () {
     return(
       <div>
-        <Nav />
+        <p>
+          <Link to="/">Home</Link>
+        </p>
         //Seacrh.js form flight
         <h2>Products</h2>
         <SearchForm onSubmit={ this.fetchProducts}/>
         <Allproducts products={this.state.products}/>
-        <Footer />
       </div>
     );
   }
@@ -128,8 +127,7 @@ class SearchForm extends Component {
   _handleSubmit(event){
     event.preventDefault();
     // console.log("hi");
-     console.log(this.state.category + "HI");
-     console.log(this.state.pettype + "Hello");
+
     this.props.onSubmit(this.state.category, this.state.pettype);
     //this.props.onSubmit("TEST", "this.state.pettype");
 
@@ -138,7 +136,7 @@ class SearchForm extends Component {
 
     return (
       <div>
-        <h3>Category/Classification</h3>
+
           <form onSubmit={this._handleSubmit} >
             <label>Category:</label>
               <select onChange={this._handleChangeCategory}>
@@ -156,7 +154,7 @@ class SearchForm extends Component {
                 <option value="Fish">Fish</option>
               </select>
 
-            // <label>Prize:</label>
+            // <label>Price:</label>
             //   <select onChange={this._handleChangePrize}>
             //     <option></option>
             //     <option>0-25</option>
