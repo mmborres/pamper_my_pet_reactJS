@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import UserProfile from './UserProfile';
+import AddToCart from './AddToCart';
 
 class Logout extends Component {
   constructor() {
@@ -9,6 +10,7 @@ class Logout extends Component {
     UserProfile.setEmail('');
     UserProfile.setUserId(-1);
     UserProfile.setAdmin(false);
+    AddToCart.emptyCart();
 
     let urlstr = window.location.href;
     if (urlstr.includes('#')) {
