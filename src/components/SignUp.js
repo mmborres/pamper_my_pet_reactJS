@@ -4,7 +4,7 @@ import { Button, FormGroup, FormControl } from "react-bootstrap";
 import './../App.css';
 //import "./Login.css";
 import axios from 'axios';
-//import UserProfile from './UserProfile';
+import UserProfile from './UserProfile';
 //import { Redirect } from 'react-router-dom';
 //import Home from './Home';
 
@@ -63,13 +63,13 @@ export default class SignUp extends Component {
             UserProfile.setUserId(user_id);
             UserProfile.setAdmin(userDetail.admin);
             UserProfile.setEmail(userDetail.email);
-            
+
             //http://localhost:3000/#/home
             let urlstr = window.location.href;
             if (urlstr.includes("#")) {
                 urlstr = urlstr.split("#")[0] + "#/home"
             }
-            
+
             window.location.replace(urlstr);
             //return (<Home />)
         }
