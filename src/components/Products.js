@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-
+//please make this similar to Airplane.js. Implement POST for new Products.
+// 10. UserProfile - Rash Purvi - Please work on this in Product.JS and Item.JS, this is added in pages that need admin filtering. Admin can add Product and edit Product.
 class Products extends Component {
   constructor(){
     super();
@@ -71,7 +72,9 @@ class Products extends Component {
           <Link to="/">Home</Link>
         </p>
         <h2>Products are coming soon</h2>
+        <SearchForm/>
         <AllProduct onSubmit={ this._handleSubmit} />
+        <Footer/>
       </div>
     );
   }

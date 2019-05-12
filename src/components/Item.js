@@ -10,7 +10,10 @@ class Item extends Component {
     }
 
     //this.fetchImages = this.fetchImages.bind(this);
-
+    //localhost:3001/#/product/{id}
+    //<Route exact path="/product/:id" component={Item} />
+    // To get to this page, the product id should be passed same way in Rails params.
+    // Refer to Flights.js -> flight link going to -> Reservation.js
 
     const fetchImages = () => {
       axios.get("https://pamper-my-pet.herokuapp.com/products.json").then((results) => {
