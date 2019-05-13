@@ -101,7 +101,7 @@ axios.post(baseURL + "/users/login", { email: this.state.email, password: this.s
     //post actions
     console.log(result);
     console.log(result.statusText);
-    if (result.data.user_id > 0) {
+    if (result.statusText==="OK") {
       UserProfile.setName(result.data.name);
       UserProfile.setUserId(result.data.user_id);
       UserProfile.setAdmin(result.data.admin);
