@@ -37,7 +37,7 @@ class Item extends Component {
       <Details item={this.state.item} />
       {
         isAdmin
-        ?  <p><Link to="/editproduct">Edit Product</Link></p>
+        ?  <p><Link to={"/editproduct/" + this.state.item.id } >Edit Product</Link></p>
         : ''
       }
       <Footer />

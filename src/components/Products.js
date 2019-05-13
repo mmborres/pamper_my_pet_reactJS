@@ -78,9 +78,7 @@ class Products extends Component {
 
   render () {
     const isAdmin = UserProfile.getAdmin();
-    return(
-      <div>
-      <Nav />
+    
     return(
       <div>
         <Nav />

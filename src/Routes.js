@@ -10,6 +10,8 @@ import Logout from './components/Logout.js';
 import SignUp from './components/SignUp';
 import Order from './components/Order.js';
 import NewProducts from './components/NewProducts.js';
+import EditProduct from './components/EditProduct.js';
+
 
 
 const Routes = (
@@ -24,7 +26,7 @@ const Routes = (
       <Route exact path="/home" component={Home} />
       <Route exact path="/orders" component={Order} />
       <Route exact path="/newproducts" component={NewProducts}/>
-      <Route exact path="/editproduct" component={NewProducts}/>
+      <Route exact path="/editproduct/:id" component={EditProduct}/>
 
     </div>
   </Router>
