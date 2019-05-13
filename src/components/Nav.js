@@ -3,9 +3,13 @@ import { Link } from 'react-router-dom';
 import UpdateBlocker from 'react-router';
 import UserProfile from './UserProfile';
 import axios from 'axios';
+import AddToCart from './AddToCart';
 
 class Nav extends Component {
   render() {
+    //const cart = AddToCart.getCart();
+    //console.log('Cart', cart);
+    const userId = UserProfile.getUserId();
     if (UserProfile.getEmail() === "") {
       return (
         <div>
@@ -30,6 +34,8 @@ class Nav extends Component {
       <span><Link to="/checkout">Checkout</Link></span>
       <span><Navbar /></span>
       <span>Welcome {hello}</span>
+      <span> &#x1F6D2; </span>
+
       </nav>
       </div>
     );
