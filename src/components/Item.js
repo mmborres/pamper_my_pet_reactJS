@@ -104,31 +104,31 @@ class Details extends Component {
     const url = "https://pamper-my-pet.herokuapp.com/order_items.json";
 
     return axios.get(url).then((results) => {
-      console.log('flethdhf', results.data.length);
-      console.log(this.state.order_item_id);
+      //console.log('flethdhf', results.data.length);
+      console.log('order_item_id', this.state.order_item_id);
       if (results.data.length === 0) {
         this.createOrderItem(order_id, product_id, quantity);
       } else {
         const index = results.data.findIndex((item) => item.order_id === order_id && item.product_id === product_id);
-        console.log('indecdd', index);
-        console.log(this.state.order_item_id);
+        console.log('index', index);
+        console.log('order_item_id', this.state.order_item_id);
 
         if (index >= 0) {
           this.setState({order_item_id: results.data[index].id});
           const ind = results.data[index].quantity;
           console.log(results.data[index])
-          console.log(this.state.order_item_id);
+          console.log('order_item_id', this.state.order_item_id);
           let tempq = results.data[index].quantity;
           tempq += quantity;
-          console.log('quant', quantity)
-          console.log('tempq', tempq)
+          console.log('initial quantity', quantity)
+          console.log('updated quantity', tempq)
 
           const lnk = "https://pamper-my-pet.herokuapp.com/order_items/" + results.data[index].id + ".json"
-          console.log(lnk);
+          //console.log(lnk);
           return axios.put(lnk, {quantity: tempq}).then((result) => {
             console.log(result.data);
              this.setState({order_item_id: result.data.id});
-             console.log(this.state.order_item_id);
+             console.log('order_item_id', this.state.order_item_id);
           });
 
         } else {

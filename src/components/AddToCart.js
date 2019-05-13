@@ -51,7 +51,7 @@ const AddToCart = (function() {
       if (typeof (Storage) !== "undefined") {
         localStorage.setItem('cart', JSON.stringify(cart));
       }
-      console.log(cart);
+      console.log('initial cart', cart);
     }
   };
 
@@ -68,7 +68,8 @@ const AddToCart = (function() {
   return {
     getCart: getCart,
     setCart: setCart,
-    emptyCart: emptyCart
+    emptyCart: emptyCart,
+    finalizeCart: finalizeCart
   }
 
   })();
