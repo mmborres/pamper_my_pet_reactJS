@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import UserProfile from './UserProfile';
-import Products from './Products'
 import axios from 'axios';
 
 class Nav extends Component {
@@ -48,25 +47,25 @@ class Navbar extends Component {
   <div className="subnav">
     <button className="subnavbtn">Dog <i className="fa fa-caret-down"></i></button>
     <div className="subnav-content">
-      <a href="#">Clothing</a>
-      <a href="#">Accessories</a>
-      <a href="#">Toys</a>
+      <a href="#/products/Dog/Clothing">Clothing</a>
+      <a href="#/products/Dog/Accessories">Accessories</a>
+      <a href="#/products/Dog/Toys">Toys</a>
     </div>
   </div>
   <div className="subnav">
     <button className="subnavbtn">Cat <i className="fa fa-caret-down"></i></button>
     <div className="subnav-content">
-      <a href="#">Clothing</a>
-      <a href="#">Accessories</a>
-      <a href="#">Toys</a>
+      <a href="#/products/Cat/Clothing">Clothing</a>
+      <a href="#products/Cat/Accessories">Accessories</a>
+      <a href="#/products/Cat/Toys">Toys</a>
 
     </div>
   </div>
   <div className="subnav">
     <button className="subnavbtn">Fish <i className="fa fa-caret-down"></i></button>
     <div className="subnav-content">
-      <a href="#">Accessories</a>
-      <a href="#">Toys</a>
+      <a href="#/products/Fish/Accessories">Accessories</a>
+      <a href="#/products/Fish/Toys">Toys</a>
 
     </div>
   </div>

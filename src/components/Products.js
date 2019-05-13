@@ -2,20 +2,20 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Nav from './Nav.js';
-<<<<<<< HEAD
+
 import Footer from './Footer.js'
-=======
-import Footer from './Footer.js';
->>>>>>> 004a36ed5e0f0ce08fdbd8d3a3b4fd4036dd00b1
+
 import UserProfile from './UserProfile';
 
 //please make this similar to Airplane.js. Implement POST for new Products.
 // 10. UserProfile - Rash Purvi - Please work on this in Product.JS and Item.JS, this is added in pages that need admin filtering. Admin can add Product and edit Product.
 class Products extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
-      products:[]
+      products:[],
+      pet: [],
+      category: []
     }
 
     this.fetchProducts = this.fetchProducts.bind(this);
@@ -27,13 +27,37 @@ class Products extends Component {
       })
     };
     showProducts();
+
+    const pet = this.props.match.params.pet
+    const fetchPet = () => {
+      axios.get("https://pamper-my-pet.herokuapp.com/products/" + pet + ".json").then((results) => {
+        this.setState({pet: results.data})
+        console.log(results.data.name)
+      })
+    }
+
+
+    const category = this.props.match.params.category
+    const fetchCategory = () => {
+      axios.get("https://pamper-my-pet.herokuapp.com/products/" + category + ".json").then((results) => {
+        this.setState({category: results.data})
+      })
+    }
+
+
+
+    //get value from params
+    //this.
+    //setstate
+
+    //this.fetchProducts(c,p)
   }
 
      fetchProducts = (c,p) => {
       const category = c;
       const pet_type = p;
-      console.log(category + "category");
-      console.log(pet_type + "pet_type");
+      // console.log(category + "category");
+      // console.log(pet_type + "pet_type");
       axios.get("https://pamper-my-pet.herokuapp.com/products.json").then((results) => {
         //console.log(results.data);
 
@@ -82,30 +106,23 @@ class Products extends Component {
 
   render () {
     const isAdmin = UserProfile.getAdmin();
-<<<<<<< HEAD
-    return(
-      <div>
-      <Nav />
-=======
+
 
     return(
       <div>
         <Nav />
-        //Seacrh.js form flight
->>>>>>> 004a36ed5e0f0ce08fdbd8d3a3b4fd4036dd00b1
         <h2>Products</h2>
-        <SearchForm onSubmit={ this.fetchProducts}/>
+        <SearchForm pet = {this.fetchPet} category = {this.fetchCategory} onSubmit={ this.fetchProducts}/>
         {
           isAdmin
           ?  <p><Link to="/newproducts">Add New Product</Link></p>
           : ''
         }
         <Allproducts products={this.state.products}/>
-<<<<<<< HEAD
+
         <Footer/>
-=======
-        <Footer />
->>>>>>> 004a36ed5e0f0ce08fdbd8d3a3b4fd4036dd00b1
+
+
       </div>
     );
   }
@@ -133,8 +150,8 @@ const Allproducts = (props) => {
 
 
 class SearchForm extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       category: '',
       pettype: ''
@@ -143,6 +160,8 @@ class SearchForm extends Component {
     this._handleChangeCategory = this._handleChangeCategory.bind(this);
     this._handleChangePetType = this._handleChangePetType.bind(this);
     this._handleSubmit = this._handleSubmit.bind(this);
+
+    //setstate from props values
   }
 
   _handleChangeCategory(event){
@@ -165,6 +184,8 @@ class SearchForm extends Component {
 
   }
   render () {
+    //make values pre-selected
+    const categories = [{name: "Clothing", selected: "selected"}, {name: "Accessories", selected: ""} ]
 
     return (
       <div>
@@ -176,6 +197,9 @@ class SearchForm extends Component {
                 <option value="Clothing">Clothing</option>
                 <option value="Accessories">Accessories</option>
                 <option value="Toys">Toys</option>
+
+                { categories.map( (c) => <option name={c.name} value={c.name} selected={c.selected}>{c.name}</option>)
+                }
               </select>
 
             <label>Pet Type:</label>
