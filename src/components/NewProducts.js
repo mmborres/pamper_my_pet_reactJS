@@ -116,7 +116,8 @@ class CreateForm extends Component {
 
     _handleInputPrice(event) {
       console.log(event.target.value);
-      this.setState({price: event.target.value})
+      this.setState({price: parseInt(event.target.value)})
+      console.log(this.state.price)
     };
 
     _handleInputColor(event) {
@@ -131,7 +132,7 @@ class CreateForm extends Component {
 
     _handleInputStock(event) {
       console.log(event.target.value);
-      this.setState({stock: event.target.value})
+      this.setState({stock: parseInt(event.target.value)})
     };
 
   _handleSubmit(event){

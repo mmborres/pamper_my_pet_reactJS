@@ -7,8 +7,6 @@ import Footer from './Footer.js'
 
 import UserProfile from './UserProfile';
 
-//please make this similar to Airplane.js. Implement POST for new Products.
-// 10. UserProfile - Rash Purvi - Please work on this in Product.JS and Item.JS, this is added in pages that need admin filtering. Admin can add Product and edit Product.
 class Products extends Component {
   constructor(props){
     super(props);
@@ -17,7 +15,8 @@ class Products extends Component {
       pet: '',
       category: '',
       pets:[],
-      categories: []
+      categories: [],
+
     }
 
     this.fetchProducts = this.fetchProducts.bind(this);
@@ -29,6 +28,7 @@ class Products extends Component {
 
       })
     };
+
     showProducts();
 
     const getPets = () => {
@@ -55,8 +55,9 @@ class Products extends Component {
     getCategories();
 
     if ( this.props.match.params.category!==undefined && this.props.match.params.pet!==undefined ) {
-      console.log("props here");
-      console.log(this.props.match.params.category);
+      // console.log("props here");
+      // console.log(this.props.match.params.category);
+
       //get value from params
       const category = this.props.match.params.category;
       const pet = this.props.match.params.pet;
@@ -69,8 +70,6 @@ class Products extends Component {
 
       this.fetchProducts(category, pet);
 
-
-
     }
 
   }
@@ -82,15 +81,11 @@ class Products extends Component {
       console.log(pet_type + " = pet_type");
 
       axios.get("https://pamper-my-pet.herokuapp.com/products.json").then((results) => {
-        //console.log(results.data);
-
         const p_data = results.data;
         const listProducts = [];
-        //console.log(p_data.length + " p_data.lenth");
-
         for (let i = 0; i < p_data.length; i++) {
           const productData = p_data[i];
-            //console.log(productData)
+
           if (category === "" && pet_type === ""){
             listProducts.push(productData);//All product items
           } else if (category!== "" && pet_type === ""){
@@ -103,11 +98,10 @@ class Products extends Component {
               listProducts.push(productData)//all category and selected pet type
             }
           } else {
-            //console.log('hi');
+
             // console.log(productData.classification);
-            // console.log(category);
             // console.log(productData.pet_type);
-            // console.log(pet_type);
+
             if((productData.classification === category) && (productData.pet_type === pet_type)){
               listProducts.push(productData);//selected category and pet_type
             }
@@ -119,13 +113,6 @@ class Products extends Component {
       })
 
     };
-    //fetchProducts(this._handleChangeCategory,this._handleChangePetType);
-
-
-
-  // handleProduct(category, pettype){
-  //   console.log(category, pettype);
-  // }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     console.log('update!', this.props.match);
@@ -149,14 +136,13 @@ class Products extends Component {
 
   render () {
     const isAdmin = UserProfile.getAdmin();
-
     console.log("parent = " + this.state.categories);
     console.log("parent pet = " + this.state.pet);
 
     console.log("render props pet = " + this.props.match.params.pet);
 
-    
     return(
+
       <div>
         <Nav />
         <h2>{this.state.pet} Products</h2>
@@ -178,6 +164,7 @@ class Products extends Component {
 };
 
 const Allproducts = (props) => {
+
   console.log("products = " + props.products.length);
   if (props.products.length === 0){
     return 'You have 0 search result';
@@ -185,10 +172,11 @@ const Allproducts = (props) => {
     console.log('rendering...')
     return(
       <div>
-    {props.products.map( (p) =>
+    {props.products.slice(0,5).map( (p) =>
       <div>
      <img src={p.image}/>
      <p><strong>Name:</strong><Link to={ "/product/" + p.id }>{p.name}</Link></p>
+
      </div>
    )}
    </div>
@@ -196,6 +184,7 @@ const Allproducts = (props) => {
 
 
   }
+
 }
 
 
@@ -205,8 +194,6 @@ class SearchForm extends Component {
     this.state = {
       category: '',
       pettype: ''
-      //categories: [],
-      //pets: []
     }
 
     this._handleChangeCategory = this._handleChangeCategory.bind(this);
@@ -240,13 +227,6 @@ class SearchForm extends Component {
   render () {
 
     console.log("here 123 = " + this.props.categories);
-    //make values pre-selected
-    //const categories = [{name: this.state.pets, selected: "selected"}, {name: "Accessories", selected: ""}, /{name: "Toys", selected: ""}, {name: "Food"} ]
-/*
-
-                { categories.map( (c) => <option name={c.name} value={c.name} selected={c.selected}>{c.name}</option>)
-                }
-*/
 
     return (
       <div>
@@ -263,16 +243,12 @@ class SearchForm extends Component {
             <label>Pet Type:</label>
               <select onChange={this._handleChangePetType}>
                 <option></option>
-                { /* if ( c === this.state.pet ) { "selected" }*/
+                {
                   this.props.pets.map( (p) => <option name={p} value={p} selected={ (p===this.props.pet) ? "selected" : "" }>{p}</option>)
                 }
               </select>
 
-
           <button type="submit">Shop Now!</button>
-
-
-
         </form>
       </div>
     );

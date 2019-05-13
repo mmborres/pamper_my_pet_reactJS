@@ -56,6 +56,7 @@ class Navbar extends Component {
     <div className="subnav-content">
       <Link to="/products/Dog/Clothing">Clothing</Link>
       <Link to="/products/Dog/Accessories">Accessories</Link>
+      <Link to="/products/Dog/Toys">Toys</Link>
 
     </div>
   </div>
