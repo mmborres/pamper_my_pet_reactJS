@@ -30,10 +30,16 @@ class Item extends Component {
   }
 
   render () {
+    const isAdmin = UserProfile.getAdmin();
     return (
       <div>
       <Nav />
       <Details item={this.state.item} />
+      {
+        isAdmin
+        ?  <p><Link to="/editproduct">Edit Product</Link></p>
+        : ''
+      }
       <Footer />
       </div>
     );
@@ -45,7 +51,7 @@ class Details extends Component {
   constructor(){
     super();
     this.state = {
-      quantity : -1
+      quantity : 1
     }
     this._handleChange = this._handleChange.bind(this);
     this._handleCart = this._handleCart.bind(this);
@@ -59,12 +65,12 @@ class Details extends Component {
 
   _handleCart(event){
     event.preventDefault();
-    AddToCart.setCart(this.props.item.id, this.state.quantity);
+    AddToCart.setCart(this.props.item.id, this.props.item.name, this.props.item.image, this.props.item.price, this.state.quantity);
   }
 
   _handleBuy(event){
     event.preventDefault();
-    AddToCart.setCart(this.props.item.id, this.state.quantity);
+    AddToCart.setCart(this.props.item.id, this.props.item.name, this.props.item.image, this.props.item.price, this.state.quantity);
   }
 
   createQuantitySelect() {
@@ -95,7 +101,6 @@ class Details extends Component {
       <p><strong>Stock: </strong>{isOutOfStock ? 'Out of Stock' : 'Available'}</p>
       <p><strong>Enter quantity: </strong>
       <select onChange={this._handleChange}>
-      <option>0</option>
       {this.createQuantitySelect()}
       </select>
       </p>

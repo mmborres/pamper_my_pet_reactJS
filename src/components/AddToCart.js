@@ -11,24 +11,35 @@ const AddToCart = (function() {
     return cart;
   };
 
-  const setCart = function(product_id, quantity) {
+  const setCart = function(product_id, name, image, price, quantity) {
     if (product_id !== null && quantity !== null) {
       const product = {
         id: product_id,
+        name: name,
+        image: image,
+        price: price,
         quantity: quantity
       };
-      
+
       cart.push(product);
 
       if (typeof (Storage) !== "undefined") {
         localStorage.setItem('cart', JSON.stringify(cart));
       }
+      console.log(cart);
     }
   };
+
+  const emptyCart = function() {
+      if (typeof (Storage) !== "undefined") {
+        localStorage.setItem('cart', null);
+      }
+    };
 
   return {
     getCart: getCart,
     setCart: setCart,
+    emptyCart: emptyCart
   }
 
   })();

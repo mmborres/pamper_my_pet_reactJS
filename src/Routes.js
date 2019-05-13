@@ -25,6 +25,7 @@ const Routes = (
       <Route exact path="/home" component={Home} />
       <Route exact path="/orders" component={Order} />
       <Route exact path="/newproducts" component={NewProducts}/>
+      <Route exact path="/editproduct" component={NewProducts}/>
 
     </div>
   </Router>

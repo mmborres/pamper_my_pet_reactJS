@@ -14,50 +14,73 @@ class Products extends Component {
     super(props);
     this.state = {
       products:[],
-      pet: [],
-      category: []
+      pet: '',
+      category: '',
+      pets:[],
+      categories: []
     }
 
     this.fetchProducts = this.fetchProducts.bind(this);
-    //this.handleProduct = this.handleProduct.bind(this);
+
     const showProducts = () => {
       axios.get("https://pamper-my-pet.herokuapp.com/products.json").then((results) => {
+
         this.setState({products: results.data});
 
       })
     };
     showProducts();
 
-    const pet = this.props.match.params.pet
-    const fetchPet = () => {
-      axios.get("https://pamper-my-pet.herokuapp.com/products/" + pet + ".json").then((results) => {
-        this.setState({pet: results.data})
-        console.log(results.data.name)
+    const getPets = () => {
+      axios.get("https://pamper-my-pet.herokuapp.com/pets.json").then((results) => {
+        console.log("pets " + results.data );
+        const pets = [];
+        results.data.map((p)=> {pets.push(p.name)});
+        console.log(pets);
+        this.setState({pets: pets});
+
       })
+    };
+    getPets();
+
+    const getCategories = () => {
+
+      axios.get("https://pamper-my-pet.herokuapp.com/categories.json").then((results) => {
+        const categories = [];
+        results.data.map((c) => { categories.push(c.name)});
+        this.setState({categories: categories});
+        console.log("thisis catefory" + categories);
+      })
+    };
+    getCategories();
+
+    if ( this.props.match.params.category!==undefined && this.props.match.params.pet!==undefined ) {
+      console.log("props here");
+      console.log(this.props.match.params.category);
+      //get value from params
+      const category = this.props.match.params.category;
+      const pet = this.props.match.params.pet;
+      console.log("1a=" + pet);
+
+      //setstate
+      this.setState({category: category, pet: pet});
+
+      console.log("1b=" + this.state.pet);
+
+      this.fetchProducts(category, pet);
+
+
+
     }
 
-
-    const category = this.props.match.params.category
-    const fetchCategory = () => {
-      axios.get("https://pamper-my-pet.herokuapp.com/products/" + category + ".json").then((results) => {
-        this.setState({category: results.data})
-      })
-    }
-
-
-
-    //get value from params
-    //this.
-    //setstate
-
-    //this.fetchProducts(c,p)
   }
 
      fetchProducts = (c,p) => {
       const category = c;
       const pet_type = p;
-      // console.log(category + "category");
-      // console.log(pet_type + "pet_type");
+      console.log(category + " = category");
+      console.log(pet_type + " = pet_type");
+
       axios.get("https://pamper-my-pet.herokuapp.com/products.json").then((results) => {
         //console.log(results.data);
 
@@ -104,15 +127,39 @@ class Products extends Component {
   //   console.log(category, pettype);
   // }
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log('update!', this.props.match);
+    console.log(prevProps.match);
+    //console.log(prevState);
+    // todo: update the state here
+    const pet = this.props.match.params.pet;
+    const category = this.props.match.params.category;
+
+    const prevpet = prevProps.match.params.pet;
+    const prevcategory = prevProps.match.params.category;
+
+    //this.setState({pet: this.props.match.params.pet, category: this.props.match.params.category})
+    // todo: maybe fetch products
+    if (pet !== prevpet || category !== prevcategory) {
+      this.fetchProducts(category, pet);
+      //this.setState({category: category, pet: pet});
+      console.log("2==" + this.state.pet);
+    }
+  }
+
   render () {
     const isAdmin = UserProfile.getAdmin();
+    console.log("parent = " + this.state.categories);
+    console.log("parent pet = " + this.state.pet);
 
+    console.log("render props pet = " + this.props.match.params.pet);
 
     return(
+
       <div>
         <Nav />
-        <h2>Products</h2>
-        <SearchForm pet = {this.fetchPet} category = {this.fetchCategory} onSubmit={ this.fetchProducts}/>
+        <h2>{this.state.pet} Products</h2>
+        <SearchForm pet={this.props.match.params.pet} category = {this.props.match.params.category} pets={this.state.pets} categories={this.state.categories} onSubmit={ this.fetchProducts}/>
         {
           isAdmin
           ?  <p><Link to="/newproducts">Add New Product</Link></p>
@@ -123,16 +170,18 @@ class Products extends Component {
         <Footer/>
 
 
+
       </div>
     );
   }
 };
 
 const Allproducts = (props) => {
-  console.log("products" + props.products.length);
+  console.log("products = " + props.products.length);
   if (props.products.length === 0){
     return 'You have 0 search result';
   } else {
+    console.log('rendering...')
     return(
       <div>
     {props.products.map( (p) =>
@@ -150,11 +199,13 @@ const Allproducts = (props) => {
 
 
 class SearchForm extends Component {
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
     this.state = {
       category: '',
       pettype: ''
+      //categories: [],
+      //pets: []
     }
 
     this._handleChangeCategory = this._handleChangeCategory.bind(this);
@@ -162,6 +213,8 @@ class SearchForm extends Component {
     this._handleSubmit = this._handleSubmit.bind(this);
 
     //setstate from props values
+    //this.setState({pets: this.props.pets})
+    //console.log("searchform = " + props.pets);
   }
 
   _handleChangeCategory(event){
@@ -184,8 +237,15 @@ class SearchForm extends Component {
 
   }
   render () {
+
+    console.log("here 123 = " + this.props.categories);
     //make values pre-selected
-    const categories = [{name: "Clothing", selected: "selected"}, {name: "Accessories", selected: ""} ]
+    //const categories = [{name: this.state.pets, selected: "selected"}, {name: "Accessories", selected: ""}, /{name: "Toys", selected: ""}, {name: "Food"} ]
+/*
+
+                { categories.map( (c) => <option name={c.name} value={c.name} selected={c.selected}>{c.name}</option>)
+                }
+*/
 
     return (
       <div>
@@ -194,20 +254,17 @@ class SearchForm extends Component {
             <label>Category:</label>
               <select onChange={this._handleChangeCategory}>
                 <option></option>
-                <option value="Clothing">Clothing</option>
-                <option value="Accessories">Accessories</option>
-                <option value="Toys">Toys</option>
-
-                { categories.map( (c) => <option name={c.name} value={c.name} selected={c.selected}>{c.name}</option>)
+                {
+                  this.props.categories.map( (c) => <option name={c} value={c} selected={ (c===this.props.category) ? "selected" : ""}>{c}</option>)
                 }
               </select>
 
             <label>Pet Type:</label>
               <select onChange={this._handleChangePetType}>
                 <option></option>
-                <option value="Dog">Dog</option>
-                <option value="Cat">Cat</option>
-                <option value="Fish">Fish</option>
+                { /* if ( c === this.state.pet ) { "selected" }*/
+                  this.props.pets.map( (p) => <option name={p} value={p} selected={ (p===this.props.pet) ? "selected" : "" }>{p}</option>)
+                }
               </select>
 
 

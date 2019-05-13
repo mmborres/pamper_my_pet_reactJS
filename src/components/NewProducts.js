@@ -70,8 +70,8 @@ class CreateForm extends Component {
       description: '',
       size: '',
       color: '',
-      price: '',
-      stock: '',
+      price: 0,
+      stock: 0,
       category: '',
       pettype: ''
     }
