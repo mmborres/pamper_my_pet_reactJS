@@ -31,7 +31,7 @@ class Checkout extends Component {
           <p><strong>Name:</strong>{c.name}</p>
           <p><strong>Price:</strong> AUD {c.price}</p>
           <p><strong>Quantity:</strong>{c.quantity}</p>
-          <p><strong>Total Price: </strong>{c.price * c.quantity}</p>
+          <p><strong>Total Price: </strong> AUD {c.price * c.quantity}</p>
         </div>
       )}
       </div>
@@ -51,11 +51,11 @@ class Checkout extends Component {
       a + b
       const final = values.reduce(add)
       return (
-        <p><strong>Grand Total: </strong>
-        {
+        <p><strong>Grand Total:
+        AUD {
           final
         }
-        </p>
+        </strong></p>
       );
     }
   }

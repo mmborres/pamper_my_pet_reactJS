@@ -1,5 +1,6 @@
 const AddToCart = (function() {
   let cart = [];
+  //let order_id =
 
   const getCart = function() {
     if (typeof (Storage) !== "undefined") {
@@ -13,13 +14,19 @@ const AddToCart = (function() {
 
   const setCart = function(product_id, name, image, price, quantity) {
     if (product_id !== null && quantity !== null) {
+
       const product = {
         id: product_id,
         name: name,
         image: image,
         price: price,
-        quantity: quantity
+        quantity: quantity,
+        //order_item_id: 
       };
+
+      if (cart === null) {
+        cart = [];
+      }
 
       cart.push(product);
 
