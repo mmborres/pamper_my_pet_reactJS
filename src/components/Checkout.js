@@ -9,7 +9,22 @@ class Checkout extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      shoppingList: []
+      shoppingList: [],
+      clicks: 0
+    }
+    this._incrementClick = this._incrementClick.bind(this);
+    this._decreaseClick = this._decreaseClick.bind(this);
+  }
+
+  _incrementClick() {
+    this.setState({clicks: this.state.clicks + 1})
+  }
+
+  _decreaseClick() {
+    if (this.state.clicks === 0) {
+      return
+    } else {
+      this.setState({clicks: this.state.clicks - 1})
     }
   }
 
@@ -28,9 +43,9 @@ class Checkout extends Component {
         cart.map( (c) =>
         <div>
           <img src={c.image}/>
-          <p><strong>Name:</strong>{c.name}</p>
+          <p><strong>Name:</strong> {c.name}</p>
           <p><strong>Price:</strong> AUD {c.price}</p>
-          <p><strong>Quantity:</strong>{c.quantity}</p>
+          <p><strong>Quantity:</strong> { c.quantity}</p>
           <p><strong>Total Price: </strong> AUD {c.price * c.quantity}</p>
         </div>
       )}

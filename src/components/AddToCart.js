@@ -1,6 +1,5 @@
 const AddToCart = (function() {
   let cart = [];
-  //let order_id =
 
   const getCart = function() {
     if (typeof (Storage) !== "undefined") {
@@ -12,8 +11,27 @@ const AddToCart = (function() {
     return cart;
   };
 
-  const setCart = function(product_id, name, image, price, quantity) {
-    if (product_id !== null && quantity !== null) {
+  const setCart = function(product_id, name, image, price, quantity, order_id) {
+    if (product_id !== null && quantity !== null && name !== null && quantity !== null && order_id !== null) {
+
+      // Update product quantity in cart if product already exists
+      if (cart !== null && cart.some((item) => product_id === item.id)) {
+        const productIndex = cart.findIndex((item) => product_id === item.id);
+        cart[productIndex].quantity += quantity;
+        console.log('Updated cart', cart);
+
+        if (typeof (Storage) !== "undefined") {
+          localStorage.setItem('cart', JSON.stringify(cart));
+        }
+      } else {
+        // IF product does not exist in cart then add in Cart
+        addInCart(product_id, name, image, price, quantity, order_id);
+      }
+    }
+  };
+
+  const addInCart = function(product_id, name, image, price, quantity, order_id) {
+    if (product_id !== null && quantity !== null && name !== null && quantity !== null && order_id !== null) {
 
       const product = {
         id: product_id,
@@ -21,7 +39,7 @@ const AddToCart = (function() {
         image: image,
         price: price,
         quantity: quantity,
-        //order_item_id: 
+        order_id: order_id
       };
 
       if (cart === null) {
@@ -42,6 +60,10 @@ const AddToCart = (function() {
         localStorage.setItem('cart', null);
       }
     };
+
+  const finalizeCart = function () {
+    console.log('final cart');
+  }
 
   return {
     getCart: getCart,

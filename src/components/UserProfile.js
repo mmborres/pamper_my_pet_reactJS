@@ -49,7 +49,7 @@ const UserProfile = (function() {
         user_id = temp;
       }
     }
-    return user_id;
+    return parseInt(user_id);
   };
 
   const setUserId = function (id) {

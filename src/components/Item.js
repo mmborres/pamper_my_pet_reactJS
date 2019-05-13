@@ -7,7 +7,7 @@ import UserProfile from './UserProfile';
 import AddToCart from './AddToCart';
 
 class Item extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       item: []
@@ -47,16 +47,77 @@ class Item extends Component {
 };
 
 class Details extends Component {
-
-  constructor(){
+  constructor() {
     super();
     this.state = {
-      quantity : 1
+      quantity : 1,
+      order_id: -1,
+      order_item_id: -1
     }
     this._handleChange = this._handleChange.bind(this);
     this._handleCart = this._handleCart.bind(this);
-    this._handleBuy = this._handleBuy.bind(this);
   }
+
+  createOrder() {
+    const URL = "https://pamper-my-pet.herokuapp.com/orders.json";
+    const userId = UserProfile.getUserId();
+
+    return axios.post(URL, {user_id: userId, status: 'Open'}).then((result) => {
+      this.setState({order_id: result.data.id});
+    });
+  };
+
+  async fetchOrder() {
+    const URL = "https://pamper-my-pet.herokuapp.com/orders.json";
+    const userId = UserProfile.getUserId();
+
+    return axios.get(URL).then((results) => {
+      if (results.data.length === 0) {
+        this.createOrder();
+      } else {
+        const index = results.data.findIndex((item) => item.user_id === userId && item.status === 'Open');
+
+        if (index >= 0)
+        {
+          this.setState({order_id: results.data[index].id});
+        } else {
+          this.createOrder();
+        }
+      }
+    });
+  };
+
+  createOrderItem(order_id, product_id, quantity) {
+    const url = "https://pamper-my-pet.herokuapp.com/order_items.json";
+    return axios.post(url, {order_id: order_id, product_id: product_id, quantity: quantity}).then((result) => {
+      console.log(result.data);
+      this.setState({order_item_id: result.data.id});
+      console.log(this.state.order_item_id);
+    });
+  }
+
+  checkOrderItem (order_id, product_id, quantity) {
+    const url = "https://pamper-my-pet.herokuapp.com/order_items.json";
+
+    return axios.get(url).then((results) => {
+      if (results.data.length === 0) {
+        this.createOrderItem(order_id, product_id, quantity);
+      } else {
+        const index = results.data.findIndex((item) => item.order_id === order_id && item.product_id === product_id);
+
+        if (index >= 0) {
+          this.setState({order_item_id: results.data[index].id});
+
+          // return axios.put(url, {...results.data[index]}).then((result) => {
+          //   console.log('RESULT', result);
+          // });
+
+        } else {
+          this.createOrderItem(order_id, product_id, quantity);
+        }
+      }
+    });
+  };
 
   _handleChange(event){
     event.preventDefault();
@@ -65,12 +126,21 @@ class Details extends Component {
 
   _handleCart(event){
     event.preventDefault();
-    AddToCart.setCart(this.props.item.id, this.props.item.name, this.props.item.image, this.props.item.price, this.state.quantity);
-  }
 
-  _handleBuy(event){
-    event.preventDefault();
-    AddToCart.setCart(this.props.item.id, this.props.item.name, this.props.item.image, this.props.item.price, this.state.quantity);
+    // Check if order exists for the current user with the status Open
+    // If order exists then use that order
+    // IF order does not exist then create an order and use that order id
+
+    // Check if order item id exists in the table of that order id and product id
+    // If exists then increment the Quantity
+    // If does not exist, insert new record of order id, product id and Quantity
+
+    this.fetchOrder().then(() => {
+      // Add in order item id table
+      this.checkOrderItem(this.state.order_id, this.props.item.id, parseInt(this.state.quantity));
+
+      AddToCart.setCart(this.props.item.id, this.props.item.name, this.props.item.image, this.props.item.price, parseInt(this.state.quantity), this.state.order_id);
+    });
   }
 
   createQuantitySelect() {
@@ -99,7 +169,7 @@ class Details extends Component {
       <p><strong>Size: </strong>{this.props.item.size}</p>
       <p><strong>Color: </strong>{this.props.item.color}</p>
       <p><strong>Stock: </strong>{isOutOfStock ? 'Out of Stock' : 'Available'}</p>
-      <p><strong>Enter quantity: </strong>
+      <p><strong>Select quantity: </strong>
       <select onChange={this._handleChange}>
       {this.createQuantitySelect()}
       </select>
@@ -113,7 +183,7 @@ class Details extends Component {
         :
         <p>
         <button onClick={this._handleCart} disabled={isOutOfStock}>Add to Cart</button>
-        <button onClick={this._handleBuy} disabled={isOutOfStock}><Link to="/checkout">Buy Now</Link></button>
+        <button onClick={this._handleCart} disabled={isOutOfStock}><Link to="/checkout">Buy Now</Link></button>
         </p>
       }
       </div>
