@@ -149,18 +149,14 @@ class Products extends Component {
 
   render () {
     const isAdmin = UserProfile.getAdmin();
-<<<<<<< HEAD
+
     console.log("parent = " + this.state.categories);
     console.log("parent pet = " + this.state.pet);
 
     console.log("render props pet = " + this.props.match.params.pet);
 
-    return(
-
-=======
     
     return(
->>>>>>> 6ccd6981ef830e03d3555b777a29d6777a457487
       <div>
         <Nav />
         <h2>{this.state.pet} Products</h2>
