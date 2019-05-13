@@ -12,12 +12,7 @@ class Item extends Component {
     this.state = {
       item: []
     }
-    //this.fetchImages = this.fetchImages.bind(this);
-    //localhost:3001/#/product/{id}
-    //<Route exact path="/product/:id" component={Item} />
-    // To get to this page, the product id should be passed same way in Rails params.
-    // Refer to Flights.js -> flight link going to -> Reservation.js
-    // 10. UserProfile - Rash Purvi - Please work on this in Product.JS and Item.JS, this is added in pages that need admin filtering. Admin can add Product and edit Product.
+
     const product_id = this.props.match.params.id;
     const URL = "https://pamper-my-pet.herokuapp.com/products/" + product_id + ".json"
     const fetchProduct = () => {
@@ -146,7 +141,7 @@ class Details extends Component {
   createQuantitySelect() {
     const stockLimit = this.props.item.stock;
     if (stockLimit === 0) return;
-
+  
     let items = [];
     for (let i = 1; i <= stockLimit; i++) {
       items.push(<option key={i} value={i}>{i}</option>);
