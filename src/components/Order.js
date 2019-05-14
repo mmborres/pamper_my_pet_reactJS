@@ -39,6 +39,13 @@ console.log(this.state.load);
 console.log(this.state.load);
 }
   render() {
+    const orderSortedByDate = this.state.order;
+    orderSortedByDate.sort( function(a,b) {
+      console.log(a.updated_at);
+      return new Date(b.updated_at) - new Date(a.updated_at);
+
+    });
+    console.log(orderSortedByDate);
     return (
       <div>
 
@@ -46,18 +53,19 @@ console.log(this.state.load);
 
         <div>
 
-        {console.log(this.state.load)};
-        {this.state.order.slice(0, this.state.load).map ((o) =>
+        {console.log(this.state.load)}
+        {orderSortedByDate.slice(0, this.state.load).map ((o) =>
           <div>
           <p>User_Id: {o.user_id}</p>
-          <p>Status: {o.status}</p>
+
           {
-            o.status ==='Open' ? <p><Link to={"/checkout" } >Go Here</Link></p>
+            o.status ==='Open' ? <p><Link to={"/checkout/" + o.id } >Open!</Link></p>
             : ''
 
           }
           <p>Created_At: {o.created_at}</p>
           <p>Updated_At: {o.updated_at}</p>
+
           </div>
         )}
         </div>
