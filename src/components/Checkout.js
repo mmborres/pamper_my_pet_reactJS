@@ -4,6 +4,7 @@ import Nav from './Nav.js';
 import Footer from './Footer.js';
 import UserProfile from './UserProfile';
 import AddToCart from './AddToCart';
+import axios from 'axios';
 
 class Checkout extends Component {
   constructor(props) {
@@ -11,7 +12,19 @@ class Checkout extends Component {
     this.state = {
       shoppingList: []
     }
+    this._removeHandler = this._removeHandler.bind(this);
   }
+
+  _removeHandler(e) {
+    const oid = e.target.id;
+   const url = "https://pamper-my-pet.herokuapp.com/order_items/" + oid + ".json";
+    console.log(oid)
+
+    axios.delete(url).then((res) => {
+      AddToCart.removeFromCart(oid);
+    });
+  }
+
 
   renderEmptyCart() {
     return (
@@ -28,10 +41,15 @@ class Checkout extends Component {
         cart.map( (c) =>
         <div>
           <img src={c.image}/>
-          <p><strong>Name:</strong>{c.name}</p>
+          <p><strong>Name:</strong> {c.name}</p>
           <p><strong>Price:</strong> AUD {c.price}</p>
-          <p><strong>Quantity:</strong>{c.quantity}</p>
+          <p><strong>Quantity:</strong> { c.quantity}</p>
           <p><strong>Total Price: </strong> AUD {c.price * c.quantity}</p>
+          <p>{c.order_item_id}</p>
+          <p>
+          <Link to={"/product/" + c.id} ><span><button>Edit</button></span></Link>
+          <span><button onClick={this._removeHandler} id={c.order_item_id}>Remove</button></span>
+          </p>
         </div>
       )}
       </div>
