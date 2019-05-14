@@ -172,7 +172,7 @@ const Allproducts = (props) => {
     console.log('rendering...')
     return(
       <div>
-    {props.products.slice(0,5).map( (p) =>
+    {props.products.map( (p) =>
       <div>
      <img src={p.image}/>
      <p><strong>Name:</strong><Link to={ "/product/" + p.id }>{p.name}</Link></p>
