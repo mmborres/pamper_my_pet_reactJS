@@ -26,7 +26,6 @@ class EditProduct extends Component {
       };
       fetchValues();
 
-
   }
 
   updateProduct( name, image, description, size, color, price, stock, category, pettype) {

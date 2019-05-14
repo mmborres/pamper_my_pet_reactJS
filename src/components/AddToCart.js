@@ -1,12 +1,31 @@
+import UserProfile from './UserProfile';
+import axios from 'axios';
+
 const AddToCart = (function() {
   let cart = [];
   let order_id = 0;
+  const userId = UserProfile.getUserId();
+  const URL = "https://pamper-my-pet.herokuapp.com/orders.json";
 
   const getCart = function() {
     if (typeof (Storage) !== "undefined") {
       let temp = localStorage.getItem('cart');
       if (temp !== null) {
         cart = JSON.parse(temp);
+        // if (emptyCart()) {
+        //   return axios.get(URL).then((results) => {
+        //       const index = results.data.findIndex((item) => item.user_id === userId && item.status === 'Open');
+        //
+        //       if (index >= 0)
+        //       {
+        //         this.setState({order_id: results.data[index].id});
+        //         AddToCart.setOrderId(this.state.order_id);
+        //       } else {
+        //         this.createOrder();
+        //       }
+        //     }
+        //   });
+        // }
       } else {
         cart = [];
       }
