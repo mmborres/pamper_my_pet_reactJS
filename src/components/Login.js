@@ -122,10 +122,12 @@ axios.post(baseURL + "/users/login", { email: this.state.email, password: this.s
       <div className="App Login">
       <header className="App-header">
       <h1>Login</h1>
-
+        <br/>
+        <br/>
         <form onSubmit={this.handleSubmit} action="/home">
           <FormGroup controlId="email" bsSize="large">
             <span style={{color: 'black'}}>Email</span>
+            <br/>
             <FormControl
               autoFocus
               type="email"
@@ -135,6 +137,7 @@ axios.post(baseURL + "/users/login", { email: this.state.email, password: this.s
           </FormGroup>
           <FormGroup controlId="password" bsSize="large">
           <span style={{color: 'black'}}>Password</span>
+          <br/>
             <FormControl
               value={this.state.password}
               onChange={this.handleChange}

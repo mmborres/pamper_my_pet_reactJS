@@ -392,7 +392,7 @@ class DisplayCart extends Component {
           </tr>
           </tbody>
         )}
-        <tr><td colSpan={7} id="total"><strong>Grand Total: AUD { this.props.total }</strong></td></tr>
+        <tr><td colSpan={7} id="total"><strong>Grand Total AUD { this.props.total }</strong></td></tr>
         </table>
         </div>
       )
