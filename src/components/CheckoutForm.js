@@ -1,41 +1,81 @@
 import React, {Component} from 'react';
 import {CardElement, injectStripe} from 'react-stripe-elements';
 import AddToCart from './AddToCart';
+import UserProfile from './UserProfile';
 import axios from 'axios';
 
 class CheckoutForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {complete: false};
+        this.state = {complete: false, didsplayErr: false};
         this.submit = this.submit.bind(this);
       }
 
   async submit(ev) {
+    const stripeserver = "https://pamper-my-pet.herokuapp.com/orders/";
+    //const stripeserver = "http://localhost:3000/orders";
     let {token} = await this.props.stripe.createToken({name: "Name"});
-    let response = await fetch("/charge", {
+    console.log(token);
+    //console.log("token id = " + token.id);
+
+    let response = "";
+    const userId = UserProfile.getUserId();
+    const orderId = AddToCart.getOrderId();
+    const em = UserProfile.getEmail();
+
+  /*let resp = await fetch( "/charge", {
       method: "POST",
       headers: {"Content-Type": "text/plain"},
-      body: token.id
-    });
+      body: tok.id
+    });*/
+
+    axios.post(stripeserver + "/charge", { token: token, user_id: userId, order_id: orderId, email: em }).then((result) => {
+      console.log(result);
+      console.log(result.data);
+      console.log(result.statusText);
+
+      if (result.statusText === "OK") {
+          response = "OK";
+          console.log("Purchase Complete!")
+          this.setState({complete: true});
+          console.log("payment order_id = " + orderId);
+          AddToCart.emptyCart();
   
-    if (response.ok) {
+          const url = "https://pamper-my-pet.herokuapp.com/orders/" + orderId + ".json";
+          console.log("Order ID = " + orderId + ", set to Completed.")
+          //update to "Completed"
+          axios.put(url, { status: 'Completed' }).then((result) => {});
+      } else {
+        this.setState({didsplayErr: true});
+      }
+    });
+
+  
+    /*console.log(resp);
+
+    if (resp.ok) {
+      //response = "OK";
+    }*/
+
+    /*if (response==="OK") {
         console.log("Purchase Complete!")
         this.setState({complete: true});
-        const order_id = AddToCart.getOrderId();
-        console.log("payment order_id = " + order_id);
+        console.log("payment order_id = " + orderId);
         AddToCart.emptyCart();
 
-        const url = "https://pamper-my-pet.herokuapp.com/orders/" + order_id + ".json";
-        console.log("Order ID = " + order_id + ", set to Completed.")
+        const url = "https://pamper-my-pet.herokuapp.com/orders/" + orderId + ".json";
+        console.log("Order ID = " + orderId + ", set to Completed.")
         //update to "Completed"
         axios.put(url, { status: 'Completed' }).then((result) => {});
-    } 
+    } else {
+      this.setState({didsplayErr: true});
+    } */
   }
 
   render() {
     if (this.state.complete) {
-      return <h2>Purchase Complete</h2>;
-    } else if ( this.state.complete!== true ) {
+      return <h3>Purchase Complete. Shop More, we have other amazing products.</h3>;
+    } else if ( this.state.didsplayErr === true ) {
       return <h3>Purchase Cannot Be Completed At This Time. Try Again After A Few Seconds.</h3>;
     }
 
