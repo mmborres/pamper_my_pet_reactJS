@@ -9,8 +9,12 @@ class Logout extends Component {
     UserProfile.setName('');
     UserProfile.setEmail('');
     UserProfile.setUserId(-1);
-    UserProfile.setAdmin(false);
+    //UserProfile.setAdmin(false);
     AddToCart.emptyCart();
+
+    if (typeof (Storage) !== "undefined") {
+      localStorage.clear();
+    }
 
     let urlstr = window.location.href;
     if (urlstr.includes('#')) {

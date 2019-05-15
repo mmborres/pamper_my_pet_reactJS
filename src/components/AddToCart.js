@@ -5,13 +5,14 @@ const AddToCart = (function() {
   let cart = [];
   let order_id = 0;
   const userId = UserProfile.getUserId();
-  const ordersUrl = "https://pamper-my-pet.herokuapp.com/orders.json";
-  const orderItemsUrl = "https://pamper-my-pet.herokuapp.com/order_items.json";
+  const URL = "https://pamper-my-pet.herokuapp.com/orders.json";
+  let temp = null;
 
   const getCart = function() {
     if (typeof (Storage) !== "undefined") {
-      let temp = localStorage.getItem('cart');
+      temp = localStorage.getItem('cart');
       if (temp !== null) {
+        console.log("getCart 1");
         cart = JSON.parse(temp);
 
         // if (emptyCart()) {
@@ -28,26 +29,36 @@ const AddToCart = (function() {
         //     }
         //   });
         // }
-      } else {
-        cart = [];
+
+
       }
+      if (temp===null || cart===null) {
+        cart = [];
+
+        console.log("getCart == " + cart)
+        return cart;
+      }
+
     }
-    console.log("getCart ==" + cart)
-    return cart;
+
   };
 
   const getCartItems = function () {
-    const cart = getCart();
+    let cart = getCart();
+    if (cart===null) {
+      cart = [];
+    }
     return cart.length;
   }
 
   const setCart = function(product_id, name, image, price, quantity, order_item_id) {
-    console.log('order_item_id', order_item_id);
+    console.log('addtocart order_item_id = ', order_item_id);
 
     if (product_id !== null && quantity !== null && name !== null && quantity !== null && order_item_id !== null) {
-
+      console.log("setCart 1");
       // Update product quantity in cart if product already exists
       if (cart !== null && cart.some((item) => product_id === item.id)) {
+        console.log("setCart 2");
         const productIndex = cart.findIndex((item) => product_id === item.id);
         cart[productIndex].quantity += quantity;
         console.log('Updated cart', cart);
@@ -57,6 +68,7 @@ const AddToCart = (function() {
           localStorage.setItem('cart', JSON.stringify(cart));
         }
       } else {
+        console.log("setCart 3");
         // IF product does not exist in cart then add in Cart
         addInCart(product_id, name, image, price, quantity, order_item_id);
       }
@@ -65,6 +77,8 @@ const AddToCart = (function() {
 
   const addInCart = function(product_id, name, image, price, quantity, order_item_id) {
     if (product_id !== null && quantity !== null && name !== null && quantity !== null && order_item_id !== null) {
+
+      console.log("setCart 4");
 
       const product = {
         id: product_id,
@@ -75,6 +89,8 @@ const AddToCart = (function() {
         order_item_id: order_item_id
       };
 
+      const cart = getCart();
+
       if (cart === null) {
         cart = [];
       }
@@ -84,7 +100,8 @@ const AddToCart = (function() {
       if (typeof (Storage) !== "undefined") {
         localStorage.setItem('cart', JSON.stringify(cart));
       }
-      console.log('initial cart', cart);
+      console.log("setCart 5");
+      //console.log('cart', cart);
     }
   };
 
@@ -131,7 +148,16 @@ const AddToCart = (function() {
     console.log("after" + cart);
   };
 
+  const replaceCart = function (c) {
+    cart = c;
+
+    if (typeof (Storage) !== "undefined") {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+  }
+
   return {
+    replaceCart: replaceCart,
     getOrderId: getOrderId,
     setOrderId: setOrderId,
     getCart: getCart,

@@ -4,8 +4,8 @@ import './index.css';
 import Routes from './Routes';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
-import MetisMenu from 'react-metismenu';
-import RouterLink from 'react-metismenu-router-link';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 ReactDOM.render(Routes, document.getElementById('root'));
 

@@ -21,7 +21,7 @@ class Home extends Component {
     //pick random products
     const fetchFeatured = () => {
       axios.get("https://pamper-my-pet.herokuapp.com/products.json").then((results) => {
-        console.log("axios call=" + results.data);
+        //console.log("axios call=" + results.data);
         const allproducts = results.data;
         const randIndexArray = [];
         const featured = [];
@@ -77,19 +77,19 @@ class DisplayFeatured extends Component {
 
       const setupProducts = () => {
         const products = this.props.featured;
-        console.log("setupProducts props=" + products);
+        //console.log("setupProducts props=" + products);
 
         const newp = products.map( (urpl) => <Link to={ "/product/" + urpl.id }><img src={urpl.image} alt={urpl.name} class="featurenotify"/></Link> );
-        console.log("formatted = " + newp);
+        //console.log("formatted = " + newp);
 
         this.setState({galleryItems: newp});
 
-        console.log("state= " + this.state.galleryItems);
+        //console.log("state= " + this.state.galleryItems);
 
         setTimeout(setupProducts, 5000);
       }
 
-      console.log("props=" + this.props);
+      //console.log("props=" + this.props);
       setupProducts();
     } //constructor
 
@@ -99,17 +99,17 @@ class DisplayFeatured extends Component {
     }
 
     onSlideChange(e) {
-      console.debug('Item`s position during a change: ', e.item)
-      console.debug('Slide`s position during a change: ', e.slide)
+      //console.debug('Item`s position during a change: ', e.item)
+      //console.debug('Slide`s position during a change: ', e.slide)
     }
 
     onSlideChanged(e) {
-      console.debug('Item`s position after changes: ', e.item)
-      console.debug('Slide`s position after changes: ', e.slide)
+      //console.debug('Item`s position after changes: ', e.item)
+      //console.debug('Slide`s position after changes: ', e.slide)
     }
 
     render() {
-      console.log("render props=" + this.props);
+      //console.log("render props=" + this.props);
     return(
       <AliceCarousel
       items={this.state.galleryItems}

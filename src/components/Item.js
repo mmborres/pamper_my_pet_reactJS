@@ -73,8 +73,130 @@ class Details extends Component {
           this.setState({order_id: result.data.id});
           AddToCart.setOrderId(this.state.order_id);
         });
+<<<<<<< HEAD
       } else {
         const index = results.data.findIndex((item) => item.user_id === userId && item.status === 'Open');
+=======
+      };
+
+      async fetchOrder() {
+        const URL = "https://pamper-my-pet.herokuapp.com/orders.json";
+        const userId = UserProfile.getUserId();
+        console.log("fetchOrder");
+        return axios.get(URL).then((results) => {
+          if (results.data.length === 0) {
+            this.createOrder();
+          } else {
+            const index = results.data.findIndex((item) => item.user_id === userId && item.status === 'Open');
+            console.log(index);
+            if (index >= 0)
+            {
+              this.setState({order_id: results.data[index].id});
+              AddToCart.setOrderId(this.state.order_id);
+            } else {
+              this.createOrder();
+            }
+          }
+          console.log("fetchOrder order: " + this.state.order_id);
+        });
+      };
+
+      // createOrderItem(order_id, product_id, quantity) {
+      //   const url = "https://pamper-my-pet.herokuapp.com/order_items.json";
+      //   return axios.post(url, {order_id: order_id, product_id: product_id, quantity: quantity}).then((result) => {
+      //     console.log(result.data);
+      //     this.setState({order_item_id: result.data.id});
+      //     console.log('order_item_id', this.state.order_item_id);
+      //   });
+      // }
+
+      // updateOrderItem(item, q) {
+      //   const url = "https://pamper-my-pet.herokuapp.com/order_items.json";
+      //   return axios.put(url, {item.quantity: q}).then((result) => {
+      //     console.log(result.data);
+      //     this.setState({order_item_id: result.data.id});
+      //     console.log(this.state.order_item_id);
+      //   });
+      // }
+
+      async  checkOrderItem (order_id, product_id, quantity) {
+        const url = "https://pamper-my-pet.herokuapp.com/order_items.json";
+
+        return axios.get(url).then((results) => {
+          //console.log('flethdhf', results.data.length);
+          //console.log('order_item_id', this.state.order_item_id);
+          if (results.data.length === 0) {
+            //this.createOrderItem(order_id, product_id, quantity);
+            //const url = "https://pamper-my-pet.herokuapp.com/order_items.json";
+            return axios.post(url, {order_id: order_id, product_id: product_id, quantity: quantity}).then((result) => {
+              //console.log(result.data);
+              this.setState({order_item_id: result.data.id});
+              //console.log('order_item_id', this.state.order_item_id);
+
+            });
+          } else {
+            const index = results.data.findIndex((item) => item.order_id === order_id && item.product_id === product_id);
+            //console.log('index', index);
+            //console.log('order_item_id', this.state.order_item_id);
+
+            if (index >= 0) {
+              this.setState({order_item_id: results.data[index].id});
+              const ind = results.data[index].quantity;
+              //console.log(results.data[index])
+              //console.log('order_item_id', this.state.order_item_id);
+              let tempq = results.data[index].quantity;
+              tempq += quantity;
+              //console.log('initial quantity', quantity)
+              //console.log('updated quantity', tempq)
+
+              const lnk = "https://pamper-my-pet.herokuapp.com/order_items/" + results.data[index].id + ".json"
+              //console.log(lnk);
+              return axios.put(lnk, {quantity: tempq}).then((result) => {
+                //console.log(result.data);
+                this.setState({order_item_id: result.data.id});
+                //console.log('order_item_id', this.state.order_item_id);
+              });
+
+            } else {
+              //this.createOrderItem(order_id, product_id, quantity);
+              //const url = "https://pamper-my-pet.herokuapp.com/order_items.json";
+              return axios.post(url, {order_id: order_id, product_id: product_id, quantity: quantity}).then((result) => {
+                //console.log(result.data);
+                this.setState({order_item_id: result.data.id});
+                //console.log('order_item_id', this.state.order_item_id);
+              });
+            }
+          }
+        });
+      };
+
+
+      _handleChange(event){
+        event.preventDefault();
+        this.setState({quantity: event.target.value})
+      }
+
+      _handleCart(event){
+        event.preventDefault();
+
+        // Check if order exists for the current user with the status Open
+        // If order exists then use that order
+        // IF order does not exist then create an order and use that order id
+
+        // Check if order item id exists in the table of that order id and product id
+        // If exists then increment the Quantity
+        // If does not exist, insert new record of order id, product id and Quantity
+        const id = event.target.id;
+        this.fetchOrder().then( () => {
+          // Add in order item id table
+          this.checkOrderItem(this.state.order_id, this.props.item.id, parseInt(this.state.quantity)).then( () => {
+            //AddToCart.setCart(this.props.item.id, this.props.item.name, this.props.item.image, this.props.item.price, parseInt(this.state.quantity), this.state.order_item_id);
+
+            if (id === "2") {
+              const urlback = "/checkout/" ;
+              this.props.history.push(urlback);
+            }
+>>>>>>> 6e19acd17ff862e2b5ae82ed1fee881b1b731ca8
 
         if (index >= 0)
         {
@@ -186,6 +308,7 @@ class Details extends Component {
           this.props.history.push(urlback);
         }
 
+<<<<<<< HEAD
       });
     });
 
@@ -233,6 +356,59 @@ class Details extends Component {
         <button onClick={this._handleCart} id="1" disabled={isOutOfStock}>Add to Cart</button>
         <button onClick={this._handleCart} id="2" disabled={isOutOfStock}>Buy Now</button>
         </p>
+=======
+
+
+      render(){
+        const cardStyle = {
+          height: 'auto'
+
+        };
+
+        const isOutOfStock = this.props.item.stock === 0;
+        const userPresent = UserProfile.getEmail() === "";
+
+        return(
+          <div >
+          <div className="item-container" >
+          <div className="item1">
+          <img  src={this.props.item.image}/>
+          </div>
+          <div className="item2">
+          <p><strong>Name:</strong>{this.props.item.name}</p>
+          <p><strong>Price: </strong> AUD {this.props.item.price}</p>
+          <p><strong>Description: </strong>{this.props.item.description}</p>
+          <p><strong>Size: </strong>{this.props.item.size}</p>
+          <p><strong>Color: </strong>{this.props.item.color}</p>
+          <p><strong>Stock: </strong>{isOutOfStock ? 'Out of Stock' : 'Available'}</p>
+          <p><strong>Select quantity: </strong>
+          <select onChange={this._handleChange}>
+          {this.createQuantitySelect()}
+          </select>
+          </p>
+        </div>
+        </div>
+
+          <div className="item3">
+          {userPresent ?
+            <p>
+            <button><Link to="/">Add to Cart</Link></button>
+            <button><Link to="/">Buy Now</Link>></button>
+            </p>
+            :
+            <p>
+            <button onClick={this._handleCart} id="1" disabled={isOutOfStock}>Add to Cart</button>
+            <button onClick={this._handleCart} id="2" disabled={isOutOfStock}>Buy Now</button>
+            </p>
+
+
+          }
+          </div>
+          </div>
+
+
+        );
+>>>>>>> 6e19acd17ff862e2b5ae82ed1fee881b1b731ca8
       }
       </div>
     );
