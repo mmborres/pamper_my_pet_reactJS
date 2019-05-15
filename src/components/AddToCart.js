@@ -5,13 +5,15 @@ const AddToCart = (function() {
   let cart = [];
   let order_id = 0;
   const userId = UserProfile.getUserId();
-  const URL = "https://pamper-my-pet.herokuapp.com/orders.json";
+  const ordersUrl = "https://pamper-my-pet.herokuapp.com/orders.json";
+  const orderItemsUrl = "https://pamper-my-pet.herokuapp.com/order_items.json";
 
   const getCart = function() {
     if (typeof (Storage) !== "undefined") {
       let temp = localStorage.getItem('cart');
       if (temp !== null) {
         cart = JSON.parse(temp);
+
         // if (emptyCart()) {
         //   return axios.get(URL).then((results) => {
         //       const index = results.data.findIndex((item) => item.user_id === userId && item.status === 'Open');
@@ -87,10 +89,10 @@ const AddToCart = (function() {
   };
 
   const emptyCart = function() {
-      if (typeof (Storage) !== "undefined") {
-        localStorage.setItem('cart', null);
-      }
-    };
+    if (typeof (Storage) !== "undefined") {
+      localStorage.setItem('cart', null);
+    }
+  };
 
   const finalizeCart = function () {
     console.log('final cart');
@@ -140,6 +142,6 @@ const AddToCart = (function() {
     removeFromCart: removeFromCart
   }
 
-  })();
+})();
 
-  export default AddToCart;
+export default AddToCart;

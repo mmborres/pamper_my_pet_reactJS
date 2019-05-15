@@ -17,14 +17,14 @@ class EditProduct extends Component {
     const URL = "https://pamper-my-pet.herokuapp.com/products/" + pro_id + ".json"
 
     const fetchValues = () => {
-        axios.get(URL).then((results) => {
-          console.table(results.data);
-          this.setState({edit_pro: results.data});
-          console.log(this.state.edit_pro);
-          //setTimeout(fetchPlanes, 4000);
-        })
-      };
-      fetchValues();
+      axios.get(URL).then((results) => {
+        console.table(results.data);
+        this.setState({edit_pro: results.data});
+        console.log(this.state.edit_pro);
+        //setTimeout(fetchPlanes, 4000);
+      })
+    };
+    fetchValues();
 
   }
 
@@ -44,14 +44,14 @@ class EditProduct extends Component {
   }
 
   render(){
-      return(
-        <div>
-        <Nav/>
-        <h1>Edit Product</h1>
-        <EditForm edit_pro={this.state.edit_pro} onSubmit={this.updateProduct}/>
-        <Footer/>
-        </div>
-      )
+    return(
+      <div>
+      <Nav/>
+      <h1>Edit Product</h1>
+      <EditForm edit_pro={this.state.edit_pro} onSubmit={this.updateProduct}/>
+      <Footer/>
+      </div>
+    )
   }
 };
 
