@@ -110,7 +110,7 @@ axios.post("https://pamper-my-pet.herokuapp.com/users", { name: this.state.name,
     //post actions
     console.log(result);
     console.log(result.statusText);
-    if (result.statusText==="OK") {
+    if (result.statusText==="Created") {
       UserProfile.setName(result.data.name);
       UserProfile.setUserId(result.data.user_id);
       UserProfile.setAdmin(result.data.admin);

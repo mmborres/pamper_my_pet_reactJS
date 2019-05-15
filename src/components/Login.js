@@ -96,11 +96,11 @@ export default class Login extends Component {
 //const baseURL = "http://localhost:3000";
 const baseURL = "https://pamper-my-pet.herokuapp.com";
 
-console.log(baseURL);
+//console.log(baseURL);
 axios.post(baseURL + "/users/login", { email: this.state.email, password: this.state.password }).then((result) =>{
     //post actions
-    console.log(result);
-    console.log(result.statusText);
+    //console.log(result);
+    //console.log(result.statusText);
     if (result.statusText==="OK") {
       UserProfile.setName(result.data.name);
       UserProfile.setUserId(result.data.user_id);

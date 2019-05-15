@@ -66,13 +66,13 @@
       async fetchOrder() {
         const URL = "https://pamper-my-pet.herokuapp.com/orders.json";
         const userId = UserProfile.getUserId();
-
+        console.log("fetchOrder"); 
         return axios.get(URL).then((results) => {
           if (results.data.length === 0) {
             this.createOrder();
           } else {
             const index = results.data.findIndex((item) => item.user_id === userId && item.status === 'Open');
-
+            console.log(index);
             if (index >= 0)
             {
               this.setState({order_id: results.data[index].id});
@@ -81,6 +81,7 @@
               this.createOrder();
             }
           }
+          console.log("fetchOrder order: " + this.state.order_id); 
         });
       };
 
@@ -107,46 +108,46 @@
 
         return axios.get(url).then((results) => {
           //console.log('flethdhf', results.data.length);
-          console.log('order_item_id', this.state.order_item_id);
+          //console.log('order_item_id', this.state.order_item_id);
           if (results.data.length === 0) {
             //this.createOrderItem(order_id, product_id, quantity);
             //const url = "https://pamper-my-pet.herokuapp.com/order_items.json";
             return axios.post(url, {order_id: order_id, product_id: product_id, quantity: quantity}).then((result) => {
-              console.log(result.data);
+              //console.log(result.data);
               this.setState({order_item_id: result.data.id});
-              console.log('order_item_id', this.state.order_item_id);
+              //console.log('order_item_id', this.state.order_item_id);
 
             });
           } else {
             const index = results.data.findIndex((item) => item.order_id === order_id && item.product_id === product_id);
-            console.log('index', index);
-            console.log('order_item_id', this.state.order_item_id);
+            //console.log('index', index);
+            //console.log('order_item_id', this.state.order_item_id);
 
             if (index >= 0) {
               this.setState({order_item_id: results.data[index].id});
               const ind = results.data[index].quantity;
-              console.log(results.data[index])
-              console.log('order_item_id', this.state.order_item_id);
+              //console.log(results.data[index])
+              //console.log('order_item_id', this.state.order_item_id);
               let tempq = results.data[index].quantity;
               tempq += quantity;
-              console.log('initial quantity', quantity)
-              console.log('updated quantity', tempq)
+              //console.log('initial quantity', quantity)
+              //console.log('updated quantity', tempq)
 
               const lnk = "https://pamper-my-pet.herokuapp.com/order_items/" + results.data[index].id + ".json"
               //console.log(lnk);
               return axios.put(lnk, {quantity: tempq}).then((result) => {
-                console.log(result.data);
+                //console.log(result.data);
                 this.setState({order_item_id: result.data.id});
-                console.log('order_item_id', this.state.order_item_id);
+                //console.log('order_item_id', this.state.order_item_id);
               });
 
             } else {
               //this.createOrderItem(order_id, product_id, quantity);
               //const url = "https://pamper-my-pet.herokuapp.com/order_items.json";
               return axios.post(url, {order_id: order_id, product_id: product_id, quantity: quantity}).then((result) => {
-                console.log(result.data);
+                //console.log(result.data);
                 this.setState({order_item_id: result.data.id});
-                console.log('order_item_id', this.state.order_item_id);
+                //console.log('order_item_id', this.state.order_item_id);
               });
             }
           }
@@ -173,7 +174,7 @@
         this.fetchOrder().then( () => {
           // Add in order item id table
           this.checkOrderItem(this.state.order_id, this.props.item.id, parseInt(this.state.quantity)).then( () => {
-            AddToCart.setCart(this.props.item.id, this.props.item.name, this.props.item.image, this.props.item.price, parseInt(this.state.quantity), this.state.order_item_id);
+            //AddToCart.setCart(this.props.item.id, this.props.item.name, this.props.item.image, this.props.item.price, parseInt(this.state.quantity), this.state.order_item_id);
 
             if (id === "2") {
               const urlback = "/checkout/" ;
