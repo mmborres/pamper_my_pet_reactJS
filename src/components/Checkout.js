@@ -163,7 +163,7 @@ class Checkout extends Component {
             //const ccc = [];
             //ccc.push(product);
             //return ccc;
-            
+
           }).then( () => {
 
             return axios.get("https://pamper-my-pet.herokuapp.com/products.json").then((results) => {
@@ -199,13 +199,14 @@ class Checkout extends Component {
             cart.map( (t) =>
               values.push(t.price * t.quantity)
             )
-
+            if ( values.length > 0 ) {
             console.log(values);
             const add = (a, b) => a + b;
             const final = values.reduce(add);
 
             console.log("grandtotal = " + final);
             this.setState({total: final});
+          }
           });
         }
       });
@@ -310,7 +311,7 @@ class DisplayCart extends Component {
         console.log("4");
         cart.splice(indexToDelete, 1);
         AddToCart.replaceCart(cart);
-  
+
         axios.delete(url).then((res) => {
           //post
           this.props.onSubmit(cart);
@@ -320,20 +321,20 @@ class DisplayCart extends Component {
     } );
 
     promise
-      .then( res => { 
+      .then( res => {
         console.log("3");
 
       })
-      .catch( err => { 
+      .catch( err => {
         console.log ("error with promise = " + err)
-      
+
       })
 
     /*let indexToDelete = -1;
     const cart = AddToCart.getCart();
     //console.log("before");
     //console.log(Object.values(cart));
-    
+
     console.log("index to delete == " + indexToDelete);
 
     if(indexToDelete> -1) {

@@ -212,7 +212,7 @@
           <div >
           <div className="item-container" >
           <div className="item1">
-          <img  src={this.props.item.image}/>
+          <img className="item-image" src={this.props.item.image}/>
           </div>
           <div className="item2">
           <p><strong>Name:</strong>{this.props.item.name}</p>
@@ -229,14 +229,14 @@
         </div>
         </div>
 
-          <div className="item3">
+          <div >
           {userPresent ?
-            <p>
+            <p className="item3">
             <button><Link to="/">Add to Cart</Link></button>
             <button><Link to="/">Buy Now</Link>></button>
             </p>
             :
-            <p>
+            <p className="item3">
             <button onClick={this._handleCart} id="1" disabled={isOutOfStock}>Add to Cart</button>
             <button onClick={this._handleCart} id="2" disabled={isOutOfStock}>Buy Now</button>
             </p>
