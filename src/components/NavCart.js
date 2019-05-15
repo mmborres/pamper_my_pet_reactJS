@@ -39,7 +39,7 @@ class NavCart extends Component {
 
         }; //getCartItems
         getCartItems();
-        setInterval(getCartItems, 1000);
+        setInterval(getCartItems, 5000);
 
       } //constructor
 
