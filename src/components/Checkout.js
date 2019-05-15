@@ -203,13 +203,14 @@ class Checkout extends Component {
             cart.map( (t) =>
               values.push(t.price * t.quantity)
             )
-
+            if ( values.length > 0 ) {
             console.log(values);
             const add = (a, b) => a + b;
             const final = values.reduce(add);
 
             console.log("grandtotal = " + final);
             this.setState({total: final});
+          }
           });
         }
       });

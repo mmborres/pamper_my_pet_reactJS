@@ -59,7 +59,7 @@ class Home extends Component {
         <Nav />
         <h1>Pamper My Pet</h1>
 
-        <div style={{backgroundColor: 'aquamarine'}}><DisplayFeatured featured={this.state.featuredproducts} /></div>
+        <div style={{backgroundColor: 'aliceblue'}}><DisplayFeatured featured={this.state.featuredproducts} /></div>
         <Footer />
       </div>
     );
@@ -79,7 +79,7 @@ class DisplayFeatured extends Component {
         const products = this.props.featured;
         //console.log("setupProducts props=" + products);
 
-        const newp = products.map( (urpl) => <Link to={ "/product/" + urpl.id }><img src={urpl.image} alt={urpl.name} class="featurenotify"/></Link> );
+        const newp = products.map( (urpl) => <Link to={ "/product/" + urpl.id }><img src={urpl.image} alt={urpl.name} style={{marginTop: '70px'}} class="featurenotify"/></Link> );
         //console.log("formatted = " + newp);
 
         this.setState({galleryItems: newp});

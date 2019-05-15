@@ -10,7 +10,7 @@ class NavCart extends Component {
         this.state = {
           cartItems: 0
         };
-    
+
         const getCartItems = () => {
             //check database first
             const ordersUrl = "https://pamper-my-pet.herokuapp.com/orders.json";
@@ -36,10 +36,10 @@ class NavCart extends Component {
                           } );
                     }
                 });
-           
+
         }; //getCartItems
         getCartItems();
-        setInterval(getCartItems, 1000);
+        setInterval(getCartItems, 5000);
 
       } //constructor
 
