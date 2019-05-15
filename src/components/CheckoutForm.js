@@ -37,7 +37,7 @@ class CheckoutForm extends Component {
     return (
       <div className="checkout">
         <p>Enter Card Details</p>
-        <CardElement />
+        <div style={{borderRadius: '0.5em', height: '100px', padding: '50px', border: '3px solid orange', marginTop: '10px', marginBottom: '30px', marginRight: '350px', marginLeft: '350px', backgroundColor: 'aliceblue' }} ><CardElement /></div>
         <button onClick={this.submit}>Send</button>
       </div>
     );
@@ -45,3 +45,10 @@ class CheckoutForm extends Component {
 }
 
 export default injectStripe(CheckoutForm);
+
+
+/*
+style={{borderRadius: '0.5em', height: '100px', padding: '50px', border: '3px solid orange', marginTop: '10px', marginBottom: '30px', marginRight: '350px', marginLeft: '350px', backgroundColor: 'aliceblue' }} 
+
+border-radius: 0.5em; height: 100px; padding: 50px; border: 3px solid orange; margin-top: 10px; margin-bottom: 30px; margin-right: 350px; margin-left: 350px; background-color: aliceblue;
+*/
