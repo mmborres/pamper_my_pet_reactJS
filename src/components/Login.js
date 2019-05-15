@@ -129,8 +129,7 @@ axios.post(baseURL + "/users/login", { email: this.state.email, password: this.s
         <br/>
         <form onSubmit={this.handleSubmit} action="/home">
           <FormGroup controlId="email" bsSize="large">
-            <span style={{color: 'black'}}>Email</span>
-            <br/>
+            <span style={{color: 'black'}} className="fa fa-envelope-o fa-fw"></span>
             <FormControl
               autoFocus
               type="email"
@@ -139,7 +138,7 @@ axios.post(baseURL + "/users/login", { email: this.state.email, password: this.s
             />
           </FormGroup>
           <FormGroup controlId="password" bsSize="large">
-          <span style={{color: 'black'}}>Password</span>
+          <span style={{color: 'black'}} className="fa fa-key fa-fw"></span>
           <br/>
             <FormControl
               value={this.state.password}

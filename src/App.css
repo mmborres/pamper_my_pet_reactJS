@@ -215,20 +215,22 @@ text-align: center;
 
 #pay {
   margin: 1em;
-  margin-left: 70px;
-  font-weight: bold;
+  margin-left: 50px;
+  color: white;
+  border-radius: 5px;
   padding: 10px;
+  background-color: #FE585C;
 }
 
-.alter:hover, #pay:hover {
-  background-color: #333333;
-  color: #ccc;
+ #pay:hover {
+  background-color: #FFE201;
+  color: #333333;
   transition: 0.5s all;
 }
 
 .editform h1 {
   text-align: center;
-  color: #333333;
+  color: #0384DF;
 }
 .editform form {
   text-align: center;
@@ -243,12 +245,47 @@ text-align: center;
   font-weight: bold;
 }
 
-.App-header button {
+.App-header button, .alter {
   color: white;
   margin-top: 27px;
   background-color: #0384DF;
 }
 
-.App-header button:hover {
+.App-header button:hover, .alter:hover {
   background-color: #FE585C;
+}
+
+.App-header h1 {
+  color: #0384DF;
+}
+
+.favicon {
+  border-radius: 5px;
+}
+.favicon:hover {
+  background-color: silver;
+}
+
+.example {
+  text-align: center;
+  margin: 1em;
+}
+
+.example h1 {
+  color: #0384DF;
+}
+
+.checkout p {
+  font-size: 20px;
+}
+
+.checkout button:hover {
+  background-color: #333333;
+  color: silver;
+  transition: 0.5s all;
+}
+
+.checkout button {
+  padding: 10px;
+  width: 100px;
 }

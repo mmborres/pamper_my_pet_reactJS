@@ -265,7 +265,6 @@ class Checkout extends Component {
       <Nav />
       <h1>Your Order Details</h1>
       <DisplayCart cart={this.state.shoppingList} total={this.state.total} onSubmit={this.displayAfterRemove}/>
-      <Link to={"/payment"} ><span><button id="pay">Pay Now</button></span></Link>
       <Footer />
       </div>
     );
@@ -389,13 +388,14 @@ class DisplayCart extends Component {
             <td key={c.id + 5}>AUD {c.price}</td>
             <td key={c.id + 6}>{ c.quantity}</td>
             <td key={c.id + 7}>AUD {c.price * c.quantity}</td>
-            <td key={c.id + 8}><Link to={"/product/" + c.id} ><span><button className="alter fa fa-edit fa-2x" ></button></span></Link></td>
-            <td key={c.id + 6}><button className="alter fa fa-trash fa-2x" onClick={this._removeHandler} id={c.order_item_id}></button></td>
+            <td key={c.id + 8}><Link to={"/product/" + c.id} ><span><button className="favicon fa fa-edit fa-2x" ></button></span></Link></td>
+            <td key={c.id + 6}><button className="favicon fa fa-trash fa-2x" onClick={this._removeHandler} id={c.order_item_id}></button></td>
           </tr>
           </tbody>
         )}
         <tr><td colSpan={7} id="total"><strong>Grand Total AUD { this.props.total }</strong></td></tr>
         </table>
+        <Link to={"/payment"} ><span><button id="pay">Pay Now</button></span></Link>
         </div>
       )
     }

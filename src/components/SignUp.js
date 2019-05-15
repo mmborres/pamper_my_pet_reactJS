@@ -135,6 +135,7 @@ axios.post("https://pamper-my-pet.herokuapp.com/users", { name: this.state.name,
   render() {
     return (
       <div className="App Login">
+      <Nav />
       <header className="App-header">
       <h1>Sign Up</h1>
 
@@ -179,11 +180,12 @@ axios.post("https://pamper-my-pet.herokuapp.com/users", { name: this.state.name,
             disabled={!this.validateForm()}
             type="submit"
           >
-            Login
+            Sign Up
           </Button>
         </form>
         <p>{this.state.error_message}</p>
         </header>
+        <Footer />
       </div>
     );
   }
