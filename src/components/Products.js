@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Nav from './Nav.js';
+import { Dropdowns }  from "react-bootstrap";
+import { Button, Container, Row, Col } from "reactstrap";
 
 import Footer from './Footer.js'
 
@@ -163,27 +165,56 @@ class Products extends Component {
   }
 };
 
+const cardStyle = {
+  height: '25rem'
+
+};
+
+const imgStyle = {
+  height: '13rem',
+  width: '13rem',
+  margin: '13%',
+}
+
 const Allproducts = (props) => {
 
   console.log("products = " + props.products.length);
   if (props.products.length === 0){
     return 'You have 0 search result';
   } else {
-    console.log('rendering...')
     return(
-      <div>
-    {props.products.map( (p) =>
-      <div>
-     <img src={p.image}/>
-     <p><strong>Name:</strong><Link to={ "/product/" + p.id }>{p.name}</Link></p>
 
-     </div>
-   )}
-   </div>
- )
 
+      <div className="container">
+    <div  className="row" >
+      {props.products.map( (p) =>
+
+          <div className="col-4">
+          <div className="card" style={cardStyle}>
+
+
+
+            <Link to={ "/product/" + p.id }><img src={p.image} className="card-img-top" style={imgStyle}/></Link>
+            <div className="card-body">
+              <p className="card-text btn btn-outline-dark stretched"><Link to={ "/product/" + p.id }>{p.name}</Link></p>
+
+              </div>
+
+
+        </div>
+        <br></br>
+        </div>
+
+      )}
+        </div>
+        </div>
+
+
+
+  )
 
   }
+
 
 }
 
@@ -229,26 +260,28 @@ class SearchForm extends Component {
     console.log("here 123 = " + this.props.categories);
 
     return (
-      <div>
+      <div className="dropdown">
 
           <form onSubmit={this._handleSubmit} >
             <label>Category:</label>
+
               <select onChange={this._handleChangeCategory}>
                 <option></option>
                 {
-                  this.props.categories.map( (c) => <option name={c} value={c} selected={ (c===this.props.category) ? "selected" : ""}>{c}</option>)
+                  this.props.categories.map( (c) => <option className="dropdown-item" name={c} value={c} selected={ (c===this.props.category) ? "selected" : ""}>{c}</option>)
                 }
               </select>
 
             <label>Pet Type:</label>
               <select onChange={this._handleChangePetType}>
-                <option></option>
+                <option ></option>
                 {
                   this.props.pets.map( (p) => <option name={p} value={p} selected={ (p===this.props.pet) ? "selected" : "" }>{p}</option>)
                 }
               </select>
 
-          <button type="submit">Shop Now!</button>
+          <Button type="submit" color="secondary" size="sm" className="btn-product" >Shop Now!</Button>
+
         </form>
       </div>
     );

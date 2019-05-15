@@ -57,15 +57,18 @@ class Navbar extends Component {
 <div className="navbar">
   <Link to="#">Home</Link>
   <Link to="/products">All Products</Link>
+
   <div className="subnav">
     <button className="subnavbtn">Dog <i className="fa fa-caret-down"></i></button>
     <div className="subnav-content">
       <Link to="/products/Dog/Clothing">Clothing</Link>
-      <Link to="/products/Dog/Accessories">Accessories</Link>
-      <Link to="/products/Dog/Toys">Toys</Link>
+      <Link to="/products/Cat/Accessories">Accessories</Link>
+      <Link to="/products/Bird/Toys">Toys</Link>
+
 
     </div>
   </div>
+
   <div className="subnav">
     <button className="subnavbtn">Cat <i className="fa fa-caret-down"></i></button>
     <div className="subnav-content">
@@ -78,8 +81,17 @@ class Navbar extends Component {
   <div className="subnav">
     <button className="subnavbtn">Fish <i className="fa fa-caret-down"></i></button>
     <div className="subnav-content">
-      <Link to="/products/Fish/Accessories">Accessories</Link>
-      <Link to="/products/Fish/Toys">Toys</Link>
+      <Link to="/products/Fish/Accessories">Food</Link>
+      <Link to="/products/Fish/Toys">Miscellaneous</Link>
+
+    </div>
+  </div>
+
+  <div className="subnav">
+    <button className="subnavbtn">Birds <i className="fa fa-caret-down"></i></button>
+    <div className="subnav-content">
+      <Link to="/products/Fish/Accessories">Food</Link>
+      <Link to="/products/Fish/Toys">Miscellaneous</Link>
 
     </div>
   </div>

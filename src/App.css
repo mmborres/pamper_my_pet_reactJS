@@ -102,3 +102,8 @@ body {
 .subnav:hover .subnav-content {
   display: block;
 }
+
+.btn-product {
+
+  margin: 1rem;
+}
