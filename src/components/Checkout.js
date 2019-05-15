@@ -6,6 +6,10 @@ import UserProfile from './UserProfile';
 import AddToCart from './AddToCart';
 import Payment from './Payment';
 import axios from 'axios';
+
+import { Dropdowns }  from "react-bootstrap";
+import { Button, Container, Row, Col } from "reactstrap";
+
 import './../App.css';
 
 class Checkout extends Component {
@@ -163,7 +167,7 @@ class Checkout extends Component {
             //const ccc = [];
             //ccc.push(product);
             //return ccc;
-            
+
           }).then( () => {
 
             return axios.get("https://pamper-my-pet.herokuapp.com/products.json").then((results) => {
@@ -254,11 +258,11 @@ class Checkout extends Component {
     }*/
 
     return (
-      <div>
+      <div class="checkout">
       <Nav />
       <h1>Your Order Details</h1>
       <DisplayCart cart={this.state.shoppingList} total={this.state.total} onSubmit={this.displayAfterRemove}/>
-      <Link to={"/payment"} ><span><button>Pay Now</button></span></Link>
+      <Link to={"/payment"} ><span><button id="pay">Pay Now</button></span></Link>
       <Footer />
       </div>
     );
@@ -310,7 +314,7 @@ class DisplayCart extends Component {
         console.log("4");
         cart.splice(indexToDelete, 1);
         AddToCart.replaceCart(cart);
-  
+
         axios.delete(url).then((res) => {
           //post
           this.props.onSubmit(cart);
@@ -320,20 +324,20 @@ class DisplayCart extends Component {
     } );
 
     promise
-      .then( res => { 
+      .then( res => {
         console.log("3");
 
       })
-      .catch( err => { 
+      .catch( err => {
         console.log ("error with promise = " + err)
-      
+
       })
 
     /*let indexToDelete = -1;
     const cart = AddToCart.getCart();
     //console.log("before");
     //console.log(Object.values(cart));
-    
+
     console.log("index to delete == " + indexToDelete);
 
     if(indexToDelete> -1) {
@@ -362,7 +366,7 @@ class DisplayCart extends Component {
       )
     } else {
       return (
-        <div>
+        <div class="checkout">
           <table >
           <th>Product</th>
           <th>ID</th>
@@ -382,12 +386,12 @@ class DisplayCart extends Component {
             <td key={c.id + 5}>AUD {c.price}</td>
             <td key={c.id + 6}>{ c.quantity}</td>
             <td key={c.id + 7}>AUD {c.price * c.quantity}</td>
-            <td key={c.id + 8}><Link to={"/product/" + c.id} ><span><button>Edit</button></span></Link></td>
-            <td key={c.id + 6}><button onClick={this._removeHandler} id={c.order_item_id}>Remove</button></td>
+            <td key={c.id + 8}><Link to={"/product/" + c.id} ><span><button className="alter">Edit</button></span></Link></td>
+            <td key={c.id + 6}><button className="alter" onClick={this._removeHandler} id={c.order_item_id}>Remove</button></td>
           </tr>
           </tbody>
         )}
-        <tr><td colSpan={7}>Grand Total: AUD { this.props.total }</td></tr>
+        <tr><td colSpan={7} id="total"><strong>Grand Total: AUD { this.props.total }</strong></td></tr>
         </table>
         </div>
       )
