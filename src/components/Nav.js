@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import UpdateBlocker from 'react-router';
 import UserProfile from './UserProfile';
-import axios from 'axios';
-import AddToCart from './AddToCart';
+import NavCart from './NavCart';
 
 class Nav extends Component {
   render() {
-    //const cart = AddToCart.getCart();
-    //console.log('Cart', cart);
-    const userId = UserProfile.getUserId();
+
     if (UserProfile.getEmail() === "") {
       return (
         <div>
@@ -19,7 +15,7 @@ class Nav extends Component {
         <span><Link to="/">Login</Link></span>
         <span><Link to="/signup">SignUp</Link></span>
         <span><Link to="/checkout">Checkout</Link></span>
-        <span><Navbar/></span>
+        <span><Navbar /></span>
         </nav>
         </div>
       );
@@ -45,12 +41,7 @@ class Nav extends Component {
 class Navbar extends Component {
 
   render(){
-  /*{
-    let urlstr = window.location.href;
-    if (urlstr.includes('#')) {
-      urlstr = urlstr.split('#')[0] + '#/'
-    }*/
-
+    
     return(
 
 
@@ -95,6 +86,7 @@ class Navbar extends Component {
 
     </div>
   </div>
+  <NavCart />
 </div>
 
     )

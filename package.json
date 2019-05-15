@@ -4,7 +4,12 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+<<<<<<< HEAD
     "bootstrap": "^4.3.1",
+=======
+    "body-parser": "^1.19.0",
+    "express": "^4.16.4",
+>>>>>>> 67f4abc407333579216784cfebf89253152af2a4
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.8.6",
@@ -13,8 +18,13 @@
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
+<<<<<<< HEAD
     "reactstrap": "^8.0.0",
     "styled-components": "^4.2.0",
+=======
+    "react-stripe-elements": "^3.0.0",
+    "stripe": "^6.36.0",
+>>>>>>> 67f4abc407333579216784cfebf89253152af2a4
     "typekit": "^0.1.1"
   },
   "scripts": {

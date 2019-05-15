@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Nav from './Nav.js';
+<<<<<<< HEAD
 import { Dropdowns }  from "react-bootstrap";
 import { Button, Container, Row, Col } from "reactstrap";
 
+=======
+import './../App.css';
+>>>>>>> 67f4abc407333579216784cfebf89253152af2a4
 import Footer from './Footer.js'
 
 import UserProfile from './UserProfile';
@@ -35,10 +39,10 @@ class Products extends Component {
 
     const getPets = () => {
       axios.get("https://pamper-my-pet.herokuapp.com/pets.json").then((results) => {
-        console.log("pets " + results.data );
+        //console.log("pets " + results.data );
         const pets = [];
         results.data.map((p)=> {pets.push(p.name)});
-        console.log(pets);
+        //console.log(pets);
         this.setState({pets: pets});
 
       })
@@ -51,7 +55,7 @@ class Products extends Component {
         const categories = [];
         results.data.map((c) => { categories.push(c.name)});
         this.setState({categories: categories});
-        console.log("thisis catefory" + categories);
+        //console.log("thisis catefory" + categories);
       })
     };
     getCategories();
@@ -63,12 +67,12 @@ class Products extends Component {
       //get value from params
       const category = this.props.match.params.category;
       const pet = this.props.match.params.pet;
-      console.log("1a=" + pet);
+      //console.log("1a=" + pet);
 
       //setstate
       this.setState({category: category, pet: pet});
 
-      console.log("1b=" + this.state.pet);
+      //console.log("1b=" + this.state.pet);
 
       this.fetchProducts(category, pet);
 
@@ -79,8 +83,8 @@ class Products extends Component {
      fetchProducts = (c,p) => {
       const category = c;
       const pet_type = p;
-      console.log(category + " = category");
-      console.log(pet_type + " = pet_type");
+      //console.log(category + " = category");
+      //console.log(pet_type + " = pet_type");
 
       axios.get("https://pamper-my-pet.herokuapp.com/products.json").then((results) => {
         const p_data = results.data;
@@ -109,7 +113,7 @@ class Products extends Component {
             }
           }
         }
-        console.log("listProducts =" + listProducts.length);
+        //console.log("listProducts =" + listProducts.length);
         this.setState({products: listProducts});
 
       })
@@ -117,8 +121,8 @@ class Products extends Component {
     };
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log('update!', this.props.match);
-    console.log(prevProps.match);
+    //console.log('update!', this.props.match);
+    //console.log(prevProps.match);
     //console.log(prevState);
     // todo: update the state here
     const pet = this.props.match.params.pet;
@@ -132,16 +136,16 @@ class Products extends Component {
     if (pet !== prevpet || category !== prevcategory) {
       this.fetchProducts(category, pet);
       //this.setState({category: category, pet: pet});
-      console.log("2==" + this.state.pet);
+      //console.log("2==" + this.state.pet);
     }
   }
 
   render () {
     const isAdmin = UserProfile.getAdmin();
-    console.log("parent = " + this.state.categories);
-    console.log("parent pet = " + this.state.pet);
+    //console.log("parent = " + this.state.categories);
+    //console.log("parent pet = " + this.state.pet);
 
-    console.log("render props pet = " + this.props.match.params.pet);
+    //console.log("render props pet = " + this.props.match.params.pet);
 
     return(
 
@@ -178,11 +182,21 @@ const imgStyle = {
 
 const Allproducts = (props) => {
 
-  console.log("products = " + props.products.length);
+  //console.log("products = " + props.products.length);
   if (props.products.length === 0){
     return 'You have 0 search result';
   } else {
+<<<<<<< HEAD
     return(
+=======
+    //console.log('rendering...')
+    return(
+      <div>
+    {props.products.map( (p) =>
+      <div>
+     <img src={p.image} className="featurenotify"/>
+     <p><strong>Name:</strong><Link to={ "/product/" + p.id }>{p.name}</Link></p>
+>>>>>>> 67f4abc407333579216784cfebf89253152af2a4
 
 
       <div className="container">
@@ -237,13 +251,13 @@ class SearchForm extends Component {
   }
 
   _handleChangeCategory(event){
-    console.log(event.target.value);
+    //console.log(event.target.value);
     this.setState({ category: event.target.value});
     //console.log(this.state.category);
   };
 
   _handleChangePetType(event) {
-    console.log(event.target.value);
+    //console.log(event.target.value);
     this.setState({pettype: event.target.value});
     //console.log(this.state.pettype);
   };
@@ -257,7 +271,7 @@ class SearchForm extends Component {
   }
   render () {
 
-    console.log("here 123 = " + this.props.categories);
+    //console.log("here 123 = " + this.props.categories);
 
     return (
       <div className="dropdown">

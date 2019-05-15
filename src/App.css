@@ -40,6 +40,19 @@
   object-fit: cover;
   border: 6px solid #920f00;
 }
+
+.thumb {
+  object-fit: cover;
+  height: 150px;
+  width: 150px;
+}
+
+.currstatus {
+  object-fit: cover;
+  height: 300px;
+  width: 250px;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
