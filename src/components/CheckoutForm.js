@@ -26,13 +26,18 @@ class CheckoutForm extends Component {
         AddToCart.emptyCart();
 
         const url = "https://pamper-my-pet.herokuapp.com/orders/" + order_id + ".json";
+        console.log("Order ID = " + order_id + ", set to Completed.")
         //update to "Completed"
         axios.put(url, { status: 'Completed' }).then((result) => {});
-    }
+    } 
   }
 
   render() {
-    if (this.state.complete) return <h2>Purchase Complete</h2>;
+    if (this.state.complete) {
+      return <h2>Purchase Complete</h2>;
+    } else if ( this.state.complete!== true ) {
+      return <h3>Purchase Cannot Be Completed At This Time. Try Again After A Few Seconds.</h3>;
+    }
 
     return (
       <div className="checkout">
