@@ -10,7 +10,7 @@ class Nav extends Component {
     if (UserProfile.getEmail() === "") {
       // not logged in
       return (
-    <nav style={{paddingBottom: '80px'}} >
+    <nav style={{paddingBottom: '90px'}} >
     <ul class="top-level-menu">
     <li><Link to="/home">Home</Link></li>
     <li><Link to="/products">All Products</Link></li>
