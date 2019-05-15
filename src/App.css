@@ -199,12 +199,12 @@ text-align: center;
   text-align: center;
   color: #333333;
 }
-.checkout table {
+.checkout table, #no-item {
   font-size: 20px;
-  color: #333333;
+  color: #0384DF;
 }
 
-.checkout th, td {
+.checkout th, td, #no-item {
   text-align: center;
   padding: 1em;
 }

@@ -5,6 +5,8 @@ import './../App.css';
 //import "./Login.css";
 import axios from 'axios';
 import UserProfile from './UserProfile';
+import Nav from './Nav.js';
+import Footer from './Footer.js';
 //import { Redirect } from 'react-router-dom';
 //import Home from './Home';
 
@@ -120,6 +122,7 @@ axios.post(baseURL + "/users/login", { email: this.state.email, password: this.s
   render() {
     return (
       <div className="App Login">
+      <Nav />
       <header className="App-header">
       <h1>Login</h1>
         <br/>
@@ -154,6 +157,7 @@ axios.post(baseURL + "/users/login", { email: this.state.email, password: this.s
           </Button>
         </form>
         </header>
+        <Footer />
       </div>
     );
   }

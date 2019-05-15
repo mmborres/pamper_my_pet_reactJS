@@ -5,6 +5,8 @@ import './../App.css';
 //import "./Login.css";
 import axios from 'axios';
 import UserProfile from './UserProfile';
+import Nav from './Nav.js';
+import Footer from './Footer.js';
 //import { Redirect } from 'react-router-dom';
 //import Home from './Home';
 

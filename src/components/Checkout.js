@@ -10,6 +10,8 @@ import axios from 'axios';
 import { Dropdowns }  from "react-bootstrap";
 import { Button, Container, Row, Col } from "reactstrap";
 
+import 'font-awesome/css/font-awesome.min.css';
+
 import './../App.css';
 
 class Checkout extends Component {
@@ -361,7 +363,7 @@ class DisplayCart extends Component {
     const cart = this.props.cart;
     if (cart.length===0) {
       return (
-      <div>
+      <div id="no-item">
         No items in your cart.
       </div>
       )
@@ -387,8 +389,8 @@ class DisplayCart extends Component {
             <td key={c.id + 5}>AUD {c.price}</td>
             <td key={c.id + 6}>{ c.quantity}</td>
             <td key={c.id + 7}>AUD {c.price * c.quantity}</td>
-            <td key={c.id + 8}><Link to={"/product/" + c.id} ><span><button className="alter">Edit</button></span></Link></td>
-            <td key={c.id + 6}><button className="alter" onClick={this._removeHandler} id={c.order_item_id}>Remove</button></td>
+            <td key={c.id + 8}><Link to={"/product/" + c.id} ><span><button className="alter fa fa-edit fa-2x" ></button></span></Link></td>
+            <td key={c.id + 6}><button className="alter fa fa-trash fa-2x" onClick={this._removeHandler} id={c.order_item_id}></button></td>
           </tr>
           </tbody>
         )}
