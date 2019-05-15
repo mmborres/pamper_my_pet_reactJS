@@ -66,7 +66,7 @@
       async fetchOrder() {
         const URL = "https://pamper-my-pet.herokuapp.com/orders.json";
         const userId = UserProfile.getUserId();
-        console.log("fetchOrder"); 
+        console.log("fetchOrder");
         return axios.get(URL).then((results) => {
           if (results.data.length === 0) {
             this.createOrder();
@@ -81,7 +81,7 @@
               this.createOrder();
             }
           }
-          console.log("fetchOrder order: " + this.state.order_id); 
+          console.log("fetchOrder order: " + this.state.order_id);
         });
       };
 
@@ -197,15 +197,24 @@
         return items;
       }
 
+
+
       render(){
+        const cardStyle = {
+          height: 'auto'
+
+        };
 
         const isOutOfStock = this.props.item.stock === 0;
         const userPresent = UserProfile.getEmail() === "";
 
         return(
-          <div>
-          <div>
-          <img src={this.props.item.image}/>
+          <div >
+          <div className="item-container" >
+          <div className="item1">
+          <img  src={this.props.item.image}/>
+          </div>
+          <div className="item2">
           <p><strong>Name:</strong>{this.props.item.name}</p>
           <p><strong>Price: </strong> AUD {this.props.item.price}</p>
           <p><strong>Description: </strong>{this.props.item.description}</p>
@@ -217,7 +226,10 @@
           {this.createQuantitySelect()}
           </select>
           </p>
-          </div>
+        </div>
+        </div>
+
+          <div className="item3">
           {userPresent ?
             <p>
             <button><Link to="/">Add to Cart</Link></button>
@@ -228,8 +240,13 @@
             <button onClick={this._handleCart} id="1" disabled={isOutOfStock}>Add to Cart</button>
             <button onClick={this._handleCart} id="2" disabled={isOutOfStock}>Buy Now</button>
             </p>
+
+
           }
           </div>
+          </div>
+
+
         );
       }
     };

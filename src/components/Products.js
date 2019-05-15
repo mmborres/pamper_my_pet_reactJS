@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Nav from './Nav.js';
-<<<<<<< HEAD
+
 import { Dropdowns }  from "react-bootstrap";
 import { Button, Container, Row, Col } from "reactstrap";
 
-=======
+
 import './../App.css';
->>>>>>> 67f4abc407333579216784cfebf89253152af2a4
+
 import Footer from './Footer.js'
 
 import UserProfile from './UserProfile';
@@ -151,11 +151,11 @@ class Products extends Component {
 
       <div>
         <Nav />
-        <h2>{this.state.pet} Products</h2>
+        <h2 className="heading">{this.state.pet} Amazing Pets Products</h2>
         <SearchForm pet={this.props.match.params.pet} category = {this.props.match.params.category} pets={this.state.pets} categories={this.state.categories} onSubmit={ this.fetchProducts}/>
         {
           isAdmin
-          ?  <p><Link to="/newproducts">Add New Product</Link></p>
+          ?  <p className="card-text btn btn-outline-dark"><Link to="/newproducts">Add New Product</Link></p>
           : ''
         }
         <Allproducts products={this.state.products}/>
@@ -186,18 +186,10 @@ const Allproducts = (props) => {
   if (props.products.length === 0){
     return 'You have 0 search result';
   } else {
-<<<<<<< HEAD
-    return(
-=======
-    //console.log('rendering...')
-    return(
-      <div>
-    {props.products.map( (p) =>
-      <div>
-     <img src={p.image} className="featurenotify"/>
-     <p><strong>Name:</strong><Link to={ "/product/" + p.id }>{p.name}</Link></p>
->>>>>>> 67f4abc407333579216784cfebf89253152af2a4
 
+    return(
+
+    //console.log('rendering...')
 
       <div className="container">
     <div  className="row" >
@@ -209,8 +201,8 @@ const Allproducts = (props) => {
 
 
             <Link to={ "/product/" + p.id }><img src={p.image} className="card-img-top" style={imgStyle}/></Link>
-            <div className="card-body">
-              <p className="card-text btn btn-outline-dark stretched"><Link to={ "/product/" + p.id }>{p.name}</Link></p>
+            <div className="card-title">
+              <button size="sm" className="btn btn-outline-dark"><Link to={ "/product/" + p.id }>{p.name}</Link></button>
 
               </div>
 
@@ -223,18 +215,16 @@ const Allproducts = (props) => {
         </div>
         </div>
 
-
-
   )
 
   }
 
 
-}
+};
 
 
 class SearchForm extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       category: '',
@@ -269,7 +259,7 @@ class SearchForm extends Component {
     //this.props.onSubmit("TEST", "this.state.pettype");
 
   }
-  render () {
+  render() {
 
     //console.log("here 123 = " + this.props.categories);
 
@@ -277,7 +267,7 @@ class SearchForm extends Component {
       <div className="dropdown">
 
           <form onSubmit={this._handleSubmit} >
-            <label>Category:</label>
+            <label className="label">Category:</label>
 
               <select onChange={this._handleChangeCategory}>
                 <option></option>
@@ -286,7 +276,7 @@ class SearchForm extends Component {
                 }
               </select>
 
-            <label>Pet Type:</label>
+            <label className="label">Pet Type:</label>
               <select onChange={this._handleChangePetType}>
                 <option ></option>
                 {
@@ -294,12 +284,12 @@ class SearchForm extends Component {
                 }
               </select>
 
-          <Button type="submit" color="secondary" size="sm" className="btn-product" >Shop Now!</Button>
+          <button type="submit" size="sm" className="btn btn-outline-dark" >Search For Me!</button>
 
         </form>
       </div>
     );
   }
-};
+  };
 
 export default Products;
