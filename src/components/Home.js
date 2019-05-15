@@ -9,7 +9,7 @@ import AliceCarousel from 'react-alice-carousel'
 import "react-alice-carousel/lib/alice-carousel.css"
 import Footer from './Footer.js'
 
-const FEATURECT = 3;
+const FEATURECT = 5;
 
 class Home extends Component {
   constructor() {
