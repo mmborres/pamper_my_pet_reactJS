@@ -18,13 +18,14 @@ import EditProduct from './components/EditProduct.js';
 const Routes = (
   <Router>
     <div>
-      <Route exact path="/" component={Login} />
+      <Route exact path="/" component={Home} />
       <Route exact path="/signup" component={SignUp} />
       <Route exact path="/products" component={Products} />
       <Route exact path="/products/:pet/:category" component={Products}/>
       <Route exact path="/product/:id" component={Item} />
       <Route exact path="/checkout" component={Checkout} />
       <Route exact path="/logout" component={Logout} />
+      <Route exact path="/login" component={Login} />
       <Route exact path="/home" component={Home} />
       <Route exact path="/orders" component={Order} />
       <Route exact path="/newproducts" component={NewProducts}/>
