@@ -193,3 +193,37 @@ text-align: center;
   height: 500px;
   margin-left: 4rem;
 }
+
+.checkout {
+  padding: 1em;
+}
+.checkout h1 {
+  text-align: center;
+}
+.checkout table {
+  font-size: 20px;
+  color: #333333;
+}
+
+.checkout th, td {
+  text-align: center;
+  padding: 1em;
+}
+
+#total {
+  text-align: left;
+}
+
+#pay {
+  margin: 1em;
+  margin-left: 70px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.alter:hover, #pay:hover {
+  background-color: #333333;
+  color: #ccc;
+  transition: 0.5s all;
+
+}
