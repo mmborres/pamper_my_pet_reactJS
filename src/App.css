@@ -211,9 +211,13 @@ text-align: center;
 }
 .checkout table, #no-item {
   font-size: 20px;
-  color: #0384DF;
   text-align: center;
 }
+
+.checkout th {
+  color: #0384DF;
+}
+
 .checkout th, td, #no-item {
   text-align: center;
   padding: 1em;
@@ -226,7 +230,7 @@ text-align: center;
   margin-left: 50px;
   padding: 10px;
 }
-.editform h1 {
+.editform h1, #no-item {
   text-align: center;
   color: #0384DF;
 }
@@ -445,3 +449,7 @@ text-align: center;
  a, a:hover, button:hover {
    text-decoration: none;
  }
+
+.dropdown {
+  text-align: center;
+}

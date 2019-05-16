@@ -370,7 +370,7 @@ class DisplayCart extends Component {
       )
     } else {
       return (
-        <div>
+        <div className="checkout">
           <table >
           <th>Product</th>
           <th>ID</th>
