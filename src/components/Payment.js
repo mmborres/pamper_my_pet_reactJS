@@ -12,7 +12,7 @@ class Payment extends Component {
         <div>
       <Nav />
       <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
-        <div className="example">
+        <div style={{height: '600px'}} className="example">
           <h1>Payment Form</h1>
           <Elements>
             <CheckoutForm  />
