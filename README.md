@@ -66,10 +66,9 @@ Each **Model** inherits from *ActiveRecord* that does the following in an object
 * Represent associations between Models
 * Perform database operations
 
+-----------------------------------------------------
 - Front-end uses HTML utilising Google Fonts and web-sourced images.
-
 - Styling and animations through CSS, Bootstrap and Favicons
-
 - ReactJS for Front-end Components
 
 #### Major Features:
