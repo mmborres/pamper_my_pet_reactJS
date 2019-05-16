@@ -151,11 +151,11 @@ class Products extends Component {
 
       <div>
         <Nav />
-        <h2 className="heading">{this.state.pet} Amazing Pets Products</h2>
+        <h2 className="heading">{this.state.pet} Pamper My Pet Products</h2>
         <SearchForm pet={this.props.match.params.pet} category = {this.props.match.params.category} pets={this.state.pets} categories={this.state.categories} onSubmit={ this.fetchProducts}/>
         {
           isAdmin
-          ?  <p className="btn btn-outline-info"><Link to="/newproducts" style={linkStyle}>Add New Product</Link></p>
+          ?  <p><Link to="/newproducts" style={linkStyle}><button className="btn btn-outline-info">Add New Product</button></Link></p>
           : ''
         }
         <Allproducts products={this.state.products}/>
@@ -207,7 +207,7 @@ const Allproducts = (props) => {
 
             <Link to={ "/product/" + p.id }><img src={p.image} className="card-img-top" style={imgStyle}/></Link>
             <div className="card-title">
-              <button type="button" size="sm" className="btn btn-outline-info"><Link to={ "/product/" + p.id } style={linkStyle}>{p.name}</Link></button>
+              <Link to={ "/product/" + p.id } style={linkStyle}><button type="button" size="sm" className="btn btn-outline-info">{p.name}</button></Link>
 
               </div>
 
@@ -277,7 +277,6 @@ class SearchForm extends Component {
 
           <form onSubmit={this._handleSubmit} >
 
-            
             <label className="label">Pet:</label>
               <select className="product-option" onChange={this._handleChangePetType}>
                 <option ></option>
@@ -295,7 +294,7 @@ class SearchForm extends Component {
                   }
                 </select>
 
-          <button type="submit" size="sm" className="btn btn-outline-dark" >Search!</button>
+          <button type="submit" size="sm" className="btn btn-outline-info" >Search!</button>
 
         </form>
       </div>

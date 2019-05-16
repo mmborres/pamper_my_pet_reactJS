@@ -395,7 +395,7 @@ class DisplayCart extends Component {
         )}
         <tr><td colSpan={7} id="total"><strong>Grand Total AUD { this.props.total }</strong></td></tr>
         </table>
-        <Link to={"/payment"} ><span><button id="pay">Pay Now</button></span></Link>
+        <Link to={"/payment"} ><span><button id="pay" className="btn btn-warning" >Pay Now</button></span></Link>
         </div>
       )
     }

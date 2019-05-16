@@ -5,6 +5,10 @@
   flex-direction: column;
 }
 
+.App h1 {
+  color:#0384DF;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
@@ -138,7 +142,7 @@ body {
 }
 
 .heading {
-  color: #000;
+color:#0384DF;
 text-transform: uppercase;
 
 backface-visibility: hidden;
@@ -239,16 +243,8 @@ text-align: center;
 #pay {
   margin: 1em;
   margin-left: 50px;
-  color: white;
-  border-radius: 5px;
   padding: 10px;
-  background-color: #FE585C;
-}
 
- #pay:hover {
-  background-color: #FFE201;
-  color: #333333;
-  transition: 0.5s all;
 }
 
 .editform h1 {
@@ -313,7 +309,7 @@ text-align: center;
   width: 100px;
 }
 
-/* another version of nav bar 
+/* another version of nav bar
 
 #main_nav ul {
   background: white;
@@ -385,14 +381,14 @@ text-align: center;
      margin: 0;
      display: none;
  }
- 
+
  .third-level-menu > li
  {
      height: 30px;
      background: #999999;
  }
  .third-level-menu > li:hover { background: #CCCCCC; }
- 
+
  .second-level-menu
  {
      position: absolute;
@@ -404,7 +400,7 @@ text-align: center;
      margin: 0;
      display: none;
  }
- 
+
  .second-level-menu > li
  {
      position: relative;
@@ -412,14 +408,14 @@ text-align: center;
      background: #999999;
  }
  .second-level-menu > li:hover { background: #CCCCCC; }
- 
+
  .top-level-menu
  {
      list-style: none;
      padding: 0;
      margin: 0;
  }
- 
+
  .top-level-menu > li
  {
      position: relative;
@@ -429,13 +425,13 @@ text-align: center;
      background: #999999;
  }
  .top-level-menu > li:hover { background: #CCCCCC; }
- 
+
  .top-level-menu li:hover > ul
  {
      /* On hover, display the next level's menu */
      display: inline;
  }
- 
+
  .top-level-menu-cat > li
  {
      position: relative;
@@ -445,22 +441,22 @@ text-align: center;
      background: #999999;
  }
  .top-level-menu-cat > li:hover { background: #CCCCCC; }
- 
+
  .top-level-menu-cat li:hover > ul
  {
      /* On hover, display the next level's menu */
      display: inline;
  }
- 
+
  /* Menu Link Styles */
- 
+
  .top-level-menu a /* Apply to all links inside the multi-level menu */
  {
      font: bold 20px Arial, Helvetica, sans-serif;
      color: #FFFFFF;
      text-decoration: none;
      padding: 0 0 0 10px;
- 
+
      /* Make the link cover the entire list item-container */
      display: block;
      line-height: 30px;
@@ -475,7 +471,7 @@ text-align: center;
      color: #FFFFFF;
      text-decoration: none;
      padding: 0 0 0 10px;
- 
+
      /* Make the link cover the entire list item-container */
      display: block;
      line-height: 30px;
