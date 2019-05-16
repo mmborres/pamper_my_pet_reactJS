@@ -232,7 +232,7 @@ p{
 .newProd-container {
   /* margin: 0 auto; */
   /* position: relative; */
-max-width: 960px;
+  max-width: 960px;
   /* height: 100%; */
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -242,9 +242,8 @@ max-width: 960px;
 
 .checkout {
   padding: 1em;
-  max-width: 960px;
-
 }
+
 .checkout h1 {
   text-align: center;
   color: #333333;
