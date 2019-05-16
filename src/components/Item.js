@@ -34,7 +34,11 @@ import React, { Component } from 'react';
           <DetailsWithRouter item={this.state.item} />
           {
             isAdmin
+<<<<<<< HEAD
             ?  <p><Link to={"/editproduct/" + this.state.item.id } className="btn btn-outline-info">Edit Product</Link></p>
+=======
+            ?  <p><Link to={"/editproduct/" + this.state.item.id }><button className="btn btn-outline-info">Edit Product</button></Link></p>
+>>>>>>> 7ea142852e312538b19e607bbc349320ba384cea
             : ''
           }
           <Footer />
@@ -233,8 +237,8 @@ import React, { Component } from 'react';
           <div >
           {userPresent ?
             <p>
-            <button><Link to="/">Add to Cart</Link></button>&ensp;
-            <button><Link to="/">Buy Now</Link>></button>
+            <Link to="/login"><button className="btn btn-warning">Add to Cart</button></Link>&ensp;
+            <Link to="/login"><button className="btn btn-warning">Buy Now</button></Link>
             </p>
             :
             <p>

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import './../App.css';
 import axios from 'axios';
 import Nav from './Nav.js';
+import { Dropdowns }  from "react-bootstrap";
+import { Button, Container, Row, Col } from "reactstrap";
 
 
 import AliceCarousel from 'react-alice-carousel'
@@ -56,11 +58,11 @@ class Home extends Component {
   render() {
     return (
       <div className="App">
-        <Nav />
-        <h1>Pamper My Pet</h1>
-
-        <div style={{backgroundColor: 'aliceblue'}}><DisplayFeatured featured={this.state.featuredproducts} /></div>
-        <Footer />
+      <Nav />
+        <h1>PAMPER MY PET</h1>
+        <p>With the huge variety of pet-oriented content on the web, this "best of" list should give you a better idea of where to find anything from trendy haute couture pet creations to the lowest prices on dog, cat, bird and fish food. Happy shopping!</p>
+        <div><DisplayFeatured featured={this.state.featuredproducts} /></div>
+      <Footer />
       </div>
     );
   }
@@ -79,7 +81,7 @@ class DisplayFeatured extends Component {
         const products = this.props.featured;
         //console.log("setupProducts props=" + products);
 
-        const newp = products.map( (urpl) => <Link to={ "/product/" + urpl.id }><img src={urpl.image} alt={urpl.name} style={{marginTop: '70px'}} class="featurenotify"/></Link> );
+        const newp = products.map( (urpl) => <Link to={ "/product/" + urpl.id }><img src={urpl.image} alt={urpl.name} class="featurenotify"/></Link> );
         //console.log("formatted = " + newp);
 
         this.setState({galleryItems: newp});

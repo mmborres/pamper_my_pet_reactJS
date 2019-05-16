@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import UserProfile from './UserProfile';
 import axios from 'axios';
+import { Dropdowns }  from "react-bootstrap";
+import { Button, Container, Row, Col } from "reactstrap";
+
+import 'font-awesome/css/font-awesome.min.css';
 
 class NavCart extends Component {
 
@@ -45,7 +49,7 @@ class NavCart extends Component {
 
     render() {
         return(
-            <Link to="/checkout">Cart &#x1F6D2; ({this.state.cartItems}) </Link>
+            <Link to="/checkout"><i className="fa fa-shopping-cart"> Cart ({this.state.cartItems})</i></Link>
         )
     }
 }
