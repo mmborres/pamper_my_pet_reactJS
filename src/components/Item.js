@@ -34,7 +34,7 @@ import React, { Component } from 'react';
           <DetailsWithRouter item={this.state.item} />
           {
             isAdmin
-            ?  <p><Link to={"/editproduct/" + this.state.item.id } >Edit Product</Link></p>
+            ?  <p><Link to={"/editproduct/" + this.state.item.id } className="btn btn-outline-info">Edit Product</Link></p>
             : ''
           }
           <Footer />
@@ -248,7 +248,7 @@ import React, { Component } from 'react';
           </div>
           </div>
           </div>
-        
+
 
         );
       }

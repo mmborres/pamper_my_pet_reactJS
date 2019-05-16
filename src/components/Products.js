@@ -2,41 +2,35 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Nav from './Nav.js';
-
 import { Dropdowns }  from "react-bootstrap";
 import { Button, Container, Row, Col } from "reactstrap";
-
-
 import './../App.css';
-
 import Footer from './Footer.js'
-
 import UserProfile from './UserProfile';
 
 class Products extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      products:[],
-      pet: '',
-      category: '',
-      pets:[],
-      categories: [],
-
+      this.state = {
+        products:[],
+        pet: '',
+        category: '',
+        pets:[],
+        categories: [],
     }
 
     this.fetchProducts = this.fetchProducts.bind(this);
 
+    //This is will render all products on the page
     const showProducts = () => {
       axios.get("https://pamper-my-pet.herokuapp.com/products.json").then((results) => {
-
         this.setState({products: results.data});
-
       })
     };
 
     showProducts();
 
+    //to get direct info of pet from the database in searchform dropdown
     const getPets = () => {
       axios.get("https://pamper-my-pet.herokuapp.com/pets.json").then((results) => {
         //console.log("pets " + results.data );
@@ -44,13 +38,12 @@ class Products extends Component {
         results.data.map((p)=> {pets.push(p.name)});
         //console.log(pets);
         this.setState({pets: pets});
-
       })
     };
     getPets();
 
+    //to get direct info of categories from the database in searchform dropdown
     const getCategories = () => {
-
       axios.get("https://pamper-my-pet.herokuapp.com/categories.json").then((results) => {
         const categories = [];
         results.data.map((c) => { categories.push(c.name)});
@@ -60,8 +53,8 @@ class Products extends Component {
     };
     getCategories();
 
+    //this select pet and category from the nav bar and put the result in the dropdown menu.
     if ( this.props.match.params.category!==undefined && this.props.match.params.pet!==undefined ) {
-      // console.log("props here");
       // console.log(this.props.match.params.category);
 
       //get value from params
@@ -71,11 +64,9 @@ class Products extends Component {
 
       //setstate
       this.setState({category: category, pet: pet});
-
       //console.log("1b=" + this.state.pet);
-
+      //this is filtering the parameter as per the above mentioned condition.
       this.fetchProducts(category, pet);
-
     }
 
   }
@@ -86,30 +77,28 @@ class Products extends Component {
       //console.log(category + " = category");
       //console.log(pet_type + " = pet_type");
 
+      //filtering categories and pet
       axios.get("https://pamper-my-pet.herokuapp.com/products.json").then((results) => {
         const p_data = results.data;
         const listProducts = [];
-        for (let i = 0; i < p_data.length; i++) {
-          const productData = p_data[i];
+          for (let i = 0; i < p_data.length; i++) {
+            const productData = p_data[i];
 
-          if (category === "" && pet_type === ""){
+          if ( category === "" && pet_type === "" ){
             listProducts.push(productData);//All product items
-          } else if (category!== "" && pet_type === ""){
-            if (productData.classification!==null && productData.classification === category ){
+          } else if ( category!== "" && pet_type === "" ){
+            if ( productData.classification!==null && productData.classification === category ){
               listProducts.push(productData)//all pet_type and selected category
             }
 
-          } else if (category==="" && pet_type!==null){
-            if (productData.pet_type!==null && productData.pet_type === pet_type ){
-              listProducts.push(productData)//all category and selected pet type
+          } else if ( category==="" && pet_type!==null ){
+            if ( productData.pet_type!==null && productData.pet_type === pet_type ){
+              listProducts.push( productData )//all category and selected pet type
             }
           } else {
 
-            // console.log(productData.classification);
-            // console.log(productData.pet_type);
-
-            if((productData.classification === category) && (productData.pet_type === pet_type)){
-              listProducts.push(productData);//selected category and pet_type
+            if(( productData.classification === category ) && ( productData.pet_type === pet_type )){
+              listProducts.push( productData );//selected category and pet_type
             }
           }
         }
@@ -119,9 +108,8 @@ class Products extends Component {
       })
 
     };
-
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    //console.log('update!', this.props.match);
+    //to relaod the page as per the search requirement
+  componentDidUpdate( prevProps, prevState, snapshot ) {
     //console.log(prevProps.match);
     //console.log(prevState);
     // todo: update the state here
@@ -133,10 +121,10 @@ class Products extends Component {
 
     //this.setState({pet: this.props.match.params.pet, category: this.props.match.params.category})
     // todo: maybe fetch products
-    if (pet !== prevpet || category !== prevcategory) {
+    if (pet !== prevpet || category !== prevcategory) {//reload the page if previous and current states are not macthing,
       this.fetchProducts(category, pet);
       //this.setState({category: category, pet: pet});
-      //console.log("2==" + this.state.pet);
+
     }
   }
 
@@ -144,46 +132,44 @@ class Products extends Component {
     const isAdmin = UserProfile.getAdmin();
     //console.log("parent = " + this.state.categories);
     //console.log("parent pet = " + this.state.pet);
-
     //console.log("render props pet = " + this.props.match.params.pet);
 
     return(
 
       <div>
+
         <Nav />
         <h2 className="heading">{this.state.pet} Pamper My Pet Products</h2>
         <SearchForm pet={this.props.match.params.pet} category = {this.props.match.params.category} pets={this.state.pets} categories={this.state.categories} onSubmit={ this.fetchProducts}/>
+
         {
           isAdmin
-          ?  <p><Link to="/newproducts" style={linkStyle}><button className="btn btn-outline-info">Add New Product</button></Link></p>
+          ?  <p><Link to="/newproducts" className="link-style"><button className="btn btn-outline-info new-product">Add New Product</button></Link></p>
           : ''
         }
         <Allproducts products={this.state.products}/>
 
         <Footer/>
-
-
-
       </div>
     );
   }
 };
 
-const cardStyle = {
-  height: '25rem'
+// const cardStyle = {
+//   height: '25rem'
+//
+// };
 
-};
-
-const imgStyle = {
-  height: '13rem',
-  width: '13rem',
-  marginLeft: '20%',
-  marginTop: '10%'
-}
-const linkStyle = {
-  textDecoration: "none",
-  color: "black"
-}
+// const imgStyle = {
+//   height: '13rem',
+//   width: '13rem',
+//   marginLeft: '20%',
+//   marginTop: '10%'
+// }
+// const linkStyle = {
+//   textDecoration: "none",
+//   color: "black"
+// }
 
 const Allproducts = (props) => {
 
@@ -194,52 +180,42 @@ const Allproducts = (props) => {
 
     return(
 
-    //console.log('rendering...')
-
       <div className="container">
-    <div  className="row" >
-      {props.products.map( (p) =>
+      <div  className="row" >
+        {props.products.map( (p) =>
 
-          <div className="col-4">
-          <div className="card" style={cardStyle}>
+          <div className="col-sm">
+          <div className="card card-style">
 
-
-
-            <Link to={ "/product/" + p.id }><img src={p.image} className="card-img-top" style={imgStyle}/></Link>
+            <Link to={ "/product/" + p.id }><img src={p.image} className="card-img-top image" /></Link>
             <div className="card-title">
-              <Link to={ "/product/" + p.id } style={linkStyle}><button type="button" size="sm" className="btn btn-outline-info">{p.name}</button></Link>
 
-              </div>
+            <Link to={ "/product/" + p.id } className="link-style"><button type="button" className="btn btn-outline-info btn-responsive ">{p.name}</button></Link>
 
-
-        </div>
-        <br></br>
-        </div>
+            </div>
+          </div>
+          <br></br>
+          </div>
 
       )}
         </div>
         </div>
-
   )
 
   }
-
-
 };
 
 
 class SearchForm extends Component {
   constructor() {
     super();
-    this.state = {
-      category: '',
-      pettype: '',
-
-    }
+      this.state = {
+        category: '',
+        pettype: ''
+      }
 
     this._handleChangeCategory = this._handleChangeCategory.bind(this);
     this._handleChangePetType = this._handleChangePetType.bind(this);
-
     this._handleSubmit = this._handleSubmit.bind(this);
 
     //setstate from props values
@@ -258,18 +234,14 @@ class SearchForm extends Component {
     this.setState({pettype: event.target.value});
     //console.log(this.state.pettype);
   };
-;
 
   _handleSubmit(event){
     event.preventDefault();
     // console.log("hi");
 
     this.props.onSubmit(this.state.category, this.state.pettype);
-    //this.props.onSubmit("TEST", "this.state.pettype");
-
   }
   render() {
-
     //console.log("here 123 = " + this.props.categories);
 
     return (
@@ -294,9 +266,10 @@ class SearchForm extends Component {
                   }
                 </select>
 
-          <button type="submit" size="sm" className="btn btn-outline-info" >Search!</button>
+                <button type="submit" size="sm" className="btn btn-outline-info search-btn" >Search!</button>
 
-        </form>
+
+          </form>
       </div>
     );
   }
