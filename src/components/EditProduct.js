@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import UserProfile from './UserProfile';
 import Nav from './Nav.js';
-import Footer from './Footer.js'
+import Footer from './Footer.js';
+import { Button, FormGroup, FormControl } from "react-bootstrap";
+import './../App.css';
 
 class EditProduct extends Component {
   constructor(props) {
@@ -17,14 +19,14 @@ class EditProduct extends Component {
     const URL = "https://pamper-my-pet.herokuapp.com/products/" + pro_id + ".json"
 
     const fetchValues = () => {
-        axios.get(URL).then((results) => {
-          console.table(results.data);
-          this.setState({edit_pro: results.data});
-          console.log(this.state.edit_pro);
-          //setTimeout(fetchPlanes, 4000);
-        })
-      };
-      fetchValues();
+      axios.get(URL).then((results) => {
+        console.table(results.data);
+        this.setState({edit_pro: results.data});
+        console.log(this.state.edit_pro);
+        //setTimeout(fetchPlanes, 4000);
+      })
+    };
+    fetchValues();
 
   }
 
@@ -44,14 +46,14 @@ class EditProduct extends Component {
   }
 
   render(){
-      return(
-        <div>
-        <Nav/>
-        <h1>Edit Product</h1>
-        <EditForm edit_pro={this.state.edit_pro} onSubmit={this.updateProduct}/>
-        <Footer/>
-        </div>
-      )
+    return(
+      <div className="editform">
+      <Nav/>
+      <h1>Edit Product</h1>
+      <EditForm edit_pro={this.state.edit_pro} onSubmit={this.updateProduct}/>
+      <Footer/>
+      </div>
+    )
   }
 };
 
@@ -142,7 +144,7 @@ class EditForm extends Component {
   render () {
 
     return (
-      <div>
+      <div className="editform">
       <form onSubmit={this._handleSubmit} >
       <label>Name</label>
       <input type="text" defaultValue={this.props.edit_pro.name} onChange={this._handleChangeName}/>
@@ -152,7 +154,7 @@ class EditForm extends Component {
       <input type="text" defaultValue={this.props.edit_pro.image} onInput={this._handleInputImage}/>
       <br />
 
-      <label>Description</label>
+      <label>Details</label>
       <input type="text" defaultValue={this.props.edit_pro.description} onInput={this._handleInputDescription}/>
       <br />
 
@@ -179,7 +181,7 @@ class EditForm extends Component {
       <option >Accessories</option>
       <option >Toys</option>
       </select>
-      <br/>
+
       <label>Pet Type:</label>
       <select defaultValue={this.props.edit_pro.pet_type} onChange={this._handleChangePetType}>
       <option></option>
@@ -189,7 +191,7 @@ class EditForm extends Component {
       </select>
       <br/>
 
-      <button type="submit">Edit Item</button>
+      <button type="submit" className="alter">Edit Item</button>
       </form>
       </div>
     );

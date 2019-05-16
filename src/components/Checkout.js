@@ -6,6 +6,12 @@ import UserProfile from './UserProfile';
 import AddToCart from './AddToCart';
 import Payment from './Payment';
 import axios from 'axios';
+
+import { Dropdowns }  from "react-bootstrap";
+import { Button, Container, Row, Col } from "reactstrap";
+
+import 'font-awesome/css/font-awesome.min.css';
+
 import './../App.css';
 
 class Checkout extends Component {
@@ -255,11 +261,10 @@ class Checkout extends Component {
     }*/
 
     return (
-      <div>
+      <div class="checkout">
       <Nav />
       <h1>Your Order Details</h1>
       <DisplayCart cart={this.state.shoppingList} total={this.state.total} onSubmit={this.displayAfterRemove}/>
-      <Link to={"/payment"} ><span><button>Pay Now</button></span></Link>
       <Footer />
       </div>
     );
@@ -357,13 +362,13 @@ class DisplayCart extends Component {
     const cart = this.props.cart;
     if (cart.length===0) {
       return (
-      <div>
+      <div id="no-item">
         No items in your cart.
       </div>
       )
     } else {
       return (
-        <div>
+        <div class="checkout">
           <table >
           <th>Product</th>
           <th>ID</th>
@@ -383,13 +388,14 @@ class DisplayCart extends Component {
             <td key={c.id + 5}>AUD {c.price}</td>
             <td key={c.id + 6}>{ c.quantity}</td>
             <td key={c.id + 7}>AUD {c.price * c.quantity}</td>
-            <td key={c.id + 8}><Link to={"/product/" + c.id} ><span><button>Edit</button></span></Link></td>
-            <td key={c.id + 6}><button onClick={this._removeHandler} id={c.order_item_id}>Remove</button></td>
+            <td key={c.id + 8}><Link to={"/product/" + c.id} ><span><button className="favicon fa fa-edit fa-2x" ></button></span></Link></td>
+            <td key={c.id + 6}><button className="favicon fa fa-trash fa-2x" onClick={this._removeHandler} id={c.order_item_id}></button></td>
           </tr>
           </tbody>
         )}
-        <tr><td colSpan={7}>Grand Total: AUD { this.props.total }</td></tr>
+        <tr><td colSpan={7} id="total"><strong>Grand Total AUD { this.props.total }</strong></td></tr>
         </table>
+        <Link to={"/payment"} ><span><button id="pay">Pay Now</button></span></Link>
         </div>
       )
     }

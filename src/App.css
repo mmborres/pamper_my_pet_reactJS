@@ -12,14 +12,15 @@
 }
 
 .App-header {
-  background-color: hotpink;
+  background-image: url("./img/Shopping-dog.jpg");
+  background-size: auto;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #333333;
 }
 
 .App-link {
@@ -59,6 +60,7 @@ body {
   margin: 0;
 }
 
+/*
 .navbar {
   overflow: hidden;
   background-color: #333;
@@ -116,6 +118,8 @@ body {
 .subnav:hover .subnav-content {
   display: block;
 }
+*/
+
 
 .btn-outline-info, .btn-outline-dark {
 
@@ -170,8 +174,8 @@ text-align: center;
   grid-template-columns: 1fr 1fr;
   /* grid-template-rows: 1fr 1fr; */
   grid-gap: 2rem;
-
 }
+
 .item1{
   grid-row: 1 / 4;
   grid-column: 1 / 2;
@@ -209,3 +213,272 @@ text-align: center;
   /* grid-template-rows: 1fr 1fr; */
   grid-gap: 2rem;
 }
+
+.checkout {
+  padding: 1em;
+
+}
+.checkout h1 {
+  text-align: center;
+  color: #333333;
+}
+.checkout table, #no-item {
+  font-size: 20px;
+  color: #0384DF;
+}
+
+.checkout th, td, #no-item {
+  text-align: center;
+  padding: 1em;
+}
+
+#total {
+  text-align: left;
+}
+
+#pay {
+  margin: 1em;
+  margin-left: 50px;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #FE585C;
+}
+
+ #pay:hover {
+  background-color: #FFE201;
+  color: #333333;
+  transition: 0.5s all;
+}
+
+.editform h1 {
+  text-align: center;
+  color: #0384DF;
+}
+.editform form {
+  text-align: center;
+  font-size: 20px;
+  color: #333333;
+  margin: 1em;
+}
+
+.editform label {
+  text-align: left;
+  padding: 1em;
+  font-weight: bold;
+}
+
+.App-header button, .alter {
+  color: white;
+  margin-top: 27px;
+  background-color: #0384DF;
+}
+
+.App-header button:hover, .alter:hover {
+  background-color: #FE585C;
+}
+
+.App-header h1 {
+  color: #0384DF;
+}
+
+.favicon {
+  border-radius: 5px;
+}
+.favicon:hover {
+  background-color: silver;
+}
+
+.example {
+  text-align: center;
+  margin: 1em;
+}
+
+.example h1 {
+  color: #0384DF;
+}
+
+.checkout p {
+  font-size: 20px;
+}
+
+.checkout button:hover {
+  background-color: #333333;
+  color: silver;
+  transition: 0.5s all;
+}
+
+.checkout button {
+  padding: 10px;
+  width: 100px;
+}
+
+/* another version of nav bar 
+
+#main_nav ul {
+  background: white;
+  float: left;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+#main_nav li {
+  float: left;
+  position: relative;
+  width: 150px;
+  list-style: none;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+#main_nav > ul > li > a, h1 {
+  text-transform: uppercase;
+}
+
+#main_nav a {
+  display: block;
+  text-decoration: none;
+  padding: 5px 15px;
+  color: #000;
+}
+
+#main_nav ul ul {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  visibility: hidden;
+  opacity: 0;
+}
+
+#main_nav ul ul ul {
+  left: 100%;
+  top: 0;
+}
+
+#main_nav li:hover, #main_nav li:hover li {
+  background: #ddd;
+}
+
+#main_nav li li:hover, #main_nav li li:hover li {
+  background: #bbb;
+}
+
+#main_nav li li li:hover {
+  background: #999;
+}
+
+#main_nav li:hover > ul {
+  visibility: visible;
+  opacity: 1;
+}
+
+ end nav bar */
+
+ .third-level-menu
+ {
+     position: absolute;
+     top: 0;
+     right: -150px;
+     width: 150px;
+     list-style: none;
+     padding: 0;
+     margin: 0;
+     display: none;
+ }
+ 
+ .third-level-menu > li
+ {
+     height: 30px;
+     background: #999999;
+ }
+ .third-level-menu > li:hover { background: #CCCCCC; }
+ 
+ .second-level-menu
+ {
+     position: absolute;
+     top: 30px;
+     left: 0;
+     width: 150px;
+     list-style: none;
+     padding: 0;
+     margin: 0;
+     display: none;
+ }
+ 
+ .second-level-menu > li
+ {
+     position: relative;
+     height: 30px;
+     background: #999999;
+ }
+ .second-level-menu > li:hover { background: #CCCCCC; }
+ 
+ .top-level-menu
+ {
+     list-style: none;
+     padding: 0;
+     margin: 0;
+ }
+ 
+ .top-level-menu > li
+ {
+     position: relative;
+     float: left;
+     height: 30px;
+     width: 150px;
+     background: #999999;
+ }
+ .top-level-menu > li:hover { background: #CCCCCC; }
+ 
+ .top-level-menu li:hover > ul
+ {
+     /* On hover, display the next level's menu */
+     display: inline;
+ }
+ 
+ .top-level-menu-cat > li
+ {
+     position: relative;
+     float: left;
+     height: 30px;
+     width: 150px;
+     background: #999999;
+ }
+ .top-level-menu-cat > li:hover { background: #CCCCCC; }
+ 
+ .top-level-menu-cat li:hover > ul
+ {
+     /* On hover, display the next level's menu */
+     display: inline;
+ }
+ 
+ /* Menu Link Styles */
+ 
+ .top-level-menu a /* Apply to all links inside the multi-level menu */
+ {
+     font: bold 20px Arial, Helvetica, sans-serif;
+     color: #FFFFFF;
+     text-decoration: none;
+     padding: 0 0 0 10px;
+ 
+     /* Make the link cover the entire list item-container */
+     display: block;
+     line-height: 30px;
+ }
+
+ .top-level-menu a:hover { color: #000000; }
+
+
+ .top-level-menu-cat a /* Apply to all links inside the multi-level menu */
+ {
+     font: bold 20px Arial, Helvetica, sans-serif;
+     color: #FFFFFF;
+     text-decoration: none;
+     padding: 0 0 0 10px;
+ 
+     /* Make the link cover the entire list item-container */
+     display: block;
+     line-height: 30px;
+ }
+
+ .top-level-menu-cat a:hover { color: #000000; }
