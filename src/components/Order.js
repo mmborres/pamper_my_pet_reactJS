@@ -4,13 +4,6 @@ import Nav from './Nav.js';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-
-// Create Orders page, display only recent 10 Orders, sorted by date
-// id | date last updated | status
-//
-// if status = "Open" add link to Checkout
-
-
 class Order extends Component {
   constructor(){
     super();
@@ -27,8 +20,6 @@ class Order extends Component {
         this.setState({order: results.data})
 
       })
-
-
     }
     fetchOrder();
 
@@ -48,9 +39,7 @@ console.log(this.state.load);
     console.log(orderSortedByDate);
     return (
       <div>
-
         <Nav />
-
         <div>
 
         {console.log(this.state.load)}
@@ -76,6 +65,5 @@ console.log(this.state.load);
     );
   }
 }
-
 
 export default Order;
