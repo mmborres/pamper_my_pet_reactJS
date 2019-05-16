@@ -1,18 +1,29 @@
 # Pamper My Pet
 
-## Live Demo: [Pamper My Pet](https://mmborres.github.io/pamper-my-pet)
+-----------------------------------------------------
+
+![Home Page](Screen%20Shot%202019-05-17%20at%202.51.57%20am.png "Home Page")
+
+With the huge variety of pet-oriented content on the web, this "best of" list should give you a better idea of where to find anything from trendy haute couture pet creations to the lowest prices on dog, cat, bird and fish products. **Happy Shopping!**
+
+Shop here: [Pamper My Pet](https://mmborres.github.io/pamper-my-pet)
+
+Simply anyone can view our site and browse through the amazing range of products. However, in order to purchase a product, a new ***User*** has to *Create* and account and an existing one has to *Login*
+
+###Login Page
+
+![Login](admin.png "Login")
 
 ### Sign Up Page
 
 ![Sign Up](Screen%20Shot%202019-05-17%20at%202.55.56%20am.png "Sign Up")
 
-### Home Page
-
-![Home Page](Screen%20Shot%202019-05-17%20at%202.51.57%20am.png "Home Page")
-
+*Users* can find their favourite product by filtering either through the ***Navbar Dropdown*** or can visit the ***All Products*** pgae and can filter through the search form
 ### Nav Bar Dropdown to Search Products
 
-![Nav Dropdown](Screen%20Shot%202019-05-17%20at%202.58.06%20am.png "Nav Dropdown")
+![Nav Dropdown](navbarfilter.png "navbar")
+
+![Search Filter](searchfilter.png "searchfilter")
 
 ### Item Page
 
@@ -32,7 +43,7 @@
 
 ### Technologies ###
 
-This E-Commerce web application uses mainly ReactJS Front-end and Rails Back-end with PostgreSQL as database. 
+This E-Commerce web application uses mainly ReactJS Front-end and Rails Back-end with PostgreSQL as database.
 
   * Front-end uses HTML utilising Google Fonts and web-sourced images
   * Styling and animations through CSS and Bootstrap
@@ -42,8 +53,8 @@ This E-Commerce web application uses mainly ReactJS Front-end and Rails Back-end
      * Stripe API for simulated payments      
   * Windows LocalStorage used in handling Session Data
   * NPM Packages Applied: Alice Carousel for the Carousel Display in the Home Page, React-Stripe-Elements for the Card Payment
-  * Gems: BCrypt, JWT, Stripe and Rack-Cors to enable API Endpoint 
-  
+  * Gems: BCrypt, JWT, Stripe and Rack-Cors to enable API Endpoint
+
 ### Wishlist ###
 
   * Implement Discount or Sale options
