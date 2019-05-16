@@ -46,15 +46,15 @@ class Nav extends Component {
                     <li><Link to="/products/Others/Accessories">Accessories</Link></li>
                     <li><Link to="/products/Others/Miscellaneous">Miscellaneous</Link></li>
                 </ul>
-            </li>            
+            </li>
         </ul>
     </li>
     <li><Link to="/login">Login</Link></li>
     <li><Link to="/signup">Sign Up</Link></li>
     </ul>
     </nav>
-  
-        
+
+
       );
     }
     const hello = UserProfile.getName();
@@ -62,7 +62,7 @@ class Nav extends Component {
     return (
       <div>
 
-<nav style={{paddingBottom: '80px'}} >
+<nav style={{paddingBottom: '0'}} >
     <ul class="top-level-menu">
     <li><Link to="/home">Home</Link></li>
     <li><Link to="/products">All Products</Link></li>
@@ -98,7 +98,7 @@ class Nav extends Component {
                     <li><Link to="/products/Others/Accessories">Accessories</Link></li>
                     <li><Link to="/products/Others/Miscellaneous">Miscellaneous</Link></li>
                 </ul>
-            </li>            
+            </li>
         </ul>
     </li>
     <li><NavCart /></li>
@@ -115,7 +115,7 @@ class Nav extends Component {
 class Navbar extends Component {
 
   render(){
-    
+
     return(
 
 

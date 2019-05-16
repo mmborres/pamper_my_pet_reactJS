@@ -211,7 +211,7 @@ import React, { Component } from 'react';
         const userPresent = UserProfile.getEmail() === "";
 
         return(
-          <div >
+          <div className="container" >
           <div className="newProd-container" >
           <div className="item1">
           <img className="item-image" src={this.props.item.image}/>
@@ -248,7 +248,7 @@ import React, { Component } from 'react';
           </div>
           </div>
           </div>
-
+        
 
         );
       }
