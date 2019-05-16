@@ -411,6 +411,18 @@ text-align: center;
  }
  .top-level-menu a:hover { color: hotpink; text-decoration: none; }
 
+ .non-link-menu
+ {
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 0 20px 0 20px;
+  /* Make the link cover the entire list item-container */
+  display: inline-block;
+  line-height: 30px;
+}
+.non-link-menu:hover { color: hotpink; text-decoration: none; }
+
+
  footer {
  	text-transform: uppercase;
  	padding: 0 20px 0 10px;
