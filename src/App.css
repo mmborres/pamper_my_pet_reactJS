@@ -136,11 +136,7 @@ body {
   font-size: 1.3rem;
 }
 .heading {
-<<<<<<< HEAD
-color:#333333;
-=======
 color: #333333;
->>>>>>> 7ea142852e312538b19e607bbc349320ba384cea
 text-transform: uppercase;
 backface-visibility: hidden;
 margin-bottom: 2rem;
