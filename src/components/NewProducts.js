@@ -147,19 +147,23 @@ class CreateForm extends Component {
   render () {
 
     return (
-      <div>
-
+      <div className="item-container">
+        <div className="item2">
           <label>Name</label>
           <input type="text" onInput={this._handleInputName}/>
           <br />
+
 
           <label>Image</label>
           <input type="text" onInput={this._handleInputImage}/>
           <br />
 
+
+
           <label>Description</label>
           <input type="text" onInput={this._handleInputDescription}/>
           <br />
+
 
           <label>Size</label>
           <input type="text" onInput={this._handleInputSize}/>
@@ -198,9 +202,8 @@ class CreateForm extends Component {
 
           <button type="submit" onClick={"http://localhost:3000/#/products"} >Create Item!</button>
 
-
-
         </form>
+        </div>
       </div>
     );
   }

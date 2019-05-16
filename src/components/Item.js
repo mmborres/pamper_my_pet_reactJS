@@ -210,39 +210,40 @@
 
         return(
           <div >
-          <div className="item-container" >
+          <div className="newProd-container" >
           <div className="item1">
           <img className="item-image" src={this.props.item.image}/>
           </div>
           <div className="item2">
-          <p><strong>Name:</strong>{this.props.item.name}</p>
-          <p><strong>Price: </strong> AUD {this.props.item.price}</p>
-          <p><strong>Description: </strong>{this.props.item.description}</p>
-          <p><strong>Size: </strong>{this.props.item.size}</p>
-          <p><strong>Color: </strong>{this.props.item.color}</p>
-          <p><strong>Stock: </strong>{isOutOfStock ? 'Out of Stock' : 'Available'}</p>
-          <p><strong>Select quantity: </strong>
+          <p><strong>Name:&ensp;</strong>{this.props.item.name}</p>
+          <p><strong>Price: &ensp;</strong> AUD {this.props.item.price}</p>
+          <p className="item-description"><strong>Description: &ensp;</strong>{this.props.item.description}</p>
+          <p><strong>Size: &ensp;</strong>{this.props.item.size}</p>
+          <p><strong>Color: &ensp;</strong>{this.props.item.color}</p>
+          <p><strong>Stock: &ensp;</strong>{isOutOfStock ? 'Out of Stock' : 'Available'}</p>
+          <p><strong>Select quantity: &ensp;</strong>
           <select onChange={this._handleChange}>
           {this.createQuantitySelect()}
           </select>
           </p>
-        </div>
-        </div>
+
 
           <div >
           {userPresent ?
-            <p className="item3">
-            <button><Link to="/">Add to Cart</Link></button>
+            <p>
+            <button><Link to="/">Add to Cart</Link></button>&ensp;
             <button><Link to="/">Buy Now</Link>></button>
             </p>
             :
-            <p className="item3">
-            <button onClick={this._handleCart} id="1" disabled={isOutOfStock}>Add to Cart</button>
-            <button onClick={this._handleCart} id="2" disabled={isOutOfStock}>Buy Now</button>
+            <p>
+            <button className="btn btn-warning" onClick={this._handleCart} id="1" disabled={isOutOfStock}>Add to Cart</button>&ensp;&ensp;
+            <button className="btn btn-warning" onClick={this._handleCart} id="2" disabled={isOutOfStock}>Buy Now</button>
             </p>
 
 
           }
+          </div>
+          </div>
           </div>
           </div>
 

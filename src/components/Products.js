@@ -155,7 +155,7 @@ class Products extends Component {
         <SearchForm pet={this.props.match.params.pet} category = {this.props.match.params.category} pets={this.state.pets} categories={this.state.categories} onSubmit={ this.fetchProducts}/>
         {
           isAdmin
-          ?  <p className="card-text btn btn-outline-dark"><Link to="/newproducts">Add New Product</Link></p>
+          ?  <p className="btn btn-outline-info"><Link to="/newproducts" style={linkStyle}>Add New Product</Link></p>
           : ''
         }
         <Allproducts products={this.state.products}/>
@@ -177,7 +177,12 @@ const cardStyle = {
 const imgStyle = {
   height: '13rem',
   width: '13rem',
-  margin: '13%',
+  marginLeft: '20%',
+  marginTop: '10%'
+}
+const linkStyle = {
+  textDecoration: "none",
+  color: "black"
 }
 
 const Allproducts = (props) => {
@@ -202,7 +207,7 @@ const Allproducts = (props) => {
 
             <Link to={ "/product/" + p.id }><img src={p.image} className="card-img-top" style={imgStyle}/></Link>
             <div className="card-title">
-              <button size="sm" className="btn btn-outline-dark"><Link to={ "/product/" + p.id }>{p.name}</Link></button>
+              <button type="button" size="sm" className="btn btn-outline-info"><Link to={ "/product/" + p.id } style={linkStyle}>{p.name}</Link></button>
 
               </div>
 
@@ -228,11 +233,13 @@ class SearchForm extends Component {
     super();
     this.state = {
       category: '',
-      pettype: ''
+      pettype: '',
+
     }
 
     this._handleChangeCategory = this._handleChangeCategory.bind(this);
     this._handleChangePetType = this._handleChangePetType.bind(this);
+
     this._handleSubmit = this._handleSubmit.bind(this);
 
     //setstate from props values
@@ -251,6 +258,8 @@ class SearchForm extends Component {
     this.setState({pettype: event.target.value});
     //console.log(this.state.pettype);
   };
+;
+
   _handleSubmit(event){
     event.preventDefault();
     // console.log("hi");
@@ -267,24 +276,26 @@ class SearchForm extends Component {
       <div className="dropdown">
 
           <form onSubmit={this._handleSubmit} >
-            <label className="label">Category:</label>
 
-              <select onChange={this._handleChangeCategory}>
-                <option></option>
-                {
-                  this.props.categories.map( (c) => <option className="dropdown-item" name={c} value={c} selected={ (c===this.props.category) ? "selected" : ""}>{c}</option>)
-                }
-              </select>
-
-            <label className="label">Pet Type:</label>
-              <select onChange={this._handleChangePetType}>
+            
+            <label className="label">Pet:</label>
+              <select className="product-option" onChange={this._handleChangePetType}>
                 <option ></option>
                 {
                   this.props.pets.map( (p) => <option name={p} value={p} selected={ (p===this.props.pet) ? "selected" : "" }>{p}</option>)
                 }
               </select>
 
-          <button type="submit" size="sm" className="btn btn-outline-dark" >Search For Me!</button>
+              <label className="label">Category:</label>
+
+                <select className="product-option" onChange={this._handleChangeCategory}>
+                  <option></option>
+                  {
+                    this.props.categories.map( (c) => <option className="dropdown-item" name={c} value={c} selected={ (c===this.props.category) ? "selected" : ""}>{c}</option>)
+                  }
+                </select>
+
+          <button type="submit" size="sm" className="btn btn-outline-dark" >Search!</button>
 
         </form>
       </div>
