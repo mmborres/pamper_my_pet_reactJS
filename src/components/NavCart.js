@@ -45,7 +45,7 @@ class NavCart extends Component {
 
     render() {
         return(
-            <Link to="/checkout">Cart ({this.state.cartItems}) </Link>
+            <Link to="/checkout">Cart &#x1F6D2; ({this.state.cartItems}) </Link>
         )
     }
 }

@@ -410,7 +410,7 @@ max-width: 960px;
      height: 30px;
      background: #999999;
  }
- .third-level-menu > li:hover { background: #CCCCCC; }
+ .third-level-menu > li:hover { background: #999999; text-decoration: none; }
 
  .second-level-menu
  {
@@ -430,13 +430,15 @@ max-width: 960px;
      height: 30px;
      background: #999999;
  }
- .second-level-menu > li:hover { background: #CCCCCC; }
+ .second-level-menu > li:hover { background:  #999999; text-decoration: none; }
 
  .top-level-menu
  {
      list-style: none;
-     padding: 0;
-     margin: 0;
+     padding: 20px 20px 20px 20px;
+     margin: 0px;
+     background: #999999;
+     height: 70px;
  }
 
  .top-level-menu > li
@@ -447,25 +449,9 @@ max-width: 960px;
      width: 150px;
      background: #999999;
  }
- .top-level-menu > li:hover { background: #CCCCCC; }
+ .top-level-menu > li:hover { background:  #999999; text-decoration: none; }
 
  .top-level-menu li:hover > ul
- {
-     /* On hover, display the next level's menu */
-     display: inline;
- }
-
- .top-level-menu-cat > li
- {
-     position: relative;
-     float: left;
-     height: 30px;
-     width: 150px;
-     background: #999999;
- }
- .top-level-menu-cat > li:hover { background: #CCCCCC; }
-
- .top-level-menu-cat li:hover > ul
  {
      /* On hover, display the next level's menu */
      display: inline;
@@ -485,19 +471,31 @@ max-width: 960px;
      line-height: 30px;
  }
 
- .top-level-menu a:hover { color: #000000; }
+ .top-level-menu a:hover { color: #000000; text-decoration: none; }
 
-
- .top-level-menu-cat a /* Apply to all links inside the multi-level menu */
+ .footer
  {
-     font: bold 20px Arial, Helvetica, sans-serif;
-     color: #FFFFFF;
-     text-decoration: none;
-     padding: 0 0 0 10px;
-
-     /* Make the link cover the entire list item-container */
+     list-style: none;
+     padding: 20px 20px 20px 20px;
+     margin: 0px;
+     background: #999999;
+     height: 100px;
      display: block;
-     line-height: 30px;
+     flex-direction: column;
  }
 
- .top-level-menu-cat a:hover { color: #000000; }
+ /*padding top right bottom left*/
+ .footerA {
+  display: inline-flex;
+  padding: 10px 50px 10px 50px;
+ }
+
+ .footerB {
+  display: inline-flex;
+  padding: 10px 50px 10px 50px;
+ }
+
+ .footerC {
+  display: inline-flex;
+  padding: 10px 50px 10px 50px;
+ }
