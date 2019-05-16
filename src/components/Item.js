@@ -233,8 +233,8 @@ import React, { Component } from 'react';
           <div >
           {userPresent ?
             <p>
-            <button className="btn btn-warning"><Link to="/login">Add to Cart</Link></button>&ensp;
-            <button className="btn btn-warning"><Link to="/login">Buy Now</Link></button>
+            <Link to="/login"><button className="btn btn-warning">Add to Cart</button></Link>&ensp;
+            <Link to="/login"><button className="btn btn-warning">Buy Now</button></Link>
             </p>
             :
             <p>

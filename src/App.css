@@ -2,13 +2,13 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  background-color: #333333;
+  background-color: #E0A800;
 }
 
 .App h1 {
   font-weight: bold;
-  color: salmon;
-font-family: fantasy;
+  color: #333333;
+  font-style: oblique;
 }
 
 .App h1, p {
@@ -135,7 +135,7 @@ body {
   font-size: 1.3rem;
 }
 .heading {
-color: salmon;
+color: #333333;
 text-transform: uppercase;
 backface-visibility: hidden;
 margin-bottom: 2rem;
@@ -224,6 +224,7 @@ text-align: center;
 }
 #total {
   text-align: left;
+  color: #0384DF;
 }
 #pay {
   margin: 1em;
@@ -420,7 +421,8 @@ text-align: center;
 
  .copyright {
  	float: left;
-  color: black;
+  color: #333333;
+  font-family: bold;
  }
 
  .message {
