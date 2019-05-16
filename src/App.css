@@ -1,37 +1,16 @@
-/* S */
-@media screen and (max-width: 500px) {
-
-}
-/* M */
-@media screen and (max-width: 768px) {
-
-}
-/* L */
-@media screen and (min-width: 769px) and (max-width: 1170px) {
-  /* tag{} */
-}
-
-/* Xl  */
-@media screen and (min-width: 1171px) {
-  /* tag{} */
-}
-
 .App {
   text-align: center;
   display: flex;
   flex-direction: column;
 }
-
 .App h1 {
   color:#0384DF;
 }
-
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
   pointer-events: none;
 }
-
 .App-header {
   background-image: url("./img/Shopping-dog.jpg");
   background-size: auto;
@@ -43,11 +22,9 @@
   font-size: calc(10px + 2vmin);
   color: #333333;
 }
-
 .App-link {
   color: #61dafb;
 }
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -56,37 +33,30 @@
     transform: rotate(360deg);
   }
 }
-
-
 .featurenotify {
   max-width: 50%;
   object-fit: cover;
   border: 6px solid #920f00;
 }
-
 .thumb {
   object-fit: cover;
   height: 150px;
   width: 150px;
 }
-
 .currstatus {
   object-fit: cover;
   height: 300px;
   width: 250px;
 }
-
 body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
 }
-
 /*
 .navbar {
   overflow: hidden;
   background-color: #333;
 }
-
 .navbar a {
   float: left;
   font-size: 16px;
@@ -95,12 +65,10 @@ body {
   padding: 14px 16px;
   text-decoration: none;
 }
-
 .subnav {
   float: left;
   overflow: hidden;
 }
-
 .subnav .subnavbtn {
   font-size: 16px;
   border: none;
@@ -111,11 +79,9 @@ body {
   font-family: inherit;
   margin: 0;
 }
-
 .navbar a:hover, .subnav:hover .subnavbtn {
   background-color: red;
 }
-
 .subnav-content {
   display: none;
   position: absolute;
@@ -124,45 +90,33 @@ body {
   width: 100%;
   z-index: 1;
 }
-
 .subnav-content a {
   float: left;
   color: white;
   text-decoration: none;
 }
-
 .subnav-content a:hover {
   background-color: #eee;
   color: black;
 }
-
 .subnav:hover .subnav-content {
   display: block;
 }
 */
-
-
 .btn-outline-info, .btn-outline-dark {
-
-position: absolute;
-bottom: 0;
-  width: 100%;
+  margin: 2rem;
+  width: 17rem;
 }
-
-
 .label {
   color: #000;
   margin-left: 1rem;
   padding: 0.5rem;
   font-weight: 500;
   font-size: 1.3rem;
-
 }
-
 .heading {
 color:#0384DF;
 text-transform: uppercase;
-
 backface-visibility: hidden;
 margin-bottom: 2rem;
 display: block;
@@ -174,7 +128,6 @@ animation-duration: 1.5s;
 animation-timing-function: ease-out;
 text-align: center;
 }
-
 @keyframes moveInLeft{
     0%{
         opacity: 0;
@@ -197,12 +150,9 @@ text-align: center;
   /* grid-template-rows: 1fr 1fr; */
   grid-gap: 2rem;
 }
-
 .item1{
   grid-row: 1 / 4;
   grid-column: 1 / 2;
-
-
 }
 .item2{
   grid-row: 2 / 3;
@@ -213,33 +163,30 @@ text-align: center;
   margin-top: 2rem;
   grid-column: 1 / 3;
 }
-
 .item-image{
-  margin-right: 100px;
-  width: 100%;
-  /* height: 500px; */
+  width: 500px;
+  height: 500px;
   margin-left: 4rem;
   margin-top: 5rem;
-
-}
-p{
-  margin-left: 100px;
 }
 .product-option{
   width: 10rem;
 }
-
 .newProd-container {
+<<<<<<< HEAD
   /* margin: 0 auto; */
   /* position: relative; */
   max-width: 960px;
+=======
+  position: relative;
+  width: 100%;
+>>>>>>> 9d9ab54be6df018fb23636c256f848719f1e6bc4
   /* height: 100%; */
   display: grid;
   grid-template-columns: 1fr 1fr;
   /* grid-template-rows: 1fr 1fr; */
   grid-gap: 2rem;
 }
-
 .checkout {
   padding: 1em;
 }
@@ -252,23 +199,18 @@ p{
   font-size: 20px;
   color: #0384DF;
 }
-
 .checkout th, td, #no-item {
   text-align: center;
   padding: 1em;
 }
-
 #total {
   text-align: left;
 }
-
 #pay {
   margin: 1em;
   margin-left: 50px;
   padding: 10px;
-
 }
-
 .editform h1 {
   text-align: center;
   color: #0384DF;
@@ -279,67 +221,54 @@ p{
   color: #333333;
   margin: 1em;
 }
-
 .editform label {
   text-align: left;
   padding: 1em;
   font-weight: bold;
 }
-
 .App-header button, .alter {
   color: white;
   margin-top: 27px;
   background-color: #0384DF;
 }
-
 .App-header button:hover, .alter:hover {
   background-color: #FE585C;
 }
-
 .App-header h1 {
   color: #0384DF;
 }
-
 .favicon {
   border-radius: 5px;
 }
 .favicon:hover {
   background-color: silver;
 }
-
 .example {
   text-align: center;
   margin: 1em;
 }
-
 .example h1 {
   color: #0384DF;
 }
-
 .checkout p {
   font-size: 20px;
 }
-
 .checkout button:hover {
   background-color: #333333;
   color: silver;
   transition: 0.5s all;
 }
-
 .checkout button {
   padding: 10px;
   width: 100px;
 }
-
 /* another version of nav bar
-
 #main_nav ul {
   background: white;
   float: left;
   -webkit-transition: .5s;
   transition: .5s;
 }
-
 #main_nav li {
   float: left;
   position: relative;
@@ -348,18 +277,15 @@ p{
   -webkit-transition: .5s;
   transition: .5s;
 }
-
 #main_nav > ul > li > a, h1 {
   text-transform: uppercase;
 }
-
 #main_nav a {
   display: block;
   text-decoration: none;
   padding: 5px 15px;
   color: #000;
 }
-
 #main_nav ul ul {
   position: absolute;
   left: 0;
@@ -367,31 +293,24 @@ p{
   visibility: hidden;
   opacity: 0;
 }
-
 #main_nav ul ul ul {
   left: 100%;
   top: 0;
 }
-
 #main_nav li:hover, #main_nav li:hover li {
   background: #ddd;
 }
-
 #main_nav li li:hover, #main_nav li li:hover li {
   background: #bbb;
 }
-
 #main_nav li li li:hover {
   background: #999;
 }
-
 #main_nav li:hover > ul {
   visibility: visible;
   opacity: 1;
 }
-
  end nav bar */
-
  .third-level-menu
  {
      position: absolute;
@@ -403,14 +322,12 @@ p{
      margin: 0;
      display: none;
  }
-
  .third-level-menu > li
  {
      height: 30px;
      background: #999999;
  }
  .third-level-menu > li:hover { background: #999999; text-decoration: none; }
-
  .second-level-menu
  {
      position: absolute;
@@ -422,7 +339,6 @@ p{
      margin: 0;
      display: none;
  }
-
  .second-level-menu > li
  {
      position: relative;
@@ -430,7 +346,6 @@ p{
      background: #999999;
  }
  .second-level-menu > li:hover { background:  #999999; text-decoration: none; }
-
  .top-level-menu
  {
      list-style: none;
@@ -439,7 +354,6 @@ p{
      background: #999999;
      height: 70px;
  }
-
  .top-level-menu > li
  {
      position: relative;
@@ -449,52 +363,115 @@ p{
      background: #999999;
  }
  .top-level-menu > li:hover { background:  #999999; text-decoration: none; }
-
  .top-level-menu li:hover > ul
  {
      /* On hover, display the next level's menu */
      display: inline;
  }
-
  /* Menu Link Styles */
-
  .top-level-menu a /* Apply to all links inside the multi-level menu */
  {
      font: bold 20px Arial, Helvetica, sans-serif;
      color: #FFFFFF;
      text-decoration: none;
      padding: 0 0 0 10px;
-
      /* Make the link cover the entire list item-container */
      display: block;
      line-height: 30px;
  }
-
  .top-level-menu a:hover { color: #000000; text-decoration: none; }
-
  .footer
  {
      list-style: none;
-     padding: 20px 20px 20px 20px;
+     padding: 10px 20px 20px 20px;
      margin: 0px;
      background: #999999;
-     height: 100px;
+     height: 110px;
      display: block;
      flex-direction: column;
  }
-
  /*padding top right bottom left*/
  .footerA {
   display: inline-flex;
-  padding: 10px 50px 10px 50px;
+  padding: 10px 300px 10px 200px;
+  background: #999999;
  }
-
  .footerB {
   display: inline-flex;
-  padding: 10px 50px 10px 50px;
+  padding: 10px 300px 10px 200px;
+  background: #999999;
  }
-
  .footerC {
   display: inline-flex;
-  padding: 10px 50px 10px 50px;
+  padding: 10px 300px 10px 200px;
+  background: #999999;
  }
+```
+Collapse
+
+
+
+new messages
+
+Rashida Bengali2:30 PM
+.end {
+  background-color: rgba(0,0,0,0.6);
+}
+
+.end p {
+  color: white;
+  font-family: cursive;
+  letter-spacing: 3px;
+  padding: 10px;
+  font-size: 25px;
+  text-align: center;
+  margin: 0 auto;
+  float: left;
+}
+
+span {
+  color: #DD4B39;
+  font-style: oblique;
+}
+
+#social {
+    overflow: auto;
+}
+
+#social li {
+    list-style-type: none;
+    float: right;
+}
+
+#social li a i {
+    background: #205D7A;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    font-size: 25px;
+    text-align: center;
+    margin-right: 10px;
+    padding-top: 15%;
+}
+
+#social li a i {
+    transition: all 0.2s ease-in-out;
+}
+#social li a i:hover {
+    opacity: .7;
+  cursor: url("/assets/icons8-dining-room-48.png"), auto;
+}
+
+#social .fa-github {
+    background:#000;
+}
+#social .fa-linkedin {
+    background:#007bb6;
+}
+#social .fa-twitter {
+    background:#00aced;
+}
+#social .fa-envelope {
+    background:#dd4b39;
+}
