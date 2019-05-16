@@ -16,9 +16,9 @@ Simply anyone can view our site and browse through the amazing range of products
 
 ![Sign Up](Screen%20Shot%202019-05-17%20at%202.55.56%20am.png "Sign Up")
 
-*Users* can find their favourite product by filtering either through the ***Navbar Dropdown*** or can visit the ***All Products*** pgae and can filter through the search form.
-
 ### Nav Bar Dropdown to Search Products
+
+*Users* can find their favourite product by filtering either through the ***Navbar Dropdown*** or can visit the ***All Products*** pgae and can filter through the search form.
 
 ![Nav Dropdown](navbarfilter.png "navbar")
 
