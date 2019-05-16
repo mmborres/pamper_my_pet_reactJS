@@ -24,12 +24,14 @@ class NavCart extends Component {
             const user_id = UserProfile.getUserId();
 
             //if ( cart.length === 0 ) {
-                console.log("navcart 1");
+                //console.log("navcart 1");
                 //check if truly empty
                 axios.get(ordersUrl).then((results) => {
-                    const index = results.data.findIndex((item) => item.user_id === user_id && item.status === 'Open');
-
+                    //console.log(results);
+                    const index = results.data.findIndex((item) => item.user_id === user_id && item.status === "Open");
+                    //console.log("here 2 ");
                     if ( index > 0 ) {
+                      //console.log("here, found Open");
                         let orderId = results.data[index].id;
                         let filteredArray = [];
 
@@ -38,6 +40,9 @@ class NavCart extends Component {
                           }).then( () => {
                             this.setState({cartItems: filteredArray.length});
                           } );
+                    } else if (index < 1) {
+                      //console.log("here, NOT found Open");
+                      this.setState({cartItems: 0});
                     }
                 });
 

@@ -18,10 +18,10 @@ class Nav extends Component {
               <li style={{float: 'left'}}><Link to="/home">Home</Link></li>
               <li style={{float: 'left'}}><Link to="/products">All Products</Link></li>
               <li style={{width: '250px', textAlign: 'center',float: 'left'}} >
-                  <a href="#">Shop By Category</a>
+                  <span class="non-link-menu">Shop By Category</span>
                   <ul class="second-level-menu">
                       <li>
-                          <a href="#">Dog</a>
+                          <span class="non-link-menu">Dog</span>
                           <ul class="third-level-menu">
                               <li><Link to="/products/Dog/Clothing">Clothing</Link></li>
                               <li><Link to="/products/Dog/Accessories">Accessories</Link></li>
@@ -29,7 +29,7 @@ class Nav extends Component {
                           </ul>
                       </li>
                       <li>
-                          <a href="#">Cat</a>
+                          <span class="non-link-menu">Cat</span>
                           <ul class="third-level-menu">
                               <li><Link to="/products/Cat/Clothing">Clothing</Link></li>
                               <li><Link to="/products/Cat/Accessories">Accessories</Link></li>
@@ -37,14 +37,14 @@ class Nav extends Component {
                           </ul>
                       </li>
                       <li>
-                          <a href="#">Bird</a>
+                          <span class="non-link-menu">Bird</span>
                           <ul class="third-level-menu">
                               <li><Link to="/products/Bird/Accessories">Accessories</Link></li>
                               <li><Link to="/products/Bird/Miscellaneous">Miscellaneous</Link></li>
                           </ul>
                       </li>
                       <li>
-                          <a href="#">Others</a>
+                          <span class="non-link-menu">Others</span>
                           <ul class="third-level-menu">
                               <li><Link to="/products/Others/Accessories">Accessories</Link></li>
                               <li><Link to="/products/Others/Miscellaneous">Miscellaneous</Link></li>
@@ -69,10 +69,10 @@ class Nav extends Component {
     <li style={{float: 'left'}}><Link to="/home">Home</Link></li>
     <li style={{float: 'left'}}><Link to="/products">All Products</Link></li>
     <li style={{width: '250px', textAlign: 'center',float: 'left'}}>
-        <a href="#">Shop By Category</a>
+        <span class="non-link-menu">Shop By Category</span>
         <ul class="second-level-menu">
             <li>
-                <a href="#">Dog</a>
+                <span class="non-link-menu">Dog</span>
                 <ul class="third-level-menu">
                     <li><Link to="/products/Dog/Clothing">Clothing</Link></li>
                     <li><Link to="/products/Dog/Accessories">Accessories</Link></li>
@@ -80,7 +80,7 @@ class Nav extends Component {
                 </ul>
             </li>
             <li>
-                <a href="#">Cat</a>
+                <span class="non-link-menu">Cat</span>
                 <ul class="third-level-menu">
                     <li><Link to="/products/Cat/Clothing">Clothing</Link></li>
                     <li><Link to="/products/Cat/Accessories">Accessories</Link></li>
@@ -88,14 +88,14 @@ class Nav extends Component {
                 </ul>
             </li>
             <li>
-                <a href="#">Bird</a>
+                <span class="non-link-menu">Bird</span>
                 <ul class="third-level-menu">
                     <li><Link to="/products/Bird/Accessories">Accessories</Link></li>
                     <li><Link to="/products/Bird/Miscellaneous">Miscellaneous</Link></li>
                 </ul>
             </li>
             <li>
-                <a href="#">Others</a>
+                <span class="non-link-menu">Others</span>
                 <ul class="third-level-menu">
                     <li><Link to="/products/Others/Accessories">Accessories</Link></li>
                     <li><Link to="/products/Others/Miscellaneous">Miscellaneous</Link></li>

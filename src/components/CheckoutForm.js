@@ -14,7 +14,8 @@ class CheckoutForm extends Component {
   async submit(ev) {
     const stripeserver = "https://pamper-my-pet.herokuapp.com/orders/";
     //const stripeserver = "http://localhost:3000/orders";
-    let {token} = await this.props.stripe.createToken({name: "Name"});
+    let custname = UserProfile.getName();
+    let {token} = await this.props.stripe.createToken({name: custname});
     console.log(token);
     //console.log("token id = " + token.id);
 
@@ -29,7 +30,7 @@ class CheckoutForm extends Component {
       body: tok.id
     });*/
 
-    axios.post(stripeserver + "/charge", { token: token, user_id: userId, order_id: orderId, email: em }).then((result) => {
+    axios.post(stripeserver + "/charge", { stripeToken: token, user_id: userId, order_id: orderId, stripeEmail: em }).then((result) => {
       console.log(result);
       console.log(result.data);
       console.log(result.statusText);

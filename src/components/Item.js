@@ -214,8 +214,8 @@ import React, { Component } from 'react';
         return(
           <div className="container" >
           <div className="newProd-container" >
-          <div className="item1">
-          <img className="item-image" src={this.props.item.image}/>
+          <div className="item1" style={{zIndex: -1}}>
+          <img className="item-image" src={this.props.item.image} style={{zIndex: -1}}/>
           </div>
           <div className="item2">
           <p><strong>Name:&ensp;</strong>{this.props.item.name}</p>
