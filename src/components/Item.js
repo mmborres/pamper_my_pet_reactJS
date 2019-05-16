@@ -5,6 +5,8 @@ import React, { Component } from 'react';
     import Footer from './Footer.js';
     import UserProfile from './UserProfile';
     import AddToCart from './AddToCart';
+    import { Dropdowns }  from "react-bootstrap";
+    import { Button, Container, Row, Col } from "reactstrap";
 
     class Item extends Component {
       constructor(props) {

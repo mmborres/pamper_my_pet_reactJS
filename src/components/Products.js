@@ -175,10 +175,10 @@ const cardStyle = {
 };
 
 const imgStyle = {
-  height: '13rem',
-  width: '13rem',
-  marginLeft: '20%',
-  marginTop: '10%'
+  height: '100%',
+  width: '100%',
+  marginLeft: '0',
+  marginTop: '0'
 }
 const linkStyle = {
   textDecoration: "none",
