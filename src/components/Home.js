@@ -59,7 +59,7 @@ class Home extends Component {
     return (
       <div className="App">
       <Nav />
-        <h1>Pamper My Pet</h1>
+        <h1>PAMPER MY PET</h1>
         <p>With the huge variety of pet-oriented content on the web, this "best of" list should give you a better idea of where to find anything from trendy haute couture pet creations to the lowest prices on dog, cat, bird and fish food. Happy shopping!</p>
         <div><DisplayFeatured featured={this.state.featuredproducts} /></div>
       <Footer />
