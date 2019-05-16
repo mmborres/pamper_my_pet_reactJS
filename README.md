@@ -18,7 +18,8 @@ Simply anyone can view our site and browse through the amazing range of products
 
 ![Sign Up](Screen%20Shot%202019-05-17%20at%202.55.56%20am.png "Sign Up")
 
-*Users* can find their favourite product by filtering either through the ***Navbar Dropdown*** or can visit the ***All Products*** pgae and can filter through the search form
+*Users* can find their favourite product by filtering either through the ***Navbar Dropdown*** or can visit the ***All Products*** pgae and can filter through the search form.
+
 ### Nav Bar Dropdown to Search Products
 
 ![Nav Dropdown](navbarfilter.png "navbar")
@@ -27,13 +28,25 @@ Simply anyone can view our site and browse through the amazing range of products
 
 ### Item Page
 
+*Users* may select the quantity of each Product from the dropdown option of the page. The options are dependent on the the availibility of the stock of that particular item.
+
+As you can see here, User can select upto 10 **Quantity** of this particular product which means there are only 10 in **Stock**
+
+![Quantity](quantity.png "Quantity")
+
+Users then can add products in their **Cart** and once they are done filling their Cart, they can click the Cart Icon in Navbar that will redirect them to the Purchasing Process page or they can click directly on **Buy Now** that will redirect the User to the Purchasing Process page.
+
 ![Item](Screen%20Shot%202019-05-17%20at%202.59.06%20am.png "Item")
 
 ### Checkout Page
 
+After clicking *Buy Now* button or *Cart Icon* in Navbar. The User can view the **Order Details**. He may **Edit** the quantity of an item or can also **Remove** the product from the buttons provided according to his convenience.
+
 ![Checkout](Screen%20Shot%202019-05-17%20at%202.59.35%20am.png "Checkout")
 
 ### Card Payment
+
+Our secure payment method, allows the User to make Payment wit ease.
 
 ![Card Payment](Screen%20Shot%202019-05-17%20at%203.00.39%20am.png "Card Payment")
 
@@ -41,12 +54,24 @@ Simply anyone can view our site and browse through the amazing range of products
 
 ![Payment Done](Screen%20Shot%202019-05-17%20at%203.01.01%20am.png "Payment Done")
 
-### Technologies ###
+Technologies
+-----------------------------------------------------
+This E-Commerce web application uses mainly **ReactJS** Front-end and **Rails** Back-end with **PostgreSQL** as database and has been deployed on **Heroku**.
 
-This E-Commerce web application uses mainly ReactJS Front-end and Rails Back-end with PostgreSQL as database.
+***Pamper My Pet*** has the following MVC (Model View Controller) Structure
 
+![MVC](mvc.png "MVC")
+
+Each **Model** inherits from *ActiveRecord* that does the following in an object oriented fashion:
+
+* Create tables
+* Represent associations between Models
+* Perform database operations
+
+Major Features:
+----------------------------------------------
   * Front-end uses HTML utilising Google Fonts and web-sourced images
-  * Styling and animations through CSS and Bootstrap
+  * Styling and animations through CSS, Bootstrap and Favicons
   * ReactJS for Front-end Components
   * Rails API: JSON endpoint rendering in the Controllers
      * JWT for User Authentication  
@@ -54,9 +79,17 @@ This E-Commerce web application uses mainly ReactJS Front-end and Rails Back-end
   * Windows LocalStorage used in handling Session Data
   * NPM Packages Applied: Alice Carousel for the Carousel Display in the Home Page, React-Stripe-Elements for the Card Payment
   * Gems: BCrypt, JWT, Stripe and Rack-Cors to enable API Endpoint
+  * Admin Rights
 
-### Wishlist ###
+  ![Add](add.png "Add")
+
+  ![Edit](admin2.png "Edit")
+
+Wishlist
+----------------------------------------------------
 
   * Implement Discount or Sale options
   * Simulate Delivery System
+  * Introduce User Review for *Pamper My Pet* Products
+  * Enable Price Filter in Search Bar.
   * More Animations
