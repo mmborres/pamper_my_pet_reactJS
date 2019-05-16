@@ -14,7 +14,7 @@ class Nav extends Component {
     <ul class="top-level-menu">
     <li><Link to="/home">Home</Link></li>
     <li><Link to="/products">All Products</Link></li>
-    <li style={{width: '250px', textAlign: 'centert'}} >
+    <li style={{width: '250px', textAlign: 'center'}} >
         <a href="#">Shop By Category</a>
         <ul class="second-level-menu">
             <li>
@@ -103,11 +103,9 @@ class Nav extends Component {
     </li>
     <li><NavCart /></li>
     <li><Link to="/logout">Logout</Link></li>
+    <li><span>Welcome {hello} </span></li>
     </ul>
     </nav>
-
-      <span>Welcome {hello}</span>
-      <span> &#x1F6D2; </span>
 
       </div>
     );
