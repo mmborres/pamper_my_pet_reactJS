@@ -66,16 +66,22 @@ Each **Model** inherits from *ActiveRecord* that does the following in an object
 * Represent associations between Models
 * Perform database operations
 
-Major Features:
-----------------------------------------------
-  * Front-end uses HTML utilising Google Fonts and web-sourced images
-  * Styling and animations through CSS, Bootstrap and Favicons
-  * ReactJS for Front-end Components
+- Front-end uses HTML utilising Google Fonts and web-sourced images.
+
+- Styling and animations through CSS, Bootstrap and Favicons
+
+- ReactJS for Front-end Components
+
+#### Major Features:
+
   * Rails API: JSON endpoint rendering in the Controllers
      * JWT for User Authentication  
      * Stripe API for simulated payments      
   * Windows LocalStorage used in handling Session Data
+    * Storing session for current user
+    * Storing cart items
   * NPM Packages Applied: Alice Carousel for the Carousel Display in the Home Page, React-Stripe-Elements for the Card Payment
+  * `Axios.get` `Axios.post` `Axios.put` Method will save the User's Cart in the database if he Logs Out without Purchasing them. Later, if she/he Logins even from some other device, he will be able to view the Cart
   * Gems: BCrypt, JWT, Stripe and Rack-Cors to enable API Endpoint
   * Admin Rights
 
