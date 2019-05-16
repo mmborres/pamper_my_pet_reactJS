@@ -15,9 +15,9 @@ class Nav extends Component {
 
           <nav>
               <ul class="top-level-menu">
-              <li><Link to="/home">Home</Link></li>
-              <li><Link to="/products">All Products</Link></li>
-              <li style={{width: '250px', textAlign: 'center'}} >
+              <li style={{float: 'left'}}><Link to="/home">Home</Link></li>
+              <li style={{float: 'left'}}><Link to="/products">All Products</Link></li>
+              <li style={{width: '250px', textAlign: 'center',float: 'left'}} >
                   <a href="#">Shop By Category</a>
                   <ul class="second-level-menu">
                       <li>
@@ -52,8 +52,8 @@ class Nav extends Component {
                       </li>
                   </ul>
               </li>
-              <li><Link to="/login">Login</Link></li>
-              <li><Link to="/signup">Sign Up</Link></li>
+              <li style={{float: 'right'}}><Link to="/login">Login</Link></li>
+              <li style={{float: 'right'}}><Link to="/signup">Sign Up</Link></li>
               </ul>
               </nav>
 
@@ -66,9 +66,9 @@ class Nav extends Component {
 
 <nav >
     <ul class="top-level-menu">
-    <li><Link to="/home">Home</Link></li>
-    <li><Link to="/products">All Products</Link></li>
-    <li>
+    <li style={{float: 'left'}}><Link to="/home">Home</Link></li>
+    <li style={{float: 'left'}}><Link to="/products">All Products</Link></li>
+    <li style={{width: '250px', textAlign: 'center',float: 'left'}}>
         <a href="#">Shop By Category</a>
         <ul class="second-level-menu">
             <li>
@@ -103,9 +103,9 @@ class Nav extends Component {
             </li>
         </ul>
     </li>
-    <li><NavCart /></li>
-    <li><Link to="/logout">Logout</Link></li>
-    <li><span>Welcome {hello} </span></li>
+    <li style={{float: 'right'}}><NavCart /></li>
+    <li style={{float: 'right'}} ><Link to="/logout">Logout</Link></li>
+    <li style={{color: 'hotpink', float: 'right', paddingTop: '4px'}}>Welcome {hello}</li>
     </ul>
     </nav>
 

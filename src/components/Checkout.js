@@ -261,10 +261,12 @@ class Checkout extends Component {
     }*/
 
     return (
-      <div class="checkout">
+      <div>
       <Nav />
+      <div className="checkout">
       <h1>Your Order Details</h1>
       <DisplayCart cart={this.state.shoppingList} total={this.state.total} onSubmit={this.displayAfterRemove}/>
+      </div>
       <Footer />
       </div>
     );
@@ -368,7 +370,7 @@ class DisplayCart extends Component {
       )
     } else {
       return (
-        <div class="checkout">
+        <div>
           <table >
           <th>Product</th>
           <th>ID</th>
