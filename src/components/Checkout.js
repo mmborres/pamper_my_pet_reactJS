@@ -31,79 +31,6 @@ class Checkout extends Component {
     this.renderCartItems();
   }
 
-  /*
-  _removeHandler(e) {
-    const oid = e.target.id;
-   const url = "https://pamper-my-pet.herokuapp.com/order_items/" + oid + ".json";
-    console.log("oid to delete=" + oid)
-
-    AddToCart.removeFromCart(oid);
-
-    axios.delete(url).then((res) => {
-      //post
-    });
-  }*/
-
-
-/*  renderEmptyCart() {
-    return (
-      <div>
-        No items in your cart.
-      </div>
-    );
-  }
-
-  renderItems(cart) {
-    console.log("renderCartItems cart now");
-    for ( let y=0; y<cart.length; y++ ) {
-      console.log(cart[y]);
-      console.log(cart[y].image);
-    }
-    cart.map( (c) => console.log(c) );
-
-    return (
-      <div>
-      {
-        cart.map( (c) =>
-        <div>
-          <img src={c.image}/>
-          <p><strong>Name:</strong> {c.name}</p>
-          <p><strong>Price:</strong> AUD {c.price}</p>
-          <p><strong>Quantity:</strong> { c.quantity}</p>
-          <p><strong>Total Price: </strong> AUD {c.price * c.quantity}</p>
-          <p>{c.order_item_id}</p>
-          <p>
-          <Link to={"/product/" + c.id} ><span><button>Edit</button></span></Link>
-          <span><button onClick={this._removeHandler} id={c.order_item_id}>Remove</button></span>
-          </p>
-        </div>
-      )}
-      </div>
-    );
-  }
-
-  grandTotal() {
-    const total = AddToCart.getCart();
-    if (total !== null) {
-      let values = [];
-
-      total.map( (t) =>
-        values.push(t.price * t.quantity)
-      )
-      console.log(values)
-      const add = (a, b) =>
-      a + b
-      const final = values.reduce(add)
-      return (
-        <p><strong>Grand Total:
-        AUD {
-          final
-        }
-        </strong></p>
-      );
-    }
-  }*/
-
   renderCartItems() {
     const userId = UserProfile.getUserId();
     let cart = AddToCart.getCart();
@@ -134,41 +61,20 @@ class Checkout extends Component {
             for (let y=0; y<filteredArray.length; y++) {
               const oi = filteredArray[y];
               console.log(oi.product_id);
-              /*const product = {
-                id: oi.product_id,
-                name: "BLAH",
-                image: "https://www.fillmurray.com/200/300",
-                price: 5,
-                quantity: oi.quantity,
-                order_item_id: oi.id
-              };*/
+
               cart.push(
                 {
-                id: oi.product_id,
-                name: "BLAH",
-                image: "https://www.fillmurray.com/200/300",
-                price: 5,
-                quantity: oi.quantity,
-                order_item_id: oi.id
-              }
+                  id: oi.product_id,
+                  name: "BLAH",
+                  image: "https://www.fillmurray.com/200/300",
+                  price: 5,
+                  quantity: oi.quantity,
+                  order_item_id: oi.id
+                }
               );
             }
             console.log("renderCartItems 3");
             console.log("rcart" + cart);
-            // if (filteredArray >= 0) {
-            //
-            //   }
-            /*const product = {
-              id: 111,
-              name: "BLAH",
-              image: "https://www.fillmurray.com/200/300",
-              price: 123,
-              quantity: 31,
-              order_item_id: 11
-            };*/
-            //const ccc = [];
-            //ccc.push(product);
-            //return ccc;
 
           }).then( () => {
 
@@ -189,23 +95,13 @@ class Checkout extends Component {
             console.log("rcioio art = " + AddToCart.getCart());
             console.log("renderCartItems 32");
             this.setState({shoppingList: cart});
-            //console.log("rcioio arty" + this.state.cart);
-            /*if (cart !== null) {
-              console.log("renderCartItems 33");
-              this.renderItems(cart);
-              //return (<div>TEST</div>);
-            } else {
-              console.log("renderCartItems 34");
-              this.renderEmptyCart();
-              //return (<div>TEST2</div>);
-            }*/
 
             let values = [];
 
             cart.map( (t) =>
-              values.push(t.price * t.quantity)
-            )
-            if ( values.length > 0 ) {
+            values.push(t.price * t.quantity)
+          )
+          if ( values.length > 0 ) {
             console.log(values);
             const add = (a, b) => a + b;
             const final = values.reduce(add);
@@ -213,64 +109,47 @@ class Checkout extends Component {
             console.log("grandtotal = " + final);
             this.setState({total: final});
           }
-          });
-        }
-      });
-    } else {
-      //if cart is not empty
-      this.setState({shoppingList: cart});
+        });
+      }
+    });
+  } else {
+    //if cart is not empty
+    this.setState({shoppingList: cart});
 
-      let values = [];
+    let values = [];
 
-            cart.map( (t) =>
-              values.push(t.price * t.quantity)
-            )
+    cart.map( (t) =>
+    values.push(t.price * t.quantity)
+  )
 
-            console.log(values);
-            const add = (a, b) => a + b;
-            const final = values.reduce(add);
+  console.log(values);
+  const add = (a, b) => a + b;
+  const final = values.reduce(add);
 
-            console.log("grandtotal = " + final);
-            this.setState({total: final});
-    }
+  console.log("grandtotal = " + final);
+  this.setState({total: final});
+}
 
-    ////
+}
 
-    /*console.log("renderCartItems 32");
-    if (cart !== null) {
-      console.log("renderCartItems 33");
-      this.renderItems(cart);
-    } else {
-      console.log("renderCartItems 34");
-      this.renderEmptyCart();
-    }*/
-    //return cart !== null ? this.renderItems(cart) : this.renderEmptyCart();
-  }
+componentDidMount() {
+  console.log("show");
+  this.renderCartItems();
+}
 
-  componentDidMount() {
-    console.log("show");
-    this.renderCartItems();
-  }
+render() {
 
-  render() {
-    /*const cart = AddToCart.getCart();
-    console.log("yey cart now");
-    for ( let y=0; y<cart.length; y++ ) {
-      console.log(cart[y]);
-      console.log(cart[y].image);
-    }*/
-
-    return (
-      <div>
-      <Nav />
-      <div className="checkout">
-      <h1>Your Order Details</h1>
-      <DisplayCart cart={this.state.shoppingList} total={this.state.total} onSubmit={this.displayAfterRemove}/>
-      </div>
-      <Footer />
-      </div>
-    );
-  }
+  return (
+    <div>
+    <Nav />
+    <div className="checkout">
+    <h1>Your Order Details</h1>
+    <DisplayCart cart={this.state.shoppingList} total={this.state.total} onSubmit={this.displayAfterRemove}/>
+    </div>
+    <Footer />
+    </div>
+  );
+}
 }
 
 class DisplayCart extends Component {
@@ -328,70 +207,51 @@ class DisplayCart extends Component {
     } );
 
     promise
-      .then( res => {
-        console.log("3");
+    .then( res => {
+      console.log("3");
 
-      })
-      .catch( err => {
-        console.log ("error with promise = " + err)
+    })
+    .catch( err => {
+      console.log ("error with promise = " + err)
 
-      })
-
-    /*let indexToDelete = -1;
-    const cart = AddToCart.getCart();
-    //console.log("before");
-    //console.log(Object.values(cart));
-
-    console.log("index to delete == " + indexToDelete);
-
-    if(indexToDelete> -1) {
-      cart.splice(indexToDelete, 1);
-      AddToCart.replaceCart(cart);
-
-      axios.delete(url).then((res) => {
-        //post
-        this.props.onSubmit(cart);
-      });
-    }
-    console.log("after");
-    console.log(Object.values(cart));*/
+    })
 
   }
 
- //# {c.order_item_id}
+  //# {c.order_item_id}
   render () {
     console.log ("DisplayCart = " + this.props.cart);
     const cart = this.props.cart;
     if (cart.length===0) {
       return (
-      <div id="no-item">
+        <div id="no-item">
         No items in your cart.
-      </div>
+        </div>
       )
     } else {
       return (
         <div className="checkout">
-          <table >
-          <th>Product</th>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Unit Price</th>
-          <th>Quantity</th>
-          <th>Total Price</th>
-          <th>&nbsp;</th>
-          <th>&nbsp;</th>
+        <table >
+        <th>Product</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Unit Price</th>
+        <th>Quantity</th>
+        <th>Total Price</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
         {
           cart.map( (c) =>
           <tbody key={c.id + 1}>
           <tr key={c.id + 2}>
-            <td key={c.id + 3}><img src={c.image} className="thumb"/></td>
-            <td key={c.id + 4}>#{c.id}</td>
-            <td key={c.id + 4}>{c.name}</td>
-            <td key={c.id + 5}>AUD {c.price}</td>
-            <td key={c.id + 6}>{ c.quantity}</td>
-            <td key={c.id + 7}>AUD {c.price * c.quantity}</td>
-            <td key={c.id + 8}><Link to={"/product/" + c.id} ><span><button className="favicon fa fa-edit fa-2x" ></button></span></Link></td>
-            <td key={c.id + 6}><button className="favicon fa fa-trash fa-2x" onClick={this._removeHandler} id={c.order_item_id}></button></td>
+          <td key={c.id + 3}><img src={c.image} className="thumb"/></td>
+          <td key={c.id + 4}>#{c.id}</td>
+          <td key={c.id + 4}>{c.name}</td>
+          <td key={c.id + 5}>AUD {c.price}</td>
+          <td key={c.id + 6}>{ c.quantity}</td>
+          <td key={c.id + 7}>AUD {c.price * c.quantity}</td>
+          <td key={c.id + 8}><Link to={"/product/" + c.id} ><span><button className="favicon fa fa-edit fa-2x" ></button></span></Link></td>
+          <td key={c.id + 6}><button className="favicon fa fa-trash fa-2x" onClick={this._removeHandler} id={c.order_item_id}></button></td>
           </tr>
           </tbody>
         )}
@@ -404,75 +264,5 @@ class DisplayCart extends Component {
   }
 }
 
-/*
-class PaymentForm extends Component {
-  render() {
-    return (
-      <div>
-      <h2>Fill out the Payment details</h2>
-      <form>
-      <label>Card Number:</label>
-      <input type="number"/>
-      <label>Expiry date:</label>
-      <input type="date"/>
-      <button type="submit">Pay Now!</button>
-      </form>
-      </div>
-    )
-  }
-}*/
 
 export default Checkout;
-
-/*
-const userId = UserProfile.getUserId();
-  const ordersUrl = "https://pamper-my-pet.herokuapp.com/orders.json";
-  const orderItemsUrl = "https://pamper-my-pet.herokuapp.com/order_items.json";
-
-  const getCart = function() {
-    console.log('In get cart');
-    if (typeof (Storage) !== "undefined") {
-      let temp = localStorage.getItem('cart');
-      if (temp !== 'null') {
-        console.log('CART NOT NULL', temp);
-        cart = JSON.parse(temp);
-        return cart;
-      } else {
-        console.log('CArt is null');
-        return axios.get(ordersUrl).then((results) => {
-          const index = results.data.findIndex((item) => item.user_id === userId && item.status === 'Open');
-          if (index >= 0) {
-            const orderId = results.data[index].id;
-            console.log('aasdfasdas', orderId)
-            AddToCart.setOrderId(orderId);
-            return axios.get(orderItemsUrl).then((results) => {
-              console.log('rfr', results.data);
-              const filteredArray = results.data.filter((item) => item.order_id === orderId);
-              console.log('filteredArray', filteredArray);
-              // if (filteredArray >= 0) {
-              //
-              //   }
-              const product = {
-                id: 111,
-                name: 'BLAH',
-                image: 'https://cdn.vox-cdn.com/thumbor/H-L1zDOm2T75rq4qDxSXdSVRbIc=/0x0:1215x717/1200x800/filters:focal(582x94:776x288)/cdn.vox-cdn.com/uploads/chorus_image/image/59882547/taric_master_yi.0.png',
-                price: 123,
-                quantity: 31,
-                order_item_id: 11
-              };
-              const ccc = [];
-              ccc.push(product);
-              return ccc;
-            });
-            // get order items - pass order id
-            // and set cart ---- cart = order items with product id, quantity blah blah
-            // and return the cart items
-          }
-        });
-        cart=[]
-      }
-    }
-    console.log("getCart ==" + cart)
-    return cart;
-  };
-*/

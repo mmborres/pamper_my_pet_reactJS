@@ -72,59 +72,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
 }
-/*
-.navbar {
-  overflow: hidden;
-  background-color: #333;
-}
-.navbar a {
-  float: left;
-  font-size: 16px;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-.subnav {
-  float: left;
-  overflow: hidden;
-}
-.subnav .subnavbtn {
-  font-size: 16px;
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
-.navbar a:hover, .subnav:hover .subnavbtn {
-  background-color: red;
-}
-.subnav-content {
-  display: none;
-  position: absolute;
-  left: 0;
-  background-color: red;
-  width: 100%;
-  z-index: 1;
-}
-.subnav-content a {
-  float: left;
-  color: white;
-  text-decoration: none;
-}
-.subnav-content a:hover {
-  background-color: #eee;
-  color: black;
-}
-.subnav:hover .subnav-content {
-  display: block;
-}
-*/
 
-/*/////////////  Products.js  /////*/
 .btn-outline-info, .btn-outline-dark {
   margin: 2rem;
   width: 17rem;
@@ -283,55 +231,6 @@ text-align: center;
   padding: 10px;
   width: 100px;
 }
-/* another version of nav bar
-#main_nav ul {
-  background: white;
-  float: left;
-  -webkit-transition: .5s;
-  transition: .5s;
-}
-#main_nav li {
-  float: left;
-  position: relative;
-  width: 150px;
-  list-style: none;
-  -webkit-transition: .5s;
-  transition: .5s;
-}
-#main_nav > ul > li > a, h1 {
-  text-transform: uppercase;
-}
-#main_nav a {
-  display: block;
-  text-decoration: none;
-  padding: 5px 15px;
-  color: #000;
-}
-#main_nav ul ul {
-  position: absolute;
-  left: 0;
-  top: 100%;
-  visibility: hidden;
-  opacity: 0;
-}
-#main_nav ul ul ul {
-  left: 100%;
-  top: 0;
-}
-#main_nav li:hover, #main_nav li:hover li {
-  background: #ddd;
-}
-#main_nav li li:hover, #main_nav li li:hover li {
-  background: #bbb;
-}
-#main_nav li li li:hover {
-  background: #999;
-}
-#main_nav li:hover > ul {
-  visibility: visible;
-  opacity: 1;
-}
- end nav bar */
 
  .third-level-menu
  {

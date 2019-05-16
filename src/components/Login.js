@@ -8,12 +8,7 @@ import UserProfile from './UserProfile';
 import Nav from './Nav.js';
 import Footer from './Footer.js';
 //import { Redirect } from 'react-router-dom';
-//import Home from './Home';
 
-//const SERVER_URL = 'https://powerpuffairlines.herokuapp.com/users.json';
-
-// alert('Logged in');
-// this.props.userHasAuthenticated(true);
 
 export default class Login extends Component {
   constructor(props) {
@@ -37,84 +32,26 @@ export default class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    /*
-    // store user id
-    // via windows localstorage
-    let user_id = -1;
-    let userDetail = null;
-    //const getUser_id = () => {
-      axios.get(SERVER_URL).then((results) => {
-        //this.setState({user_id: results.data});
-        const userslist = results.data;
-        console.log(this.state.email);
-        console.log(userslist);
-        for (let i=0; i<userslist.length; i++) {
-          if (userslist[i].email === this.state.email) {
-            user_id = userslist[i].id;
-            userDetail = userslist[i];
-            break;
-          }
+
+    const baseURL = "https://pamper-my-pet.herokuapp.com";
+
+    //console.log(baseURL);
+    axios.post(baseURL + "/users/login", { email: this.state.email, password: this.state.password }).then((result) =>{
+      //post actions
+      //console.log(result);
+      //console.log(result.statusText);
+      if (result.statusText==="OK") {
+        UserProfile.setName(result.data.name);
+        UserProfile.setUserId(result.data.user_id);
+        UserProfile.setAdmin(result.data.admin);
+        UserProfile.setEmail(result.data.email);
+
+        let urlstr = window.location.href;
+        if (urlstr.includes('#')) {
+          urlstr = urlstr.split('#')[0] + '#/home'
         }
-        console.log(user_id);
-        if ( user_id > 0 ) {
-            console.log("Login=" + userDetail.admin);
-            //user id found
-            //direct to homepage
-            UserProfile.setName(userDetail.name);
-            UserProfile.setUserId(user_id);
-            UserProfile.setAdmin(userDetail.admin);
-            UserProfile.setEmail(userDetail.email);
-
-            //http://localhost:3000/#/home
-            let urlstr = window.location.href;
-            if (urlstr.includes("#")) {
-                urlstr = urlstr.split("#")[0] + "#/home"
-            }
-
-            window.location.replace(urlstr);
-            //return (<Home />)
-        }
-      });
-      //}
-    //};
-    //getUser_id()
-
-    // //if (typeof (Storage) !== "undefined") {
-		// localStorage.setItem('user_id', user_id);
-    // //}
-    // //
-*/
-
-//handle sending to json
-
-//users/login
-
-/*
-{
-  "email": "test@example.com",
-  "password": "anewpassword"
-}
-*/
-//const baseURL = "http://localhost:3000";
-const baseURL = "https://pamper-my-pet.herokuapp.com";
-
-//console.log(baseURL);
-axios.post(baseURL + "/users/login", { email: this.state.email, password: this.state.password }).then((result) =>{
-    //post actions
-    //console.log(result);
-    //console.log(result.statusText);
-    if (result.statusText==="OK") {
-      UserProfile.setName(result.data.name);
-      UserProfile.setUserId(result.data.user_id);
-      UserProfile.setAdmin(result.data.admin);
-      UserProfile.setEmail(result.data.email);
-
-      let urlstr = window.location.href;
-      if (urlstr.includes('#')) {
-        urlstr = urlstr.split('#')[0] + '#/home'
+        window.location.replace(urlstr);
       }
-      window.location.replace(urlstr);
-    }
     });
 
   }
@@ -125,38 +62,38 @@ axios.post(baseURL + "/users/login", { email: this.state.email, password: this.s
       <Nav />
       <header className="App-header">
       <h1>Login</h1>
-        <br/>
-        <br/>
-        <form onSubmit={this.handleSubmit} action="/home">
-          <FormGroup controlId="email" bsSize="large">
-            <span style={{color: 'black'}} className="fa fa-envelope-o fa-fw"></span>
-            <FormControl
-              autoFocus
-              type="email"
-              value={this.state.email}
-              onChange={this.handleChange}
-            />
-          </FormGroup>
-          <FormGroup controlId="password" bsSize="large">
-          <span style={{color: 'black'}} className="fa fa-key fa-fw"></span>
-          <br/>
-            <FormControl
-              value={this.state.password}
-              onChange={this.handleChange}
-              type="password"
-            />
-          </FormGroup>
-          <Button
-            block
-            bsSize="large"
-            disabled={!this.validateForm()}
-            type="submit"
-          >
-            Login
-          </Button>
-        </form>
-        </header>
-        <Footer />
+      <br/>
+      <br/>
+      <form onSubmit={this.handleSubmit} action="/home">
+      <FormGroup controlId="email" bsSize="large">
+      <span style={{color: 'black'}} className="fa fa-envelope-o fa-fw"></span>
+      <FormControl
+      autoFocus
+      type="email"
+      value={this.state.email}
+      onChange={this.handleChange}
+      />
+      </FormGroup>
+      <FormGroup controlId="password" bsSize="large">
+      <span style={{color: 'black'}} className="fa fa-key fa-fw"></span>
+      <br/>
+      <FormControl
+      value={this.state.password}
+      onChange={this.handleChange}
+      type="password"
+      />
+      </FormGroup>
+      <Button
+      block
+      bsSize="large"
+      disabled={!this.validateForm()}
+      type="submit"
+      >
+      Login
+      </Button>
+      </form>
+      </header>
+      <Footer />
       </div>
     );
   }

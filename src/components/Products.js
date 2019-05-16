@@ -155,21 +155,6 @@ class Products extends Component {
   }
 };
 
-// const cardStyle = {
-//   height: '25rem'
-//
-// };
-
-// const imgStyle = {
-//   height: '13rem',
-//   width: '13rem',
-//   marginLeft: '20%',
-//   marginTop: '10%'
-// }
-// const linkStyle = {
-//   textDecoration: "none",
-//   color: "black"
-// }
 
 const Allproducts = (props) => {
 
@@ -267,7 +252,6 @@ class SearchForm extends Component {
                 </select>
 
                 <button type="submit" size="sm" className="btn btn-outline-info search-btn" >Search!</button>
-
 
           </form>
       </div>

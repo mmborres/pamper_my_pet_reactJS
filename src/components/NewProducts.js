@@ -16,24 +16,24 @@ class NewProducts extends Component {
   }
 
   saveProduct( name, image, description, size, color, price, stock, category, pettype) {
-    axios.post("https://pamper-my-pet.herokuapp.com/products.json", {name: name, image:image,         description:description, size:size, color:color, price:price, stock:stock, classification:category, pet_type:pettype}).then((result) => {
+    axios.post("https://pamper-my-pet.herokuapp.com/products.json", {name: name, image:image,  description:description, size:size, color:color, price:price, stock:stock, classification:category, pet_type:pettype}).then((result) => {
       this.setState({newProd: [...this.state.newProd, result.data]})
-        console.log(result.data);
+      console.log(result.data);
 
-        this.props.history.push("/products");
-      });
+      this.props.history.push("/products");
+    });
 
-    }
+  }
 
   render(){
     // const admin = UserProfile.isAdmin() === true;
     if (true) {
       return(
         <div>
-          <Nav/>
-          <h1 className="heading">Create Product</h1>
-          <CreateForm onSubmit={this.saveProduct}/>
-          <Footer/>
+        <Nav/>
+        <h1 className="heading">Create Product</h1>
+        <CreateForm onSubmit={this.saveProduct}/>
+        <Footer/>
         </div>
       )
     }
@@ -45,16 +45,16 @@ class NewProducts extends Component {
 class CreateForm extends Component {
   constructor(){
     super();
-      this.state = {
-        name: '',
-        image: '',
-        description: '',
-        size: '',
-        color: '',
-        price: 0,
-        stock: 0,
-        category: '',
-        pettype: ''
+    this.state = {
+      name: '',
+      image: '',
+      description: '',
+      size: '',
+      color: '',
+      price: 0,
+      stock: 0,
+      category: '',
+      pettype: ''
     }
 
     this._handleChangeCategory = this._handleChangeCategory.bind(this);
@@ -83,45 +83,45 @@ class CreateForm extends Component {
 
   _handleInputName(event) {
     console.log(event.target.value);
-      this.setState({name: event.target.value})
-    };
-    _handleInputImage(event) {
-      console.log(event.target.value);
-        this.setState({image: event.target.value})
-    };
+    this.setState({name: event.target.value})
+  };
+  _handleInputImage(event) {
+    console.log(event.target.value);
+    this.setState({image: event.target.value})
+  };
 
-    _handleInputDescription(event) {
-      console.log(event.target.value);
-      this.setState({description: event.target.value})
-    };
+  _handleInputDescription(event) {
+    console.log(event.target.value);
+    this.setState({description: event.target.value})
+  };
 
-    _handleInputPrice(event) {
-      console.log(event.target.value);
-      this.setState({price: parseInt(event.target.value)})
-      console.log(this.state.price)
-    };
+  _handleInputPrice(event) {
+    console.log(event.target.value);
+    this.setState({price: parseInt(event.target.value)})
+    console.log(this.state.price)
+  };
 
-    _handleInputColor(event) {
-      console.log(event.target.value);
-      this.setState({color: event.target.value})
-    };
+  _handleInputColor(event) {
+    console.log(event.target.value);
+    this.setState({color: event.target.value})
+  };
 
-    _handleInputSize(event) {
-      console.log(event.target.value);
-      this.setState({size: event.target.value})
-    };
+  _handleInputSize(event) {
+    console.log(event.target.value);
+    this.setState({size: event.target.value})
+  };
 
-    _handleInputStock(event) {
-      console.log(event.target.value);
-      this.setState({stock: parseInt(event.target.value)})
-    };
+  _handleInputStock(event) {
+    console.log(event.target.value);
+    this.setState({stock: parseInt(event.target.value)})
+  };
 
-    _handleSubmit(event){
-      event.preventDefault();
+  _handleSubmit(event){
+    event.preventDefault();
     // console.log("hi");
-     console.log(this.state.category + "HI");
-     console.log(this.state.pettype + "Hello");
-      this.props.onSubmit(this.state.name, this.state.image, this.state.description, this.state.size, this.state.color, this.state.price, this.state.stock, this.state.category, this.state.pettype);
+    console.log(this.state.category + "HI");
+    console.log(this.state.pettype + "Hello");
+    this.props.onSubmit(this.state.name, this.state.image, this.state.description, this.state.size, this.state.color, this.state.price, this.state.stock, this.state.category, this.state.pettype);
     //this.props.onSubmit("TEST", "this.state.pettype");
 
   }
@@ -129,56 +129,56 @@ class CreateForm extends Component {
 
     return (
       <div className="editform">
-        <form onSubmit={this._handleSubmit} >
-          <label>Name</label>
-          <input type="text" onInput={this._handleInputName}/>
-          <br />
+      <form onSubmit={this._handleSubmit} >
+      <label>Name</label>
+      <input type="text" onInput={this._handleInputName}/>
+      <br />
 
-          <label>Image</label>
-          <input type="text" onInput={this._handleInputImage}/>
-          <br />
+      <label>Image</label>
+      <input type="text" onInput={this._handleInputImage}/>
+      <br />
 
-          <label>Details</label>
-          <input type="text" onInput={this._handleInputDescription}/>
-          <br />
+      <label>Details</label>
+      <input type="text" onInput={this._handleInputDescription}/>
+      <br />
 
-          <label>Size</label>
-          <input type="text" onInput={this._handleInputSize}/>
-          <br />
+      <label>Size</label>
+      <input type="text" onInput={this._handleInputSize}/>
+      <br />
 
-          <label>Color</label>
-          <input type="text" onInput={this._handleInputColor}/>
-          <br />
+      <label>Color</label>
+      <input type="text" onInput={this._handleInputColor}/>
+      <br />
 
-          <label>Price</label>
-          <input type="number" onInput={this._handleInputPrice} min="0"/>
-          <br />
+      <label>Price</label>
+      <input type="number" onInput={this._handleInputPrice} min="0"/>
+      <br />
 
-          <label>Stock</label>
-          <input type="number" onInput={this._handleInputStock} min="0"/>
-          <br />
+      <label>Stock</label>
+      <input type="number" onInput={this._handleInputStock} min="0"/>
+      <br />
 
-          <label className="label">Category:</label>
-            <select className="product-option" onChange={this._handleChangeCategory}>
-              <option></option>
-              <option value="Clothing">Clothing</option>
-              <option value="Accessories">Accessories</option>
-              <option value="Toys">Toys</option>
-            </select>
-              <br></br>
-            <label className="label">Pet </label>
-              <select className="product-option" onChange={this._handleChangePetType}>
-                <option></option>
-                <option value="Dog">Dog</option>
-                <option value="Cat">Cat</option>
-                <option value="Birds">Birds</option>
-                <option value="Others">Others</option>
-              </select>
-                <br/>
+      <label className="label">Category:</label>
+      <select className="product-option" onChange={this._handleChangeCategory}>
+      <option></option>
+      <option value="Clothing">Clothing</option>
+      <option value="Accessories">Accessories</option>
+      <option value="Toys">Toys</option>
+      </select>
+      <br></br>
+      <label className="label">Pet </label>
+      <select className="product-option" onChange={this._handleChangePetType}>
+      <option></option>
+      <option value="Dog">Dog</option>
+      <option value="Cat">Cat</option>
+      <option value="Birds">Birds</option>
+      <option value="Others">Others</option>
+      </select>
+      <br/>
 
-                <button type="submit" onClick={"http://localhost:3000/#/products"} className="alter">Create Item!</button>
+      <button type="submit" onClick={"http://localhost:3000/#/products"} className="alter">Create Item!</button>
 
-        </form>
+      </form>
       </div>
 
     );
