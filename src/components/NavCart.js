@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import UserProfile from './UserProfile';
 import axios from 'axios';
+import { Dropdowns }  from "react-bootstrap";
+import { Button, Container, Row, Col } from "reactstrap";
 
 import 'font-awesome/css/font-awesome.min.css';
 
