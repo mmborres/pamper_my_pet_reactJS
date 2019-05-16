@@ -1,7 +1,5 @@
 # Pamper My Pet
 
------------------------------------------------------
-
 ![Home Page](Screen%20Shot%202019-05-17%20at%202.51.57%20am.png "Home Page")
 
 With the huge variety of pet-oriented content on the web, this "best of" list should give you a better idea of where to find anything from trendy haute couture pet creations to the lowest prices on dog, cat, bird and fish products. **Happy Shopping!**
@@ -10,9 +8,9 @@ Shop here: [Pamper My Pet](https://mmborres.github.io/pamper-my-pet)
 
 Simply anyone can view our site and browse through the amazing range of products. However, in order to purchase a product, a new ***User*** has to *Create* and account and an existing one has to *Login*
 
-###Login Page
+### Login Page
 
-![Login](admin.png "Login")
+![Login](login.png "Login")
 
 ### Sign Up Page
 
