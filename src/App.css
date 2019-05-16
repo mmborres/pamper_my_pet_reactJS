@@ -6,9 +6,9 @@
 }
 
 .App h1 {
-  font-weight: bold;
   color: #333333;
-  font-style: oblique;
+  text-shadow: 2px 2px silver;
+  text-transform: uppercase;
 }
 
 .App h1, p {
@@ -423,6 +423,7 @@ text-align: center;
  	float: left;
   color: #333333;
   font-family: bold;
+  font-size: 20px;
  }
 
  .message {
