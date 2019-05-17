@@ -98,7 +98,7 @@ class Details extends Component {
     });
   };
 
-  async  checkOrderItem (order_id, product_id, quantity) {
+  async  checkOrderItem (order_id, product_id, quantity, buttonId) {
     const url = "https://pamper-my-pet.herokuapp.com/order_items.json";
 
     return axios.get(url).then((results) => {
@@ -125,6 +125,11 @@ class Details extends Component {
           //console.log('order_item_id', this.state.order_item_id);
           let tempq = results.data[index].quantity;
           tempq += quantity;
+
+          if (buttonId === "3") {
+               //replace
+               tempq = quantity;
+             }
           //console.log('initial quantity', quantity)
           //console.log('updated quantity', tempq)
 
@@ -171,7 +176,7 @@ class Details extends Component {
       this.checkOrderItem(this.state.order_id, this.props.item.id, parseInt(this.state.quantity)).then( () => {
         //AddToCart.setCart(this.props.item.id, this.props.item.name, this.props.item.image, this.props.item.price, parseInt(this.state.quantity), this.state.order_item_id);
 
-        if (id === "2") {
+        if (id === "2" || id === "3") {
           const urlback = "/checkout/" ;
           this.props.history.push(urlback);
         }
@@ -234,9 +239,9 @@ class Details extends Component {
         <Link to="/login"><button className="btn btn-warning">Add to Cart</button></Link>&ensp;
         <Link to="/login"><button className="btn btn-warning">Buy Now</button></Link>
         </p>
-        : ( esEdit ?
+        : ( isEdit ?
           <p>
-          From Edit
+          <button className="btn btn-warning" onClick={this._handleCart} id="3" disabled={isOutOfStock}>Update</button>
           </p>
           :
           <p>
