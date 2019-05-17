@@ -14,23 +14,6 @@ const AddToCart = (function() {
       if (temp !== null) {
         console.log("getCart 1");
         cart = JSON.parse(temp);
-
-        // if (emptyCart()) {
-        //   return axios.get(URL).then((results) => {
-        //       const index = results.data.findIndex((item) => item.user_id === userId && item.status === 'Open');
-        //
-        //       if (index >= 0)
-        //       {
-        //         this.setState({order_id: results.data[index].id});
-        //         AddToCart.setOrderId(this.state.order_id);
-        //       } else {
-        //         this.createOrder();
-        //       }
-        //     }
-        //   });
-        // }
-
-
       }
       if (temp===null || cart===null) {
         cart = [];

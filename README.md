@@ -1,70 +1,98 @@
 # Pamper My Pet
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Home Page](./src/img/screenshots/Screen%20Shot%202019-05-17%20at%202.51.57%20am.png "Home Page")
 
-## Available Scripts
+With the huge variety of pet-oriented content on the web, this "best of" list should give you a better idea of where to find anything from trendy haute couture pet creations to the lowest prices on dog, cat, bird and fish products. **Happy Shopping!**
 
-In the project directory, you can run:
+Shop here: [Pamper My Pet](https://mmborres.github.io/pamper-my-pet)
 
-### `npm start`
+Simply anyone can view our site and browse through the amazing range of products. However, in order to purchase a product, a new ***User*** has to *Create* and account and an existing one has to *Login*
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Login Page
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+![Login](./src/img/screenshots/login.png "Login")
 
-### `npm test`
+### Sign Up Page
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Sign Up](./src/img/screenshots/Screen%20Shot%202019-05-17%20at%202.55.56%20am.png "Sign Up")
 
-### `npm run build`
+### Nav Bar Dropdown to Search Products
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+*Users* can find their favourite product by filtering either through the ***Navbar Dropdown*** or can visit the ***All Products*** pgae and can filter through the search form.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+![Nav Dropdown](./src/img/screenshots/navbarfilter.png "navbar")
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Search Filter](./src/img/screenshots/searchfilter.png "searchfilter")
 
-### `npm run eject`
+### Item Page
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+*Users* may select the quantity of each Product from the dropdown option of the page. The options are dependent on the the availibility of the stock of that particular item.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+As you can see here, User can select upto 10 **Quantity** of this particular product which means there are only 10 in **Stock**
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![Quantity](./src/img/screenshots/quantity.png "Quantity")
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Users then can add products in their **Cart** and once they are done filling their Cart, they can click the Cart Icon in Navbar that will redirect them to the Purchasing Process page or they can click directly on **Buy Now** that will redirect the User to the Purchasing Process page.
 
-## Learn More
+![Item](./src/img/screenshots/Screen%20Shot%202019-05-17%20at%202.59.06%20am.png "Item")
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Checkout Page
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+After clicking *Buy Now* button or *Cart Icon* in Navbar. The User can view the **Order Details**. He may **Edit** the quantity of an item or can also **Remove** the product from the buttons provided according to his convenience.
 
-### Code Splitting
+![Checkout](./src/img/screenshots/Screen%20Shot%202019-05-17%20at%202.59.35%20am.png "Checkout")
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### Card Payment
 
-### Analyzing the Bundle Size
+Our secure payment method, allows the User to make Payment wit ease.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+![Card Payment](./src/img/screenshots/Screen%20Shot%202019-05-17%20at%203.00.39%20am.png "Card Payment")
 
-### Making a Progressive Web App
+### Payment Done
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+![Payment Done](./src/img/screenshots/Screen%20Shot%202019-05-17%20at%203.01.01%20am.png "Payment Done")
 
-### Advanced Configuration
+Technologies
+-----------------------------------------------------
+This E-Commerce web application uses mainly **ReactJS** Front-end and **Rails** Back-end with **PostgreSQL** as database and has been deployed on **Heroku**.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+***Pamper My Pet*** has the following MVC (Model View Controller) Structure
 
-### Deployment
+![MVC](./src/img/screenshots/mvc.png "MVC")
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+Each **Model** inherits from *ActiveRecord* that does the following in an object oriented fashion:
 
-### `npm run build` fails to minify
+* Create tables
+* Represent associations between Models
+* Perform database operations
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+-----------------------------------------------------
+- Front-end uses HTML utilising Google Fonts and web-sourced images
+- Styling and animations through CSS, Bootstrap and Favicons
+- ReactJS for Front-end Components
+
+#### Major Features:
+
+  * Rails API: JSON endpoint rendering in the Controllers
+     * JWT for User Authentication  
+     * Stripe API for simulated payments      
+  * Windows LocalStorage used in handling Session Data
+    * Storing session for current user
+    * Storing cart items
+  * NPM Packages Applied: Alice Carousel for the Carousel Display in the Home Page, React-Stripe-Elements for the Card Payment
+  * `Axios.get` `Axios.post` `Axios.put` Method will save the User's Cart in the database if they Log Out without Purchasing them. Later, if they Login even from some other device, they will be able to view the Cart
+  * Gems: BCrypt, JWT, Stripe and Rack-Cors to enable API Endpoint
+  * Admin Rights
+
+  ![Add](./src/img/screenshots/add.png "Add")
+
+  ![Edit](./src/img/screenshots/admin2.png "Edit")
+
+Wishlist
+----------------------------------------------------
+
+  * Implement Discount or Sale options
+  * Simulate Delivery System
+  * Introduce User Review for *Pamper My Pet* Products
+  * Enable Price Filter in Search Bar.
+  * More Animations

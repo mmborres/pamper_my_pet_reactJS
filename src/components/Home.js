@@ -59,9 +59,9 @@ class Home extends Component {
     return (
       <div className="App">
       <Nav />
-        <h1>PAMPER MY PET</h1>
-        <p>With the huge variety of pet-oriented content on the web, this "best of" list should give you a better idea of where to find anything from trendy haute couture pet creations to the lowest prices on dog, cat, bird and fish food. Happy shopping!</p>
-        <div><DisplayFeatured featured={this.state.featuredproducts} /></div>
+      <h1>PAMPER MY PET</h1>
+      <p>With the huge variety of pet-oriented content on the web, this "best of" list should give you a better idea of where to find anything from trendy haute couture pet creations to the lowest prices on dog, cat, bird and fish products. Happy shopping!</p>
+      <div><DisplayFeatured featured={this.state.featuredproducts} /></div>
       <Footer />
       </div>
     );
@@ -70,48 +70,48 @@ class Home extends Component {
 
 
 class DisplayFeatured extends Component {
-    constructor(props) {
-      super(props);
+  constructor(props) {
+    super(props);
 
-      this. state = {
-        galleryItems: [] //[1, 2, 3].map((i) => (<h2 key={i}>{i}</h2>)),
-      }
-
-      const setupProducts = () => {
-        const products = this.props.featured;
-        //console.log("setupProducts props=" + products);
-
-        const newp = products.map( (urpl) => <Link to={ "/product/" + urpl.id }><img src={urpl.image} alt={urpl.name} class="featurenotify"/></Link> );
-        //console.log("formatted = " + newp);
-
-        this.setState({galleryItems: newp});
-
-        //console.log("state= " + this.state.galleryItems);
-
-        setTimeout(setupProducts, 5000);
-      }
-
-      //console.log("props=" + this.props);
-      setupProducts();
-    } //constructor
-
-    responsive = {
-      0: { items: 1 },
-      1024: { items: 2 },
+    this. state = {
+      galleryItems: [] //[1, 2, 3].map((i) => (<h2 key={i}>{i}</h2>)),
     }
 
-    onSlideChange(e) {
-      //console.debug('Item`s position during a change: ', e.item)
-      //console.debug('Slide`s position during a change: ', e.slide)
+    const setupProducts = () => {
+      const products = this.props.featured;
+      //console.log("setupProducts props=" + products);
+
+      const newp = products.map( (urpl) => <Link to={ "/product/" + urpl.id }><img src={urpl.image} alt={urpl.name} class="featurenotify"/></Link> );
+      //console.log("formatted = " + newp);
+
+      this.setState({galleryItems: newp});
+
+      //console.log("state= " + this.state.galleryItems);
+
+      setTimeout(setupProducts, 5000);
     }
 
-    onSlideChanged(e) {
-      //console.debug('Item`s position after changes: ', e.item)
-      //console.debug('Slide`s position after changes: ', e.slide)
-    }
+    //console.log("props=" + this.props);
+    setupProducts();
+  } //constructor
 
-    render() {
-      //console.log("render props=" + this.props);
+  responsive = {
+    0: { items: 1 },
+    1024: { items: 2 },
+  }
+
+  onSlideChange(e) {
+    //console.debug('Item`s position during a change: ', e.item)
+    //console.debug('Slide`s position during a change: ', e.slide)
+  }
+
+  onSlideChanged(e) {
+    //console.debug('Item`s position after changes: ', e.item)
+    //console.debug('Slide`s position after changes: ', e.slide)
+  }
+
+  render() {
+    //console.log("render props=" + this.props);
     return(
       <AliceCarousel
       items={this.state.galleryItems}
@@ -125,9 +125,9 @@ class DisplayFeatured extends Component {
       disableAutoPlayOnAction={true}
       onSlideChange={this.onSlideChange}
       onSlideChanged={this.onSlideChanged}
-    />
-      )
-    }
+      />
+    )
+  }
 }
 
 

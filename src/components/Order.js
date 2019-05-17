@@ -23,12 +23,12 @@ class Order extends Component {
     }
     fetchOrder();
 
-}
-_incrementOrder(){
-console.log(this.state.load);
+  }
+  _incrementOrder(){
+    console.log(this.state.load);
     this.setState({ load : this.state.load + 10 })
-console.log(this.state.load);
-}
+    console.log(this.state.load);
+  }
   render() {
     const orderSortedByDate = this.state.order;
     orderSortedByDate.sort( function(a,b) {
@@ -39,27 +39,27 @@ console.log(this.state.load);
     console.log(orderSortedByDate);
     return (
       <div>
-        <Nav />
+      <Nav />
+      <div>
+
+      {console.log(this.state.load)}
+      {orderSortedByDate.slice(0, this.state.load).map ((o) =>
         <div>
+        <p>User_Id: {o.user_id}</p>
 
-        {console.log(this.state.load)}
-        {orderSortedByDate.slice(0, this.state.load).map ((o) =>
-          <div>
-          <p>User_Id: {o.user_id}</p>
+        {
+          o.status ==='Open' ? <p><Link to={"/checkout/" + o.id } >Open!</Link></p>
+          : ''
 
-          {
-            o.status ==='Open' ? <p><Link to={"/checkout/" + o.id } >Open!</Link></p>
-            : ''
+        }
+        <p>Created_At: {o.created_at}</p>
+        <p>Updated_At: {o.updated_at}</p>
 
-          }
-          <p>Created_At: {o.created_at}</p>
-          <p>Updated_At: {o.updated_at}</p>
-
-          </div>
-        )}
         </div>
-          <button onClick={this._incrementOrder}> Load More...</button>
-        <Footer />
+      )}
+      </div>
+      <button onClick={this._incrementOrder}> Load More...</button>
+      <Footer />
       </div>
 
     );

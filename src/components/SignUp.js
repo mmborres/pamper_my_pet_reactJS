@@ -8,12 +8,7 @@ import UserProfile from './UserProfile';
 import Nav from './Nav.js';
 import Footer from './Footer.js';
 //import { Redirect } from 'react-router-dom';
-//import Home from './Home';
 
-//const SERVER_URL = 'https://powerpuffairlines.herokuapp.com/users.json';
-
-// alert('Logged in');
-// this.props.userHasAuthenticated(true);
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -40,66 +35,7 @@ export default class SignUp extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    /*
-    // store user id
-    // via windows localstorage
-    let user_id = -1;
-    let userDetail = null;
-    //const getUser_id = () => {
-      axios.get(SERVER_URL).then((results) => {
-        //this.setState({user_id: results.data});
-        const userslist = results.data;
-        console.log(this.state.email);
-        console.log(userslist);
-        for (let i=0; i<userslist.length; i++) {
-          if (userslist[i].email === this.state.email) {
-            user_id = userslist[i].id;
-            userDetail = userslist[i];
-            break;
-          }
-        }
-        console.log(user_id);
-        if ( user_id > 0 ) {
-            console.log("Login=" + userDetail.admin);
-            //user id found
-            //direct to homepage
-            UserProfile.setName(userDetail.name);
-            UserProfile.setUserId(user_id);
-            UserProfile.setAdmin(userDetail.admin);
-            UserProfile.setEmail(userDetail.email);
-
-            //http://localhost:3000/#/home
-            let urlstr = window.location.href;
-            if (urlstr.includes("#")) {
-                urlstr = urlstr.split("#")[0] + "#/home"
-            }
-
-            window.location.replace(urlstr);
-            //return (<Home />)
-        }
-      });
-      //}
-    //};
-    //getUser_id()
-
-    // //if (typeof (Storage) !== "undefined") {
-		// localStorage.setItem('user_id', user_id);
-    // //}
-    // //
-*/
-
-//handle sending to json
-
-//post to http://localhost:3000/users:
-/*
-{
-    user: {
-      email: 'test@example.com',
-      password: 'anewpassword',
-      password_confirmation: 'anewpassword'
-    }
-}*/
-
+    
 console.log(this.state.email, this.state.password, this.state.password_confirmation);
 
 if (this.state.password !== this.state.password_confirmation) {
