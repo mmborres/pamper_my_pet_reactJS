@@ -4,7 +4,7 @@
 
 With the huge variety of pet-oriented content on the web, this "best of" list should give you a better idea of where to find anything from trendy haute couture pet creations to the lowest prices on dog, cat, bird and fish products. **Happy Shopping!**
 
-Shop here: [Pamper My Pet](https://mmborres.github.io/pamper-my-pet)
+Shop here: [Pamper My Pet](https://rashidabengali.github.io/pamper_my_pet/)
 
 Simply anyone can view our site and browse through the amazing range of products. However, in order to purchase a product, a new ***User*** has to *Create* and account and an existing one has to *Login*
 
