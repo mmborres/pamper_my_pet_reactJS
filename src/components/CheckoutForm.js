@@ -29,17 +29,72 @@ class CheckoutForm extends Component {
       console.log(result.data);
       console.log(result.statusText);
 
+
       if (result.statusText === "OK") {
+
         response = "OK";
         console.log("Purchase Complete!")
         this.setState({complete: true});
         console.log("payment order_id = " + orderId);
         AddToCart.emptyCart();
 
+
+      const orderItemsUrl = "https://pamper-my-pet.herokuapp.com/order_items.json";
+      let stockDetails = [];
+
+          axios.get(orderItemsUrl).then((results) => {
+              console.log('rfr', results.data);
+              const filteredArray = results.data.filter((item) => parseInt(item.order_id) === parseInt(orderId));
+              /*const f = results.data;
+              for (let b=0; b<f.length; b++) {
+                if (f[b].order_id === orderId) {
+                  filteredArray.push(f[b]);
+                }
+              }*/
+
+              console.log('filteredArray', filteredArray);
+
+              for (let c=0; c<filteredArray.length; c++) {
+                const oi = filteredArray[c];
+                console.log(oi.product_id);
+
+                stockDetails.push(
+                  {
+                    id: oi.product_id,
+                    stockLeft: oi.quantity,
+                    newStock: 0
+                  }
+                );
+              }
+
+            }).then( () => {
+
+              return axios.get("https://pamper-my-pet.herokuapp.com/products.json").then((results) => {
+                const p = results.data;
+                for (let y=0; y<stockDetails.length; y++) {
+                  for (let z=0; z<p.length; z++) {
+                    if (stockDetails[y].id === p[z].id) {
+                      console.log(p[z].id);
+                      console.log(p[z].stock);
+                      stockDetails[y].newStock = p[z].stock - stockDetails[y].stockLeft
+                    }
+                  }
+                }
+              }).then( () => {
+                  for (let r=0; r<stockDetails.length; r++) {
+                  axios.put( "https://pamper-my-pet.herokuapp.com/products/" + stockDetails[r].id +".json", {stock : stockDetails[r].newStock}).then((result) => {
+                    console.log(result.data);
+                  });
+                }
+            });
+
+          });
+
         const url = "https://pamper-my-pet.herokuapp.com/orders/" + orderId + ".json";
         console.log("Order ID = " + orderId + ", set to Completed.")
         //update to "Completed"
         axios.put(url, { status: 'Completed' }).then((result) => {});
+
       } else {
         this.setState({didsplayErr: true});
       }
