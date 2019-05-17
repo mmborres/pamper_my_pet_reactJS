@@ -16,6 +16,7 @@ class Item extends Component {
     }
 
     const product_id = this.props.match.params.id;
+    const editparam = this.props.match.params.edit; //"edit"
     const URL = "https://pamper-my-pet.herokuapp.com/products/" + product_id + ".json"
     const fetchProduct = () => {
       axios.get(URL).then((results) => {
@@ -48,7 +49,7 @@ class Details extends Component {
   constructor() {
     super();
     this.state = {
-      quantity : 1,
+      quantity : 0,
       order_id: -1,
       order_item_id: -1
     }
@@ -171,7 +172,7 @@ class Details extends Component {
 
   }
 
-  createQuantitySelect() {
+  /*createQuantitySelect() {
     const stockLimit = this.props.item.stock;
     if (stockLimit === 0) return; //TODO Disable this
 
@@ -181,7 +182,7 @@ class Details extends Component {
     }
     return items;
   }
-
+*/
 
 
   render(){
@@ -207,9 +208,8 @@ class Details extends Component {
       <p><strong>Color: &ensp;</strong>{this.props.item.color}</p>
       <p><strong>Stock: &ensp;</strong>{isOutOfStock ? 'Out of Stock' : 'Available'}</p>
       <p><strong>Select quantity: &ensp;</strong>
-      <select onChange={this._handleChange}>
-      {this.createQuantitySelect()}
-      </select>
+      <input type="number" min="1" max={this.props.item.stock} onChange={this._handleChange} />
+
       </p>
 
 

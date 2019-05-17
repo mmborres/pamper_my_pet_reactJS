@@ -72,10 +72,10 @@ class Products extends Component {
   }
 
      fetchProducts = (c,p) => {
-      const category = c;
-      const pet_type = p;
-      //console.log(category + " = category");
-      //console.log(pet_type + " = pet_type");
+      const category = c.trim();
+      const pet_type = p.trim();
+      //console.log("[" +category +"]" + " = category");
+      //console.log("[" + pet_type + "]" + " = pet_type");
 
       //filtering categories and pet
       axios.get("https://pamper-my-pet.herokuapp.com/products.json").then((results) => {
@@ -174,6 +174,13 @@ const Allproducts = (props) => {
     } );
 
     console.log(sortedByName);
+
+    const total = props.products.length;
+    const rem = total % 3;
+
+     if (rem===1) {
+       props.products.pop();
+     }
 
     return(
 
