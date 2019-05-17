@@ -48,7 +48,7 @@ class NavCart extends Component {
 
     }; //getCartItems
     getCartItems();
-    setInterval(getCartItems, 5000);
+    setInterval(getCartItems, 3000);
 
   } //constructor
 
