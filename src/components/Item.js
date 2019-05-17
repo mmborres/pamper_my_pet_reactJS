@@ -28,6 +28,19 @@ class Item extends Component {
       axios.get(URL).then((results) => {
         //console.log(results.data);
         this.setState({item: results.data});
+
+        // const url = "https://pamper-my-pet.herokuapp.com/order_items.json";
+        //
+        // return axios.get(url).then((results) => {
+        //   //console.log('flethdhf', results.data.length);
+        //   //console.log('order_item_id', this.state.order_item_id);
+        //   if (results.data.length > 0) {
+        //     //this.createOrderItem(order_id, product_id, quantity);
+        //     //const url = "https://pamper-my-pet.herokuapp.com/order_items.json";
+        //     const index = results.data.findIndex((item) => item.order_id === order_id && item.product_id === product_id);
+        //
+        //     });
+
       })
     };
     fetchProduct();
