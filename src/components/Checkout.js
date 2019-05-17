@@ -93,6 +93,7 @@ class Checkout extends Component {
                 }
               }
             });
+
           }).then( () => {
             AddToCart.replaceCart(cart);
             console.log("rcioio art = " + AddToCart.getCart());
