@@ -34,11 +34,9 @@ import React, { Component } from 'react';
           <DetailsWithRouter item={this.state.item} />
           {
             isAdmin
-<<<<<<< HEAD
-            ?  <p><Link to={"/editproduct/" + this.state.item.id } className="btn btn-outline-info">Edit Product</Link></p>
-=======
+
             ?  <p><Link to={"/editproduct/" + this.state.item.id }><button className="btn btn-outline-info">Edit Product</button></Link></p>
->>>>>>> 7ea142852e312538b19e607bbc349320ba384cea
+
             : ''
           }
           <Footer />

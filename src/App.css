@@ -136,11 +136,8 @@ body {
   font-size: 1.3rem;
 }
 .heading {
-<<<<<<< HEAD
+
 color:#333333;
-=======
-color: #333333;
->>>>>>> 7ea142852e312538b19e607bbc349320ba384cea
 text-transform: uppercase;
 backface-visibility: hidden;
 margin-bottom: 2rem;
@@ -486,7 +483,9 @@ text-align: center;
 
 /* S */
 @media screen and (max-width: 500px) {
-
+.heading{
+  margin-top: 10rem;
+}
 .btn-outline-info{
   margin-left: 6rem;
 }
@@ -534,6 +533,51 @@ text-align: center;
 }
 .new-product{
   margin-right: -2rem;;
+}
+.top-level-menu > li
+{
+    display: flex;
+    font-size: 1rem;
+    /* position: absolute; */
+    float: left;
+    height: 2rem;
+    width: 10rem;
+    background: #333333;
+}
+.top-level-menu
+{
+    /* list-style: none; */
+    padding: 1rem 1rem 1rem 1rem;
+    /* margin: 0 0 1rem 0; */
+    background: #333333;
+    height: 7rem;
+    border: 5px solid grey;
+    border-style: ridge;
+    font-family: fantasy;
+    font-weight: bold;
+    letter-spacing: .1rem;
+    font-size: 1rem;
+
+}
+.top-level-menu a /* Apply to all links inside the multi-level menu */
+{
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0 20px 0 20px;
+    /* Make the link cover the entire list item-container */
+    display: block;
+    line-height: 1rem;
+
+}
+
+.top-level-menu a /* Apply to all links inside the multi-level menu */
+{
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0 1rem 0 1rem;
+    /* Make the link cover the entire list item-container */
+    display: block;
+    line-height: 1rem;
 }
 
 }
