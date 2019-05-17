@@ -17,8 +17,14 @@ class Item extends Component {
 
     const product_id = this.props.match.params.id;
     const editparam = this.props.match.params.edit; //"edit"
+    console.log("edit = " + this.props.match.params.edit);
+    console.log("prod = " + product_id);
+
     const URL = "https://pamper-my-pet.herokuapp.com/products/" + product_id + ".json"
     const fetchProduct = () => {
+      console.log("22edit = " + this.props.match.params.edit);
+      console.log("22prod = " + product_id);
+
       axios.get(URL).then((results) => {
         //console.log(results.data);
         this.setState({item: results.data});
@@ -29,6 +35,9 @@ class Item extends Component {
 
   render () {
     const isAdmin = UserProfile.getAdmin();
+    console.log("1edit = " + this.props.match.params.edit);
+    console.log("1prod = " + this.props.match.params.id);
+
     return (
       <div>
       <Nav />
@@ -186,6 +195,10 @@ class Details extends Component {
 
 
   render(){
+
+    console.log("2edit = " + this.props.match.params.edit);
+    console.log("2prod = " + this.props.match.params.id);
+
     const cardStyle = {
       height: 'auto'
 
@@ -193,6 +206,8 @@ class Details extends Component {
 
     const isOutOfStock = this.props.item.stock === 0;
     const userPresent = UserProfile.getEmail() === "";
+    const isEdit = this.props.match.params.edit === "edit";
+    console.log("edit = " + this.props.match.params.edit);
 
     return(
       <div className="container" >
@@ -219,11 +234,16 @@ class Details extends Component {
         <Link to="/login"><button className="btn btn-warning">Add to Cart</button></Link>&ensp;
         <Link to="/login"><button className="btn btn-warning">Buy Now</button></Link>
         </p>
-        :
-        <p>
-        <button className="btn btn-warning" onClick={this._handleCart} id="1" disabled={isOutOfStock}>Add to Cart</button>&ensp;&ensp;
-        <button className="btn btn-warning" onClick={this._handleCart} id="2" disabled={isOutOfStock}>Buy Now</button>
-        </p>
+        : ( esEdit ?
+          <p>
+          From Edit
+          </p>
+          :
+          <p>
+          <button className="btn btn-warning" onClick={this._handleCart} id="1" disabled={isOutOfStock}>Add to Cart</button>&ensp;&ensp;
+          <button className="btn btn-warning" onClick={this._handleCart} id="2" disabled={isOutOfStock}>Buy Now</button>
+          </p>
+        )
       }
       </div>
       </div>
