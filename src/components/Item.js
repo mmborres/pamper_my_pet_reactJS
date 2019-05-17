@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
     import { Link, withRouter } from 'react-router-dom';
     import axios from 'axios';
     import Nav from './Nav.js';
@@ -8,51 +7,6 @@ import React, { Component } from 'react';
     import AddToCart from './AddToCart';
     import { Dropdowns }  from "react-bootstrap";
     import { Button, Container, Row, Col } from "reactstrap";
-
-    class Item extends Component {
-      constructor(props) {
-        super(props);
-        this.state = {
-          item: []
-        }
-
-        const product_id = this.props.match.params.id;
-        const URL = "https://pamper-my-pet.herokuapp.com/products/" + product_id + ".json"
-        const fetchProduct = () => {
-          axios.get(URL).then((results) => {
-            //console.log(results.data);
-            this.setState({item: results.data});
-          })
-        };
-        fetchProduct();
-      }
-
-      render () {
-        const isAdmin = UserProfile.getAdmin();
-        return (
-          <div>
-          <Nav />
-          <DetailsWithRouter item={this.state.item} />
-          {
-            isAdmin
-
-            ?  <p><Link to={"/editproduct/" + this.state.item.id }><button className="btn btn-outline-info">Edit Product</button></Link></p>
-
-            : ''
-          }
-          <Footer />
-          </div>
-        );
-      }
-=======
-import { Link, withRouter } from 'react-router-dom';
-import axios from 'axios';
-import Nav from './Nav.js';
-import Footer from './Footer.js';
-import UserProfile from './UserProfile';
-import AddToCart from './AddToCart';
-import { Dropdowns }  from "react-bootstrap";
-import { Button, Container, Row, Col } from "reactstrap";
 
 class Item extends Component {
   constructor(props) {
@@ -68,7 +22,6 @@ class Item extends Component {
         //console.log(results.data);
         this.setState({item: results.data});
       })
->>>>>>> 509a2d36007c0d7be53d5fe951e9e5f543515fe1
     };
     fetchProduct();
   }

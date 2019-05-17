@@ -15,7 +15,7 @@ class Nav extends Component {
 
         <nav>
         <ul class="top-level-menu">
-        <li style={{float: 'left'}}><Link to="/home">Home</Link></li>
+        <li style={{float: 'left'}} className="nav-home"><Link to="/home">Home</Link></li>
         <li style={{float: 'left'}}><Link to="/products">All Products</Link></li>
         <li style={{width: '250px', textAlign: 'center',float: 'left'}} >
         <span class="non-link-menu">Shop By Category</span>
@@ -67,7 +67,7 @@ class Nav extends Component {
       <nav >
       <ul class="top-level-menu">
       <li style={{float: 'left'}}><Link to="/home">Home</Link></li>
-      <li style={{float: 'left'}}><Link to="/products">All Products</Link></li>
+      <li style={{float: 'left'}} className="list"><Link to="/products">All Products</Link></li>
       <li style={{width: '250px', textAlign: 'center',float: 'left'}}>
       <span class="non-link-menu">Shop By Category</span>
       <ul class="second-level-menu">
@@ -103,9 +103,9 @@ class Nav extends Component {
       </li>
       </ul>
       </li>
-      <li style={{float: 'right'}}><NavCart /></li>
-      <li style={{float: 'right'}} ><Link to="/logout">Logout</Link></li>
-      <li style={{color: 'hotpink', float: 'right', paddingTop: '4px'}}>Welcome {hello}</li>
+      <li style={{float: 'right'}} className="cart"><NavCart /></li>
+      <li style={{float: 'right'}} className="logout" ><Link to="/logout">Logout</Link></li>
+      <li style={{color: 'hotpink', float: 'right', paddingTop: '4px'}} className="welcome-text">Welcome {hello}</li>
       </ul>
       </nav>
 

@@ -6,6 +6,9 @@ import UserProfile from './UserProfile';
 import AddToCart from './AddToCart';
 import Payment from './Payment';
 import axios from 'axios';
+import { Table }  from "react-bootstrap";
+
+
 
 import { Dropdowns }  from "react-bootstrap";
 import { Button, Container, Row, Col } from "reactstrap";
@@ -231,6 +234,7 @@ class DisplayCart extends Component {
     } else {
       return (
         <div className="checkout">
+
         <table >
         <th>Product</th>
         <th>ID</th>
@@ -254,9 +258,11 @@ class DisplayCart extends Component {
           <td key={c.id + 6}><button className="favicon fa fa-trash fa-2x" onClick={this._removeHandler} id={c.order_item_id}></button></td>
           </tr>
           </tbody>
+
         )}
-        <tr><td colSpan={7} id="total"><strong>Grand Total AUD { this.props.total }</strong></td></tr>
         </table>
+        <tr><td colSpan={7} id="total"><strong>Grand Total AUD { this.props.total }</strong></td></tr>
+
         <Link to={"/payment"} ><span><button id="pay" className="btn btn-warning" >Pay Now</button></span></Link>
         </div>
       )

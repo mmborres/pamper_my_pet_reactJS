@@ -162,6 +162,18 @@ const Allproducts = (props) => {
   if (props.products.length === 0){
     return 'You have 0 search result';
   } else {
+    const sortedByName = props.products;
+    sortedByName.sort( function compare( a, b ) {
+     if ( a.name < b.name ){
+       return -1;
+     }
+     if ( a.name > b.name ){
+       return 1;
+     }
+     return 0;
+    } );
+
+    console.log(sortedByName);
 
     return(
 

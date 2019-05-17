@@ -84,12 +84,7 @@ body {
   font-size: 1.3rem;
 }
 .heading {
-<<<<<<< HEAD
-
-color:#333333;
-=======
 color: #333333;
->>>>>>> 509a2d36007c0d7be53d5fe951e9e5f543515fe1
 text-transform: uppercase;
 backface-visibility: hidden;
 margin-bottom: 2rem;
@@ -439,6 +434,9 @@ text-align: center;
   margin-top: 2rem;
   grid-column: 1 / 3;
 }
+.top-level-menu > li.list {
+  display: none;
+}
 .item-image{
   width: 300px;
   height: 300px;
@@ -451,13 +449,26 @@ text-align: center;
 }
 .top-level-menu > li
 {
-    display: flex;
+    /* display: flex; */
     font-size: 1rem;
     /* position: absolute; */
     float: left;
     height: 2rem;
     width: 10rem;
     background: #333333;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    margin-left: -3rem;
+}
+.top-level-menu > li.cart {
+  /* padding:-2rem; */
+  margin-left: -2rem;
+}
+.top-level-menu > li.nav-home{
+ma-right: -rem;
+}
+.welcome-text{
+  margin-right: 12rem;
 }
 .top-level-menu
 {
@@ -471,7 +482,7 @@ text-align: center;
     font-family: fantasy;
     font-weight: bold;
     letter-spacing: .1rem;
-    font-size: 1rem;
+
 
 }
 .top-level-menu a /* Apply to all links inside the multi-level menu */
@@ -493,7 +504,17 @@ text-align: center;
     /* Make the link cover the entire list item-container */
     display: block;
     line-height: 1rem;
+    width: 10rem;
 }
+.third-level-menu > li
+{
+    /* background: #333333; */
+    border-bottom: 1px solid grey;
+  }
+  .logout{
+    margin-right: -1rem;
+  }
+
 
 }
 /* M */
@@ -512,6 +533,7 @@ text-align: center;
   .btn-warning {
     margin: 1rem;
 }
+
 
 }
 /* L */
