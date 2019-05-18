@@ -1,12 +1,16 @@
 # Pamper My Pet
 
-Deployed using [GH Instructions](https://facebook.github.io/create-react-app/docs/deployment#github-pages-https-pagesgithubcom)
+This a one-week-only multi-page ReactJS + RailsAPI group project whose main goal is for the developers to practice ReactJS front-end and calling Axios calls to Rails back-end, and then learn the timining/promise concepts in ReactJS. 
+
+Group Members: Rashida Bengali, Purvi Pandya, and Mabeth Borres (Lead)
 
 ### LIVE DEMO
 
 [Pamper My Pet - Version 1](https://mmborres.github.io/pamper-my-pet) 
 
 [Pamper My Pet - Version 2](https://mmborres.github.io/pamper_my_pet_deploy) 
+
+Deployed using [GH Instructions](https://facebook.github.io/create-react-app/docs/deployment#github-pages-https-pagesgithubcom)
 
 ![Home Page](./src/img/screenshots/Screen%20Shot%202019-05-17%20at%202.51.57%20am.png "Home Page")
 
@@ -50,7 +54,7 @@ After clicking *Buy Now* button or *Cart Icon* in Navbar. The User can view the 
 
 ### Card Payment
 
-Our secure payment method, allows the User to make Payment wit ease.
+Our secure payment method, allows the User to make Payment with ease. (Note: Simulated Card Payment Only)
 
 ![Card Payment](./src/img/screenshots/Screen%20Shot%202019-05-17%20at%203.00.39%20am.png "Card Payment")
 
@@ -72,13 +76,9 @@ Each **Model** inherits from *ActiveRecord* that does the following in an object
 * Represent associations between Models
 * Perform database operations
 
------------------------------------------------------
-- Front-end uses HTML utilising Google Fonts and web-sourced images
-- Styling and animations through CSS, Bootstrap and Favicons
-- ReactJS for Front-end Components
-
 #### Major Features:
 
+  * ReactJS for Front-end Components
   * Rails API: JSON endpoint rendering in the Controllers
      * JWT for User Authentication  
      * Stripe API for simulated payments      
@@ -89,6 +89,8 @@ Each **Model** inherits from *ActiveRecord* that does the following in an object
   * `Axios.get` `Axios.post` `Axios.put` Method will save the User's Cart in the database if they Log Out without Purchasing them. Later, if they Login even from some other device, they will be able to view the Cart
   * Gems: BCrypt, JWT, Stripe and Rack-Cors to enable API Endpoint
   * Admin Rights
+  * Front-end uses HTML utilising Google Fonts and web-sourced images
+  * Styling and animations through CSS, Bootstrap and Favicons
 
   ![Add](./src/img/screenshots/add.png "Add")
 
@@ -100,5 +102,6 @@ Wishlist
   * Implement Discount or Sale options
   * Simulate Delivery System
   * Introduce User Review for *Pamper My Pet* Products
-  * Enable Price Filter in Search Bar.
+  * Enable Price Filter in Search Bar
   * More Animations
+  * Site Responsiveness on Mobile
