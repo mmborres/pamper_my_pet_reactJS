@@ -16,41 +16,53 @@ class CheckoutForm extends Component {
     //const stripeserver = "http://localhost:3000/orders";
     let custname = UserProfile.getName();
     let {token} = await this.props.stripe.createToken({name: custname});
-    console.log(token);
+    //console.log(token);
     //console.log("token id = " + token.id);
 
     let response = "";
     const userId = UserProfile.getUserId();
-    const orderId = AddToCart.getOrderId();
+    //const orderId = 0; //AddToCart.getOrderId();
     const em = UserProfile.getEmail();
 
-    axios.post(stripeserver + "/charge", { stripeToken: token, user_id: userId, order_id: orderId, stripeEmail: em }).then((result) => {
+
+    axios.post(stripeserver + "/charge", { stripeToken: token, user_id: userId,  stripeEmail: em }).then((result) => {
       console.log(result);
       console.log(result.data);
       console.log(result.statusText);
-
 
       if (result.statusText === "OK") {
 
         response = "OK";
         console.log("Purchase Complete!")
         this.setState({complete: true});
-        console.log("payment order_id = " + orderId);
+        //console.log("payment order_id = " + orderId);
         AddToCart.emptyCart();
 
+        //let orderId = AddToCart.getOrderId();
+        const userId = UserProfile.getUserId();
+        const prod = "https://pamper-my-pet.herokuapp.com/orders/updateStocks";
+        //also sets order to 'Completed'
 
+        axios.post(prod, { user_id: userId } ).then((results) => {
+          console.log("updateStocks")
+          console.log(results);
+         });
+
+
+//////    FOR TEACHING - LEARNING PURPOSES
+        /*
       const orderItemsUrl = "https://pamper-my-pet.herokuapp.com/order_items.json";
       let stockDetails = [];
 
           axios.get(orderItemsUrl).then((results) => {
               console.log('rfr', results.data);
               const filteredArray = results.data.filter((item) => parseInt(item.order_id) === parseInt(orderId));
-              /*const f = results.data;
+              const f = results.data;
               for (let b=0; b<f.length; b++) {
                 if (f[b].order_id === orderId) {
                   filteredArray.push(f[b]);
                 }
-              }*/
+              }
 
               console.log('filteredArray', filteredArray);
 
@@ -88,23 +100,27 @@ class CheckoutForm extends Component {
                 }
             });
 
-          });
+          });*/
 
-        const url = "https://pamper-my-pet.herokuapp.com/orders/" + orderId + ".json";
-        console.log("Order ID = " + orderId + ", set to Completed.")
+        //const url = "https://pamper-my-pet.herokuapp.com/orders/" + orderId + ".json";
+        //console.log("Order ID = " + orderId + ", set to Completed.")
         //update to "Completed"
-        axios.put(url, { status: 'Completed' }).then((result) => {});
+        //axios.put(url, { status: 'Completed' }).then((result) => {});
+
+//////    FOR TEACHING - LEARNING PURPOSES - END
+
 
       } else {
         this.setState({didsplayErr: true});
       }
     });
+  //});
 
   }
 
   render() {
     if (this.state.complete) {
-      return <h3>Purchase Complete. Shop More, we have other amazing products.</h3>;
+      return <h3>Purchase Complete. Shop more! We have other amazing products to choose from.</h3>;
     } else if ( this.state.didsplayErr === true ) {
       return <h3>Purchase Cannot Be Completed At This Time. Try Again After A Few Seconds.</h3>;
     }

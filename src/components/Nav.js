@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import UserProfile from './UserProfile';
 import NavCart from './NavCart';
 import './../App.css';
-import { Dropdowns }  from "react-bootstrap";
-import { Button, Container, Row, Col } from "reactstrap";
 
 class Nav extends Component {
   render() {
@@ -21,7 +19,7 @@ class Nav extends Component {
         <span class="non-link-menu">Shop By Category</span>
         <ul class="second-level-menu">
         <li>
-        <span class="non-link-menu">Dog</span>
+        <Link to="/products/Dog">Dog</Link>
         <ul class="third-level-menu">
         <li><Link to="/products/Dog/Clothing">Clothing</Link></li>
         <li><Link to="/products/Dog/Accessories">Accessories</Link></li>
@@ -29,7 +27,7 @@ class Nav extends Component {
         </ul>
         </li>
         <li>
-        <span class="non-link-menu">Cat</span>
+        <Link to="/products/Cat">Cat</Link>
         <ul class="third-level-menu">
         <li><Link to="/products/Cat/Clothing">Clothing</Link></li>
         <li><Link to="/products/Cat/Accessories">Accessories</Link></li>
@@ -37,14 +35,14 @@ class Nav extends Component {
         </ul>
         </li>
         <li>
-        <span class="non-link-menu">Bird</span>
+        <Link to="/products/Bird">Bird</Link>
         <ul class="third-level-menu">
         <li><Link to="/products/Bird/Accessories">Accessories</Link></li>
         <li><Link to="/products/Bird/Miscellaneous">Miscellaneous</Link></li>
         </ul>
         </li>
         <li>
-        <span class="non-link-menu">Others</span>
+        <Link to="/products/Others">Others</Link>
         <ul class="third-level-menu">
         <li><Link to="/products/Others/Accessories">Accessories</Link></li>
         <li><Link to="/products/Others/Miscellaneous">Miscellaneous</Link></li>
@@ -72,7 +70,7 @@ class Nav extends Component {
       <span class="non-link-menu">Shop By Category</span>
       <ul class="second-level-menu">
       <li>
-      <span class="non-link-menu">Dog</span>
+      <Link to="/products/Dog">Dog</Link>
       <ul class="third-level-menu">
       <li><Link to="/products/Dog/Clothing">Clothing</Link></li>
       <li><Link to="/products/Dog/Accessories">Accessories</Link></li>
@@ -80,7 +78,7 @@ class Nav extends Component {
       </ul>
       </li>
       <li>
-      <span class="non-link-menu">Cat</span>
+      <Link to="/products/Cat">Cat</Link>
       <ul class="third-level-menu">
       <li><Link to="/products/Cat/Clothing">Clothing</Link></li>
       <li><Link to="/products/Cat/Accessories">Accessories</Link></li>
@@ -88,14 +86,14 @@ class Nav extends Component {
       </ul>
       </li>
       <li>
-      <span class="non-link-menu">Bird</span>
+      <Link to="/products/Bird">Bird</Link>
       <ul class="third-level-menu">
       <li><Link to="/products/Bird/Accessories">Accessories</Link></li>
       <li><Link to="/products/Bird/Miscellaneous">Miscellaneous</Link></li>
       </ul>
       </li>
       <li>
-      <span class="non-link-menu">Others</span>
+      <Link to="/products/Others">Others</Link>
       <ul class="third-level-menu">
       <li><Link to="/products/Others/Accessories">Accessories</Link></li>
       <li><Link to="/products/Others/Miscellaneous">Miscellaneous</Link></li>
@@ -105,6 +103,7 @@ class Nav extends Component {
       </li>
       <li style={{float: 'right'}} className="cart"><NavCart /></li>
       <li style={{float: 'right'}} className="logout" ><Link to="/logout">Logout</Link></li>
+      <li style={{float: 'right', width: '250px'}} className="logout" ><Link to="/orders">View Order History</Link></li>
       <li style={{color: 'hotpink', float: 'right', paddingTop: '4px'}} className="welcome-text">Welcome {hello}</li>
       </ul>
       </nav>
@@ -113,5 +112,6 @@ class Nav extends Component {
     );
   }
 };
+
 
 export default Nav;

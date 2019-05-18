@@ -53,32 +53,62 @@ class Products extends Component {
     };
     getCategories();
 
-    //this select pet and category from the nav bar and put the result in the dropdown menu.
-    if ( this.props.match.params.category!==undefined && this.props.match.params.pet!==undefined ) {
+    ////this select pet and category from the nav bar and put the result in the dropdown menu.
+    //if ( this.props.match.params.category!==undefined && this.props.match.params.pet!==undefined ) {
       // console.log(this.props.match.params.category);
 
       //get value from params
-      const category = this.props.match.params.category;
-      const pet = this.props.match.params.pet;
+      let category = this.props.match.params.category;
+      let pet_type = this.props.match.params.pet;
       //console.log("1a=" + pet);
 
+      if (category!==undefined) {
+        category = category.trim();
+      } else {
+        category = "";
+      }
+      if (pet_type!==undefined) {
+        pet_type = pet_type.trim();
+      } else {
+        pet_type = "";
+      }
+
       //setstate
-      this.setState({category: category, pet: pet});
+      this.setState({category: category, pet: pet_type});
       //console.log("1b=" + this.state.pet);
       //this is filtering the parameter as per the above mentioned condition.
-      this.fetchProducts(category, pet);
-    }
+      this.fetchProducts(category, pet_type);
+    //}
 
   }
 
-     fetchProducts = (c,p) => {
-      const category = c.trim();
-      const pet_type = p.trim();
-      //console.log("[" +category +"]" + " = category");
-      //console.log("[" + pet_type + "]" + " = pet_type");
+    fetchProducts = (c,p) => {
+      let category = c; //.trim();
+      let pet_type = p; //.trim();
+      if (category!==undefined) {
+        category = category.trim();
+      } else {
+        category = "";
+      }
+      if (pet_type!==undefined) {
+        pet_type = pet_type.trim();
+      } else {
+        pet_type = "";
+      }
+      console.log("[" +category +"]" + " = category");
+      console.log("[" + pet_type + "]" + " = pet_type");
 
       //filtering categories and pet
-      axios.get("https://pamper-my-pet.herokuapp.com/products.json").then((results) => {
+      const prod = "https://pamper-my-pet.herokuapp.com/products/search";
+      axios.post(prod, { pet_type: pet_type, classification: category } ).then((results) => {
+        console.log(results.data.data);
+        this.setState({products: results.data.data});
+      });
+
+      
+      /*axios.get("https://pamper-my-pet.herokuapp.com/products.json").then((results) => {
+        console.log("V2");
+        console.log(results.data);
         const p_data = results.data;
         const listProducts = [];
           for (let i = 0; i < p_data.length; i++) {
@@ -105,7 +135,7 @@ class Products extends Component {
         //console.log("listProducts =" + listProducts.length);
         this.setState({products: listProducts});
 
-      })
+      });*/
 
     };
     //to relaod the page as per the search requirement
@@ -162,7 +192,7 @@ const Allproducts = (props) => {
   if (props.products.length === 0){
     return 'You have 0 search result';
   } else {
-    const sortedByName = props.products;
+    /*const sortedByName = props.products;
     sortedByName.sort( function compare( a, b ) {
      if ( a.name < b.name ){
        return -1;
@@ -173,7 +203,7 @@ const Allproducts = (props) => {
      return 0;
     } );
 
-    console.log(sortedByName);
+    console.log(sortedByName);*/
 
     const total = props.products.length;
     const rem = total % 3;
@@ -255,7 +285,7 @@ class SearchForm extends Component {
 
             <label className="label">Pet:</label>
               <select className="product-option" onChange={this._handleChangePetType}>
-                <option ></option>
+                <option >{""}</option>
                 {
                   this.props.pets.map( (p) => <option name={p} value={p} selected={ (p===this.props.pet) ? "selected" : "" }>{p}</option>)
                 }
@@ -264,7 +294,7 @@ class SearchForm extends Component {
               <label className="label">Category:</label>
 
                 <select className="product-option" onChange={this._handleChangeCategory}>
-                  <option></option>
+                  <option>{""}</option>
                   {
                     this.props.categories.map( (c) => <option className="dropdown-item" name={c} value={c} selected={ (c===this.props.category) ? "selected" : ""}>{c}</option>)
                   }

@@ -47,11 +47,12 @@ class Home extends Component {
 
         this.setState({featuredproducts: featured});
 
-        setTimeout(fetchFeatured, 10000);
+        //setTimeout(fetchFeatured, 10000);
       })
     };
 
     fetchFeatured();
+    setInterval(fetchFeatured, 5000);
   } //constructor
 
 

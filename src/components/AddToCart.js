@@ -1,5 +1,4 @@
 import UserProfile from './UserProfile';
-import axios from 'axios';
 
 const AddToCart = (function() {
   let cart = [];
@@ -21,9 +20,7 @@ const AddToCart = (function() {
         console.log("getCart == " + cart)
         return cart;
       }
-
     }
-
   };
 
   const getCartItems = function () {

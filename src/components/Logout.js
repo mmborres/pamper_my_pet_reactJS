@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import UserProfile from './UserProfile';
 import AddToCart from './AddToCart';
 

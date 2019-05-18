@@ -4,17 +4,9 @@ import Nav from './Nav.js';
 import Footer from './Footer.js';
 import UserProfile from './UserProfile';
 import AddToCart from './AddToCart';
-import Payment from './Payment';
 import axios from 'axios';
-import { Table }  from "react-bootstrap";
-
-
-
-import { Dropdowns }  from "react-bootstrap";
-import { Button, Container, Row, Col } from "reactstrap";
 
 import 'font-awesome/css/font-awesome.min.css';
-
 import './../App.css';
 
 class Checkout extends Component {
@@ -29,13 +21,41 @@ class Checkout extends Component {
   }
 
   displayAfterRemove(cart) {
-    //this.setState()
-    console.log("should redisplay");
+    //should redisplay
     this.renderCartItems();
   }
 
   renderCartItems() {
-    const userId = UserProfile.getUserId();
+
+      const userId = UserProfile.getUserId();
+      const prod = "https://pamper-my-pet.herokuapp.com/orders/getCart";
+
+      axios.post(prod, { user_id: userId } ).then((results) => {
+        //console.log(results);
+
+        const cart = results.data.data;
+        AddToCart.replaceCart(cart);
+        this.setState({shoppingList: cart});
+
+        let values = [];
+
+        cart.map( (t) => values.push(t.price * t.quantity) )
+          if ( values.length > 0 ) {
+            console.log(values);
+            const add = (a, b) => a + b;
+            const final = values.reduce(add);
+
+            console.log("grandtotal = " + final);
+            this.setState({total: final});
+          }
+      });
+
+
+
+//////    FOR TEACHING - LEARNING PURPOSES
+
+    //const userId = UserProfile.getUserId();
+    /*
     let cart = AddToCart.getCart();
     const ordersUrl = "https://pamper-my-pet.herokuapp.com/orders.json";
     const orderItemsUrl = "https://pamper-my-pet.herokuapp.com/order_items.json";
@@ -132,12 +152,14 @@ class Checkout extends Component {
 
   console.log("grandtotal = " + final);
   this.setState({total: final});
-}
+}*/
+
+//////    FOR TEACHING - LEARNING PURPOSES - END
 
 }
 
 componentDidMount() {
-  console.log("show");
+  //console.log("show");
   this.renderCartItems();
 }
 
@@ -234,7 +256,7 @@ class DisplayCart extends Component {
       )
     } else {
       return (
-        <div className="checkout">
+        <div style={{display: 'flex', flexDirection: 'column', paddingRight: '400px', paddingLeft: '400px'}}>
 
         <table >
         <th>Product</th>
@@ -261,8 +283,9 @@ class DisplayCart extends Component {
           </tbody>
 
         )}
-        </table>
+
         <tr><td colSpan={7} id="total"><strong>Grand Total AUD { this.props.total }</strong></td></tr>
+        </table>
 
         <Link to={"/payment"} ><span><button id="pay" className="btn btn-warning" >Pay Now</button></span></Link>
         </div>

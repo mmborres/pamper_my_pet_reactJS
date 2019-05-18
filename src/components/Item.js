@@ -12,7 +12,8 @@ class Item extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      item: []
+      item: [],
+      order_item_quantity: 1
     }
 
     const product_id = this.props.match.params.id;
@@ -22,39 +23,47 @@ class Item extends Component {
 
     const URL = "https://pamper-my-pet.herokuapp.com/products/" + product_id + ".json"
     const fetchProduct = () => {
-      console.log("22edit = " + this.props.match.params.edit);
-      console.log("22prod = " + product_id);
+      //console.log("22edit = " + this.props.match.params.edit);
+      //console.log("22prod = " + product_id);
 
       axios.get(URL).then((results) => {
         //console.log(results.data);
         this.setState({item: results.data});
 
-        // const url = "https://pamper-my-pet.herokuapp.com/order_items.json";
-        //
-        // return axios.get(url).then((results) => {
-        //   //console.log('flethdhf', results.data.length);
-        //   //console.log('order_item_id', this.state.order_item_id);
-        //   if (results.data.length > 0) {
-        //     //this.createOrderItem(order_id, product_id, quantity);
-        //     //const url = "https://pamper-my-pet.herokuapp.com/order_items.json";
-        //     const index = results.data.findIndex((item) => item.order_id === order_id && item.product_id === product_id);
-        //
-        //     });
+      });
 
-      })
+      const userId = UserProfile.getUserId();
+      console.log("here");
+      console.log(userId);
+      console.log("prod = " + product_id);
+      console.log(parseInt(product_id))
+      const prod = "https://pamper-my-pet.herokuapp.com/orders/getOrderItemQuantity";
+      const pid = parseInt(product_id);
+
+      //console.log("getOrderItemQuantity 1");
+      axios.post(prod, { user_id: userId, product_id: product_id } ).then((results) => {
+        //console.log ("getOrderItemQuantity res");
+        console.log(results.data.data);
+        const q = results.data.data;
+        console.log(q > 0)
+        if (q > 0) {
+          this.setState({order_item_quantity: results.data.data});
+        }
+      });
+
     };
     fetchProduct();
   }
 
   render () {
     const isAdmin = UserProfile.getAdmin();
-    console.log("1edit = " + this.props.match.params.edit);
-    console.log("1prod = " + this.props.match.params.id);
+    //console.log("1edit = " + this.props.match.params.edit);
+    //console.log("1prod = " + this.props.match.params.id);
 
     return (
       <div>
       <Nav />
-      <DetailsWithRouter item={this.state.item} />
+      <DetailsWithRouter item={this.state.item} order_item_quantity={this.state.order_item_quantity}/>
       {
         isAdmin
         ?  <p><Link to={"/editproduct/" + this.state.item.id } className="btn btn-outline-info">Edit Product</Link></p>
@@ -71,7 +80,7 @@ class Details extends Component {
   constructor() {
     super();
     this.state = {
-      quantity : 0,
+      quantity : 1,
       order_id: -1,
       order_item_id: -1
     }
@@ -137,6 +146,11 @@ class Details extends Component {
           //console.log(results.data[index])
           //console.log('order_item_id', this.state.order_item_id);
           let tempq = results.data[index].quantity;
+
+          if (tempq<1) {
+            tempq = 1; //making sure
+          }
+
           tempq += quantity;
 
           if (buttonId === "3") {
@@ -170,7 +184,11 @@ class Details extends Component {
 
   _handleChange(event){
     event.preventDefault();
-    this.setState({quantity: event.target.value})
+    const q = event.target.value;
+    if (q<1) {
+      q = 1;
+    }
+    this.setState({quantity: q})
   }
 
   _handleCart(event){
@@ -186,7 +204,7 @@ class Details extends Component {
     const id = event.target.id;
     this.fetchOrder().then( () => {
       // Add in order item id table
-      this.checkOrderItem(this.state.order_id, this.props.item.id, parseInt(this.state.quantity)).then( () => {
+      this.checkOrderItem(this.state.order_id, this.props.item.id, parseInt(this.state.quantity), id).then( () => {
         //AddToCart.setCart(this.props.item.id, this.props.item.name, this.props.item.image, this.props.item.price, parseInt(this.state.quantity), this.state.order_item_id);
 
         if (id === "2" || id === "3") {
@@ -226,6 +244,7 @@ class Details extends Component {
     const userPresent = UserProfile.getEmail() === "";
     const isEdit = this.props.match.params.edit === "edit";
     console.log("edit = " + this.props.match.params.edit);
+    console.log("this.props.order_item_quantity = " + this.props.order_item_quantity)
 
     return(
       <div className="container" >
@@ -239,9 +258,9 @@ class Details extends Component {
       <p className="item-description"><strong>Description: &ensp;</strong>{this.props.item.description}</p>
       <p><strong>Size: &ensp;</strong>{this.props.item.size}</p>
       <p><strong>Color: &ensp;</strong>{this.props.item.color}</p>
-      <p><strong>Stock: &ensp;</strong>{isOutOfStock ? 'Out of Stock' : 'Available'}</p>
+      <p><strong>Stock: &ensp;</strong>{isOutOfStock ? 'Out of Stock' : 'Available'} {isOutOfStock ? '' : '(' + this.props.item.stock + ')'}</p>
       <p><strong>Select quantity: &ensp;</strong>
-      <input type="number" min="1" max={this.props.item.stock} onChange={this._handleChange} />
+      <input type="number" min="1" max={this.props.item.stock} onChange={this._handleChange} placeholder={this.props.order_item_quantity}/>
 
       </p>
 

@@ -21,6 +21,7 @@ const Routes = (
       <Route exact path="/" component={Home} />
       <Route exact path="/signup" component={SignUp} />
       <Route exact path="/products" component={Products} />
+      <Route exact path="/products/:pet" component={Products}/>
       <Route exact path="/products/:pet/:category" component={Products}/>
       <Route exact path="/product/:id" component={Item} />
       <Route exact path="/product/:id/:edit" component={Item} />

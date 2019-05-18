@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import { Button, FormGroup, FormControl } from "react-bootstrap";
-//import powerpuff from './../img/powerpuff.png';
 import './../App.css';
-//import "./Login.css";
 import axios from 'axios';
 import UserProfile from './UserProfile';
 import Nav from './Nav.js';
 import Footer from './Footer.js';
-//import { Redirect } from 'react-router-dom';
 
 
 export default class Login extends Component {

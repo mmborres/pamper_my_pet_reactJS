@@ -3,6 +3,8 @@ import Footer from './Footer.js'
 import Nav from './Nav.js';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import './../App.css';
+import UserProfile from './UserProfile';
 
 class Order extends Component {
   constructor(){
@@ -14,13 +16,19 @@ class Order extends Component {
     //const order_id = this.props.match.params.id;
 
     this._incrementOrder = this._incrementOrder.bind(this);
-    const fetchOrder = () => {
-      axios.get("https://pamper-my-pet.herokuapp.com/orders.json").then((results) => {
-        console.log(results.data);
-        this.setState({order: results.data})
 
-      })
+    const fetchOrder = () => {
+      const userId = UserProfile.getUserId();
+      const prod = "https://pamper-my-pet.herokuapp.com/orders/getOrderHistory";
+
+      axios.post(prod, { user_id: userId } ).then((results) => {
+      //axios.get("https://pamper-my-pet.herokuapp.com/orders.json").then((results) => {
+        console.log(results.data.data);
+        this.setState({order: results.data.data})
+
+      });
     }
+
     fetchOrder();
 
   }
@@ -38,28 +46,35 @@ class Order extends Component {
     });
     console.log(orderSortedByDate);
     return (
-      <div>
-      <Nav />
-      <div>
-
-      {console.log(this.state.load)}
-      {orderSortedByDate.slice(0, this.state.load).map ((o) =>
-        <div>
-        <p>User_Id: {o.user_id}</p>
-
-        {
-          o.status ==='Open' ? <p><Link to={"/checkout/" + o.id } >Open!</Link></p>
-          : ''
-
-        }
-        <p>Created_At: {o.created_at}</p>
-        <p>Updated_At: {o.updated_at}</p>
-
+      <div className="checkout">
+        <Nav />
+        <h1>Order History</h1>
+        <div style={{display: 'flex', flexDirection: 'column', paddingRight: '400px', paddingLeft: '400px'}}>
+        <table className="checkout" >    
+          <td>Order</td>
+          <td>Last Accessed</td>
+          <td>Status</td>
+        {console.log(this.state.load)}
+        {orderSortedByDate.slice(0, this.state.load).map ((o) =>
+        <tbody key={o.id + 1}>
+        <tr key={o.id + 2}>
+        <td key={o.id + 3}>#{o.id}</td>
+        <td key={o.id + 4}>{o.updated_at}</td>
+        <td key={o.id + 5}>
+        { 
+          (o.status==="Open") 
+          ? 
+          <Link to={"/checkout"}>{o.status}</Link>
+          :
+          o.status
+        }</td>
+        </tr>
+        </tbody>
+        )}
+        </table>
         </div>
-      )}
-      </div>
-      <button onClick={this._incrementOrder}> Load More...</button>
-      <Footer />
+        
+        <Footer />
       </div>
 
     );
@@ -67,3 +82,5 @@ class Order extends Component {
 }
 
 export default Order;
+
+//      <button onClick={this._incrementOrder}> Load More...</button>
