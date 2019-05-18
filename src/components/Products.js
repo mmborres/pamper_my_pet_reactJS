@@ -271,10 +271,30 @@ class SearchForm extends Component {
 
   _handleSubmit(event){
     event.preventDefault();
-    // console.log("hi");
+    
+    console.log("SUBMIT");
+    let fetchcategory = this.state.category;
+    if (fetchcategory==="" && this.props.category!=="") {
+      fetchcategory = this.props.category;
+    }
+    let fetchpet = this.state.pettype;
+    if (fetchpet==="" && this.props.pet!=="") {
+      fetchpet = this.props.pet;
+    }
+    if (fetchpet === undefined) {
+      fetchpet = "";
+    }
+    if (fetchcategory === undefined) {
+      fetchcategory = "";
+    }
 
-    this.props.onSubmit(this.state.category, this.state.pettype);
+    console.log(this.state.category, this.state.pettype);
+    console.log(this.props.category, this.props.pet);
+    console.log(fetchcategory, fetchpet);
+    
+    this.props.onSubmit(fetchcategory, fetchpet);
   }
+
   render() {
     //console.log("here 123 = " + this.props.categories);
 
