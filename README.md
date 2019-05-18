@@ -1,6 +1,6 @@
 # Pamper My Pet
 
-This a one-week-only multi-page ReactJS + RailsAPI group project whose main goal is for the developers to practice ReactJS front-end and calling Axios calls to Rails back-end, and then learn the timining/promise concepts in ReactJS. 
+This a one-week-only multi-page ReactJS + RailsAPI group project whose main goal is for the developers to practice ReactJS front-end and calling Axios calls to Rails back-end, and then learn the timing/promise concepts in ReactJS. 
 
 Group Members: Rashida Bengali, Purvi Pandya, and Mabeth Borres (Lead)
 
