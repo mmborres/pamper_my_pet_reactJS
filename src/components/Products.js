@@ -28,7 +28,7 @@ class Products extends Component {
       })
     };
 
-    showProducts();
+    //showProducts();
 
     //to get direct info of pet from the database in searchform dropdown
     const getPets = () => {
@@ -75,6 +75,9 @@ class Products extends Component {
 
       //setstate
       this.setState({category: category, pet: pet_type});
+      console.log("PROPS");
+      console.log(category, pet_type);
+      console.log(this.state.category, this.state.pet);
       //console.log("1b=" + this.state.pet);
       //this is filtering the parameter as per the above mentioned condition.
       this.fetchProducts(category, pet_type);
@@ -103,6 +106,7 @@ class Products extends Component {
       axios.post(prod, { pet_type: pet_type, classification: category } ).then((results) => {
         console.log(results.data.data);
         this.setState({products: results.data.data});
+        console.log("SETSTATE after fetch");
       });
 
       
@@ -192,7 +196,7 @@ const Allproducts = (props) => {
   if (props.products.length === 0){
     return 'You have 0 search result';
   } else {
-    /*const sortedByName = props.products;
+    const sortedByName = props.products;
     sortedByName.sort( function compare( a, b ) {
      if ( a.name < b.name ){
        return -1;
@@ -203,7 +207,8 @@ const Allproducts = (props) => {
      return 0;
     } );
 
-    console.log(sortedByName);*/
+    console.log("ALLPRODUCTS");
+    console.log(sortedByName);
 
     const total = props.products.length;
     const rem = total % 3;
@@ -214,7 +219,7 @@ const Allproducts = (props) => {
 
     return(
 
-      <div className="container">
+      <div className="container"> Results: ({props.products.length})
       <div  className="row" >
         {props.products.map( (p) =>
 
@@ -272,7 +277,7 @@ class SearchForm extends Component {
   _handleSubmit(event){
     event.preventDefault();
     
-    console.log("SUBMIT");
+    console.log("SUBMIT=======");
     let fetchcategory = this.state.category;
     if (fetchcategory==="" && this.props.category!=="") {
       fetchcategory = this.props.category;
@@ -290,13 +295,58 @@ class SearchForm extends Component {
 
     console.log(this.state.category, this.state.pettype);
     console.log(this.props.category, this.props.pet);
-    console.log(fetchcategory, fetchpet);
+    console.log("FINAL", fetchcategory, fetchpet);
+
+    //this.setState({pettype: '', category: ''});
     
     this.props.onSubmit(fetchcategory, fetchpet);
   }
+  
+  componentDidUpdate () {
+    //console.log("HERE");
+    //console.log("STATE", this.state.category, this.state.pettype);
+
+    if (this.props.pet === undefined && this.state.pettype === "") {
+      //unselect from dropdown
+      document.getElementById("petoptions").selectedIndex = "-1"; //select none
+    }
+    if (this.props.category === undefined && this.state.category === "") {
+      //unselect from dropdown
+      document.getElementById("categoryoptions").selectedIndex = "-1"; //select none
+    }
+  }
+
+    componentDidMount() {      
+        //console.log("HERE2");
+        //console.log("STATE", this.state.category, this.state.pettype);
+        if (this.props.pet === undefined && this.state.pettype === "") {
+          //unselect from dropdown
+          document.getElementById("petoptions").selectedIndex = "-1"; //select none
+        }
+        if (this.props.category === undefined && this.state.category === "") {
+          //unselect from dropdown
+          document.getElementById("categoryoptions").selectedIndex = "-1"; //select none
+        }
+      }
 
   render() {
-    //console.log("here 123 = " + this.props.categories);
+    let fetchcategory = this.props.category;
+    let fetchpet =  this.props.pet;
+
+    if (fetchpet === undefined) {
+      fetchpet = "";
+    }
+    if (fetchcategory === undefined) {
+      fetchcategory = "";
+    }
+
+    console.log("DROPDOWN ====");
+    console.log("[" + fetchcategory  + "], [" +  fetchpet + "]");
+    console.log("STATE ", this.state.category, this.state.pettype);
+    //console.log("SPACE", (""===fetchpet ) ? "selected" : "");
+    //this.props.pets.map( (p) => console.log( p, (p===fetchpet) ? "selected" : "" ) );
+    //console.log("SPACE", (""===fetchcategory ) ? "selected" : "");
+    //this.props.categories.map( (c) => console.log(c,  (c===fetchcategory ) ? "selected" : "" ));
 
     return (
       <div className="dropdown">
@@ -304,19 +354,19 @@ class SearchForm extends Component {
           <form onSubmit={this._handleSubmit} >
 
             <label className="label">Pet:</label>
-              <select className="product-option" onChange={this._handleChangePetType}>
-                <option >{""}</option>
+              <select className="product-option" onChange={this._handleChangePetType} id="petoptions">
+                <option name={""} value={""} selected={ (""===fetchpet ) ? "selected" : "" }>{""}</option>
                 {
-                  this.props.pets.map( (p) => <option name={p} value={p} selected={ (p===this.props.pet) ? "selected" : "" }>{p}</option>)
+                  this.props.pets.map( (p) => <option name={p} value={p} selected={ (p===fetchpet) ? "selected" : "" }>{p}</option>)
                 }
               </select>
 
               <label className="label">Category:</label>
 
-                <select className="product-option" onChange={this._handleChangeCategory}>
-                  <option>{""}</option>
+                <select className="product-option" onChange={this._handleChangeCategory} id="categoryoptions">
+                  <option name={""} value={""} selected={ (""===fetchcategory ) ? "selected" : "" }>{""}</option>
                   {
-                    this.props.categories.map( (c) => <option className="dropdown-item" name={c} value={c} selected={ (c===this.props.category) ? "selected" : ""}>{c}</option>)
+                    this.props.categories.map( (c) => <option className="dropdown-item" name={c} value={c} selected={ (c===fetchcategory ) ? "selected" : ""}>{c}</option>)
                   }
                 </select>
 
